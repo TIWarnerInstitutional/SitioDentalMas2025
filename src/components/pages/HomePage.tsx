@@ -6,6 +6,7 @@ import { Testimonials } from "../Testimonials";
 import { PaymentOptions } from "../PaymentOptions";
 import { FAQ } from "../FAQ";
 import { MapPin, CreditCard, Calendar, Banknote } from "lucide-react";
+import SucursalesHero from "../SucursalesHero";
 
 export default function HomePage() {
 	return (
@@ -27,7 +28,7 @@ export default function HomePage() {
 			<AboutUs />
 
 			{/* Mapa de Sucursales */}
-			<Locations />
+			<SucursalesHero />
 
 			{/* Blog */}
 			<Blog />
