@@ -1,5 +1,5 @@
-import { LocationsPage } from "../../components/pages/LocationsPage";
+import { Locations } from "../../components/Locations";
 
-export default function Sucursales() {
-  return <LocationsPage />;
+export default function SucursalesPage() {
+  return <Locations />;
 }

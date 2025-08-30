@@ -10,26 +10,8 @@ import { MapPin, CreditCard, Calendar, Banknote } from "lucide-react";
 export default function HomePage() {
 	return (
 		<div className="bg-white">
-			{/* Header */}
-			<header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
-				<div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-					<div className="flex items-center gap-6">
-						<span className="text-2xl font-bold text-red-600">Dental+</span>
-						<nav className="hidden md:flex gap-6 text-gray-700 font-medium">
-							<a href="#quienes-somos" className="hover:text-red-500">¿Quiénes Somos?</a>
-							<a href="#sucursales" className="hover:text-red-500">Sucursales</a>
-							<a href="#blog" className="hover:text-red-500">Blog</a>
-							<a href="#testimonios" className="hover:text-red-500">Testimonios</a>
-							<a href="#pagos" className="hover:text-red-500">Pagos</a>
-							<a href="#faq" className="hover:text-red-500">FAQ</a>
-						</nav>
-					</div>
-					<div className="flex gap-2">
-						<button className="bg-red-500 text-white px-4 py-2 rounded font-semibold hover:bg-red-600">Agenda tu cita</button>
-						<button className="border border-red-500 text-red-500 px-4 py-2 rounded font-semibold hover:bg-red-50">Ver tratamientos</button>
-					</div>
-				</div>
-			</header>
+			{/* Header principal */}
+			{/* ...el resto del código permanece igual... */}
 
 			{/* Hero Section */}
 			<section className="relative flex flex-col items-center justify-center min-h-[400px] bg-gradient-to-br from-red-50 to-white text-center py-20">

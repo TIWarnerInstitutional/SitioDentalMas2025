@@ -1,5 +1,5 @@
-import FranchisePage from "../../components/pages/FranchisePage";
+import { Franquicias } from "../../components/Franquicias";
 
-export default function Franquicias() {
-  return <FranchisePage />;
+export default function FranquiciasPage() {
+  return <Franquicias />;
 }
