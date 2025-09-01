@@ -2,6 +2,7 @@
 import { Button } from "./ui/button";
 import { Menu, X, Phone, MessageCircle, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export function Header() {
@@ -15,6 +16,7 @@ export function Header() {
     { name: "Blog", href: "/blog" },
     { name: "Franquicias", href: "/franquicias" }
   ];
+  const pathname = usePathname();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -61,17 +63,20 @@ export function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-6">
-                {navigation.map((item) => (
-                  <div key={item.name} className="relative">
-                    <Link
-                      href={item.href}
-                      className={`px-3 py-2 text-sm transition-colors font-medium ${item.href === "/" ? "font-semibold" : "text-gray-700 hover:text-gray-900"}`}
-                      style={{ color: item.href === "/" ? "#FE0000" : undefined }}
-                    >
-                      {item.name}
-                    </Link>
-                  </div>
-                ))}
+                {navigation.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <div key={item.name} className="relative">
+                      <Link
+                        href={item.href}
+                        className={`px-3 py-2 text-sm transition-colors font-medium ${isActive ? "font-semibold" : "text-gray-700 hover:text-gray-900"}`}
+                        style={{ color: isActive ? "#FE0000" : undefined }}
+                      >
+                        {item.name}
+                      </Link>
+                    </div>
+                  );
+                })}
               </div>
             </nav>
             {/* Contact Info & CTAs */}
@@ -115,17 +120,20 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`w-full text-left px-3 py-2 text-base font-medium ${item.href === "/" ? "font-semibold" : "text-gray-700"}`}
-                  style={{ color: item.href === "/" ? "#FE0000" : undefined }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`w-full text-left px-3 py-2 text-base font-medium ${isActive ? "font-semibold" : "text-gray-700"}`}
+                    style={{ color: isActive ? "#FE0000" : undefined }}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
               <div className="px-3 py-2 space-y-2">
                 <Button 
                   variant="outline" 
