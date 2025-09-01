@@ -74,7 +74,7 @@ export function Locations() {
                 <Input
                   type="text"
                   placeholder="Escribe tu ciudad, código postal o colonia"
-                  className="pl-4 pr-12 py-3 text-base border-gray-300 rounded-lg"
+                  className="pl-4 pr-12 py-3 text-base border-gray-300 rounded-lg placeholder:text-gray-700"
                 />
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               </div>
@@ -83,7 +83,7 @@ export function Locations() {
                 <Input
                   type="text"
                   placeholder="Escribe tu ciudad, código postal o colonia"
-                  className="pl-4 pr-12 py-3 text-base border-gray-300 rounded-lg"
+                  className="pl-4 pr-12 py-3 text-base border-gray-300 rounded-lg placeholder:text-gray-700"
                 />
                 <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
               </div>

@@ -1,5 +1,6 @@
 // Componente AboutUsPage local
 import { AboutUs } from "../AboutUs";
+import { Footer } from "../Footer";
 export function AboutUsPage() {
 			// Datos para secciones nuevas
 			const team = [
@@ -169,76 +170,7 @@ export function AboutUsPage() {
 								<button className="bg-red-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-red-700 transition">Agendar Consulta Gratuita</button>
 							</section>
 
-							{/* Footer */}
-							<footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white pt-16 pb-8 mt-12">
-								<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-12">
-									<div className="md:col-span-1 mb-8 md:mb-0">
-										<h3 className="text-2xl font-bold mb-2 text-red-500">Dental+</h3>
-										<p className="text-sm mb-4">Transformando sonrisas desde 2012. Somos la clínica dental líder en México con tecnología de vanguardia y los mejores especialistas certificados internacionalmente.</p>
-										<div className="mb-2">
-											<span className="block font-semibold">Línea de Emergencia 24/7</span>
-											<span className="block text-red-400">(55) 5111-5671</span>
-										</div>
-										<div className="mb-2">
-											<span className="block font-semibold">Email General</span>
-											<span className="block text-red-400">info@dentalmas.mx</span>
-										</div>
-										<div className="flex gap-2 mt-4">
-											<a href="#" aria-label="Facebook" className="hover:text-red-500"><i className="fab fa-facebook-f"></i></a>
-											<a href="#" aria-label="Instagram" className="hover:text-red-500"><i className="fab fa-instagram"></i></a>
-											<a href="#" aria-label="Twitter" className="hover:text-red-500"><i className="fab fa-twitter"></i></a>
-											<a href="#" aria-label="LinkedIn" className="hover:text-red-500"><i className="fab fa-linkedin-in"></i></a>
-										</div>
-									</div>
-									<div>
-										<h4 className="font-bold mb-2">Nuestros Servicios</h4>
-										<ul className="text-sm space-y-1">
-											<li>Consulta General</li>
-											<li>Limpieza Dental</li>
-											<li>Blanqueamiento</li>
-											<li>Implantes Dentales</li>
-											<li>Endodoncia</li>
-											<li>Cirugía Oral</li>
-											<li>Ortodoncia</li>
-											<li>Odontopediatría</li>
-										</ul>
-									</div>
-									<div>
-										<h4 className="font-bold mb-2">Enlaces Rápidos</h4>
-										<ul className="text-sm space-y-1">
-											<li><a href="/" className="hover:text-red-400">Inicio</a></li>
-											<li><a href="/quienes-somos" className="hover:text-red-400">Quiénes Somos</a></li>
-											<li><a href="/sucursales" className="hover:text-red-400">Sucursales</a></li>
-											<li><a href="/blog" className="hover:text-red-400">Blog</a></li>
-											<li><a href="/franquicias" className="hover:text-red-400">Franquicias</a></li>
-											<li><a href="/faq" className="hover:text-red-400">Preguntas Frecuentes</a></li>
-											<li><a href="/contacto" className="hover:text-red-400">Contacto</a></li>
-											<li><a href="/aviso-privacidad" className="hover:text-red-400">Aviso de Privacidad</a></li>
-										</ul>
-									</div>
-									<div>
-										<h4 className="font-bold mb-2">Nuestras Sucursales</h4>
-										<ul className="text-sm space-y-3">
-											<li>
-												<span className="font-semibold">Centro</span><br />
-												Av. Juárez #11, Centro Histórico, CDMX<br />
-												<span className="text-red-400">(55) 5111-5671</span>
-											</li>
-											<li>
-												<span className="font-semibold">Polanco</span><br />
-												Av. Masaryk #29, Polanco, CDMX<br />
-												<span className="text-red-400">(55) 7000-7000</span>
-											</li>
-											<li>
-												<span className="font-semibold">Santa Fe</span><br />
-												Av. Sta Fe #128, Santa Fe, CDMX<br />
-												<span className="text-red-400">(55) 7000-7000</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div className="text-center text-xs text-gray-400 mt-8">© 2025 Dental+ | Todos los derechos reservados.</div>
-							</footer>
+							{/* Footer eliminado, ahora solo se usa el global */}
 						</div>
 					);
 }

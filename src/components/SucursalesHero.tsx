@@ -39,7 +39,7 @@ export default function SucursalesHero() {
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 placeholder="Escribe tu ciudad, código postal o colonia."
-                className="w-full px-6 py-3 border border-gray-300 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-[#002B5C] text-lg"
+                className="w-full px-6 py-3 border border-gray-300 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-[#002B5C] text-lg placeholder:text-gray-700"
               />
             </div>
             <span className="text-sm text-gray-500 mt-2">

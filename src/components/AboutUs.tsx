@@ -82,10 +82,10 @@ export function AboutUs() {
                   return (
                     <div key={feature.title} className="flex flex-col items-center text-center">
                       <div className="mb-3">
-                        <Icon size={32} className="text-red-500" />
+                        <Icon size={32} className="text-[#FE0000]" />
                       </div>
-                      <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                      <p className="text-gray-600 text-base">{feature.description}</p>
+                      <h3 className="text-xl font-semibold mb-2 text-[#FE0000]">{feature.title}</h3>
+                      <p className="text-base text-black">{feature.description}</p>
                     </div>
                   );
                 })}

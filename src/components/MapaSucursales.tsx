@@ -35,6 +35,12 @@ export default function MapaSucursales({ search = "", selected, setSelected, hid
   const [mapCenter, setMapCenter] = useState<[number, number]>([23.6345, -102.5528]); // México
   const [mapZoom, setMapZoom] = useState(5);
   const [isZoomed, setIsZoomed] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(typeof window !== "undefined");
+  }, []);
+
   const filtered = sucursales.filter(clinica => {
     const s = search.trim().toLowerCase();
     if (!s) return true;
@@ -65,6 +71,8 @@ export default function MapaSucursales({ search = "", selected, setSelected, hid
     }, [selected, isZoomed, map, mapCenter, mapZoom]);
     return null;
   }
+
+  if (!isClient) return null;
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
