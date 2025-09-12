@@ -9,7 +9,7 @@ export default function NotFound() {
         </svg>
         <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[#e60012]">Página no encontrada</h1>
         <p className="text-base md:text-lg text-gray-700 mb-6">Lo sentimos, la página que buscas no existe o fue movida.<br />Por favor verifica la URL o regresa al inicio.</p>
-        <a href="/" className="bg-[#e60012] text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-red-700 transition w-full max-w-xs">Volver al inicio</a>
+  <Link href="/" className="bg-[#e60012] text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-red-700 transition w-full max-w-xs">Volver al inicio</Link>
       </div>
     </main>
   );

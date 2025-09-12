@@ -10,7 +10,7 @@ export default function TerminosCondiciones() {
             <section>
               <h2 className="text-2xl font-bold text-[#FE0000] mb-4">1. Información General</h2>
               <p className="text-gray-700 leading-relaxed">
-                Los presentes términos y condiciones (en adelante, "Términos") regulan el uso de los servicios ofrecidos por Dental Más, 
+                Los presentes términos y condiciones (en adelante, &quot;Términos&quot;) regulan el uso de los servicios ofrecidos por Dental Más, 
                 una red de clínicas dentales especializadas en brindar servicios odontológicos de calidad. Al acceder y utilizar nuestros 
                 servicios, usted acepta estar legalmente obligado por estos Términos.
               </p>

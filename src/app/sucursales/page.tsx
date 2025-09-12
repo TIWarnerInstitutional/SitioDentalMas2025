@@ -1,9 +1,13 @@
+import MapaSucursalesClient from "../../components/MapaSucursalesClient";
 "use client";
 
+
+
+import { Sucursal } from "../../types/Sucursal";
+import * as React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import sucursales from "../../data/sucursales";
-import MapaSucursalesClient from "../../components/MapaSucursalesClient";
-import React, { useState } from "react";
 
 function estaAbierto(horario: string) {
   // Ejemplo simple: Lun-Vie: 9:00-18:00, Sáb: 9:00-14:00
@@ -33,8 +37,8 @@ function estaAbierto(horario: string) {
 export default function SucursalesPage() {
   const [showAll, setShowAll] = useState(false);
   const [search, setSearch] = useState("");
-  const [selectedSucursal, setSelectedSucursal] = useState(null);
-  const filtered = sucursales.filter((s: any) => {
+  const [selectedSucursal, setSelectedSucursal] = useState<Sucursal | null>(null);
+  const filtered = sucursales.filter((s: Sucursal) => {
     const term = search.trim().toLowerCase();
     if (!term) return true;
     return (
@@ -76,7 +80,7 @@ export default function SucursalesPage() {
           {/* Mostrar promociones debajo de la barra de búsqueda */}
             {search.trim() && filtered.length > 0 && (
               <div className="w-full mt-2 flex flex-col gap-2 items-start">
-                {filtered.map((s: any, idx: number) => (
+                {filtered.map((s: Sucursal, idx: number) => (
                   <div
                     key={idx}
                     style={{ background: "#fe0000", color: "#fff", borderRadius: "8px", padding: "8px", width: "100%", display: "flex", alignItems: "center", gap: "8px", maxWidth: "512px", margin: "0 auto", boxShadow: "none", opacity: 1, transition: "none" }}
@@ -104,7 +108,7 @@ export default function SucursalesPage() {
       </section>
       <div className="max-w-6xl mx-auto px-4 flex flex-col gap-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {(showAll ? filtered : filtered.slice(0, 3)).map((s: any, i: number) => (
+          {(showAll ? filtered : filtered.slice(0, 3)).map((s: Sucursal, i: number) => (
             <div key={i} className="bg-white rounded-xl shadow-lg p-6 flex flex-col">
               <div className="w-full flex justify-center">
                 <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg aspect-[16/9] mb-4 rounded-xl bg-gray-200 flex items-center justify-center overflow-hidden">
@@ -118,7 +122,7 @@ export default function SucursalesPage() {
                       style={{ maxWidth: '100%', height: 'auto' }}
                     />
                   )}
-                  {estaAbierto(s.horario) && (
+                  {estaAbierto(s.horario ?? "") && (
                     <span className="absolute top-3 right-3 px-3 py-1 rounded bg-green-500 text-white text-xs font-bold shadow">Abierto ahora</span>
                   )}
                 </div>

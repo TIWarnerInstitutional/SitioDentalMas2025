@@ -13,15 +13,7 @@ const pinIcon = L.icon({
 });
 
 
-interface Sucursal {
-  nombre: string;
-  lat: number;
-  lng: number;
-  direccion: string;
-  ciudad?: string;
-  cp?: string;
-  colonia?: string;
-}
+import { Sucursal } from "../types/Sucursal";
 
 type Props = {
   search?: string;
