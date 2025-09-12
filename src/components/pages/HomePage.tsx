@@ -75,18 +75,12 @@ export default function HomePage() {
 
 			{/* Blog */}
 			<Blog />
-
 			{/* Testimonios */}
 			<Testimonials />
-
 			{/* Formas de Pago y Financiamiento */}
 			<PaymentOptions />
-
 			{/* Preguntas Frecuentes */}
 			<FAQ />
-
-			{/* Footer */}
-			{/* Footer eliminado, ahora solo se usa el global */}
 		</div>
 	);
 }

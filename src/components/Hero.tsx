@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { ArrowRight, Calendar, Users, Activity, Heart, Zap } from "lucide-react";
 // import { ImageWithFallback } from './figma/ImageWithFallback';
 import { motion } from 'framer-motion';
+const MotionDiv = motion.div as React.FC<React.HTMLAttributes<HTMLDivElement> & any>;
 
 export function Hero() {
   const floatingIcons = [
@@ -15,19 +16,22 @@ export function Hero() {
   ];
 
   return (
-    <section id="inicio" className="relative py-20 lg:py-32 overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1729870992116-5f1f59feb4ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTY1NTQwMzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-white/85"></div>
+    <section id="inicio" className="relative min-h-[400px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
+      {/* Imagen de fondo responsiva */}
+      <div className="absolute inset-0 w-full h-full">
+        <div className="relative w-full h-full min-h-[400px] md:min-h-[600px]">
+          <img
+            src="https://images.unsplash.com/photo-1729870992116-5f1f59feb4ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTY1NTQwMzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            alt="Fondo Dental"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: 'center' }}
+          />
+          <div className="absolute inset-0 bg-white/85"></div>
+        </div>
       </div>
       {/* Floating Icons */}
       {floatingIcons.map((item, index) => (
-        <motion.div
+        <MotionDiv
           key={index}
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -36,12 +40,12 @@ export function Hero() {
           style={{ color: "#FE0000" }}
         >
           {item.icon}
-        </motion.div>
+        </MotionDiv>
       ))}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
         <div className="text-center space-y-12">
           {/* Main heading */}
-          <motion.div 
+          <MotionDiv 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -55,9 +59,9 @@ export function Hero() {
               Tu mejor sonrisa comienza aquí: atención profesional,<br />
               tecnología avanzada y resultados que te harán sonreír.
             </p>
-          </motion.div>
+          </MotionDiv>
           {/* CTA Buttons */}
-          <motion.div 
+          <MotionDiv 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -77,7 +81,7 @@ export function Hero() {
             >
               Ver tratamientos
             </Button>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
     </section>
