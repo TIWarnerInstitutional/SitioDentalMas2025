@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import ChatbotWidget from "../components/ChatbotWidget";
+import CookieAlert from "../components/CookieAlert";
 
 // fonts intentionally left to be included via CSS or added later if needed
 
@@ -24,6 +25,7 @@ export default function RootLayout({
             {children}
             <ChatbotWidget />
             <Footer />
+            <CookieAlert />
           </body>
         </html>
   );

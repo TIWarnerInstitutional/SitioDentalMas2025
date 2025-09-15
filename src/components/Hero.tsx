@@ -20,7 +20,7 @@ export function Hero() {
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full min-h-[400px] md:min-h-[600px]">
           <Image
-            src="https://images.unsplash.com/photo-1729870992116-5f1f59feb4ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTY1NTQwMzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+            src="/images/ui/hero-placeholder.svg"
             alt="Fondo Dental"
             fill
             className="object-cover"

@@ -76,7 +76,7 @@ export function AboutUsPage() {
 														</div>
 													</div>
 													<div className="flex justify-center">
-														<Image src="/consultorio.jpg" alt="Consultorio Dental+" width={400} height={300} className="rounded-xl shadow-lg" />
+														<Image src="/images/ui/hero-placeholder.svg" alt="Consultorio Dental+" width={400} height={300} className="rounded-xl shadow-lg" />
 													</div>
 												</div>
 											</section>

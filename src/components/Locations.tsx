@@ -37,7 +37,7 @@ export function Locations() {
               <div 
                 className="w-full h-full bg-cover bg-center relative"
                 style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1742415105376-43d3a5fd03fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTY1NTQwNzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral')`
+                  backgroundImage: `url('/images/ui/hero-placeholder.svg')`
                 }}
               >
                 {/* Map overlay */}

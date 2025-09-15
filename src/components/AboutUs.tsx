@@ -70,8 +70,8 @@ export function AboutUs() {
           {/* Imagenes y botón de pacientes satisfechos */}
           <div className="flex flex-col gap-6 items-center w-full">
             <div className="grid grid-cols-2 gap-4 w-full">
-              <Image src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Consultorio dental" className="rounded-xl w-full h-40 object-cover" width={400} height={160} />
-              <Image src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Dentista trabajando" className="rounded-xl w-full h-40 object-cover" width={400} height={160} />
+                <Image src="/images/ui/hero-placeholder.svg" alt="Consultorio dental" className="rounded-xl w-full h-40 object-cover" width={400} height={160} />
+                <Image src="/images/ui/hero-placeholder.svg" alt="Dentista trabajando" className="rounded-xl w-full h-40 object-cover" width={400} height={160} />
             </div>
             <div className="mt-4 w-full flex flex-col items-center">
               <button className="bg-red-500 text-white text-2xl font-bold px-8 py-6 rounded-xl shadow-lg w-full max-w-xs">1,800+<br /><span className="text-base font-normal">Pacientes satisfechos</span></button>

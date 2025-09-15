@@ -2,9 +2,11 @@
 
 import { usePathname } from "next/navigation";
 import React, { useMemo, useState } from "react";
-import sucursales from "../../data/sucursales";
+import sucursales, { Sucursal } from "../../data/sucursales";
 import dynamic from "next/dynamic";
 import Image from 'next/image';
+import SucursalesStats from '../../components/SucursalesStats';
+import PromocionesSection from '../../components/PromocionesSection';
 
 const MapaSucursales = dynamic(() => import("../../components/MapaSucursales"), { ssr: false });
 
@@ -15,7 +17,7 @@ export default function SucursalesPage() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    const base = !q ? sucursales : sucursales.filter((s) => {
+    const base = !q ? (sucursales as Sucursal[]) : (sucursales as Sucursal[]).filter((s) => {
       return (
         (s.nombre && s.nombre.toLowerCase().includes(q)) ||
         (s.ciudad && s.ciudad.toLowerCase().includes(q)) ||
@@ -53,7 +55,7 @@ export default function SucursalesPage() {
         </div>
       </section>
       <section className="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        {(showAll ? filtered : filtered.slice(0, 3)).map((sucursal, idx) => (
+  {((showAll ? filtered : filtered.slice(0, 3)) as Sucursal[]).map((sucursal: Sucursal, idx: number) => (
           <div key={idx} className="bg-white rounded-2xl shadow p-0 overflow-hidden flex flex-col">
             <div className="relative h-36 bg-gray-100">
               {sucursal.imagen ? (
@@ -97,7 +99,7 @@ export default function SucursalesPage() {
                 <div className="mt-3">
                 <span className="font-semibold text-xs text-gray-700">Servicios Disponibles:</span>
                 <div className="flex flex-wrap gap-3 mt-3">
-                  {sucursal.servicios?.map((servicio, i) => (
+                  {sucursal.servicios?.map((servicio: string, i: number) => (
                     <span key={i} className="bg-red-50 text-red-700 rounded-full px-3 py-1 text-xs font-medium shadow-sm">{servicio}</span>
                   ))}
                 </div>
@@ -137,7 +139,13 @@ export default function SucursalesPage() {
         </div>
       )}
 
-      <section className="max-w-3xl mx-auto bg-white rounded-2xl shadow p-8 text-center">
+  {/* Nueva sección de estadísticas similar a la maquetación solicitada */}
+  <SucursalesStats />
+
+  {/* Sección de promociones añadida */}
+  <PromocionesSection />
+
+  <section className="max-w-3xl mx-auto bg-white rounded-2xl shadow p-8 text-center">
         <h2 className="text-xl font-semibold mb-2">¿No encuentras una sucursal cerca?</h2>
         <p className="mb-4">Próximamente abriremos nuevas ubicaciones. Suscríbete a nuestro newsletter para ser el primero en conocer nuestras nuevas clínicas.</p>
         <button className="bg-red-600 text-white font-semibold rounded p-3 w-full hover:bg-red-700 transition">

@@ -39,15 +39,15 @@ export function Header() {
   return (
     <>
       {/* Banner Promo */}
-      <div style={{ backgroundColor: "#FE0000" }} className="text-white py-3 px-4 animate-pulse">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4 text-sm">
+      <Link href="/sucursales#promociones" aria-label="Ver promociones" className="block w-full bg-red-600 text-white py-3 animate-pulse">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4 text-sm px-4">
           <span className="font-medium">🎉 ¡Promoción Especial! 50% de descuento en limpieza dental</span>
-          <div className="flex items-center gap-2 bg-white/20 rounded-full px-3 py-1">
+          <div className="flex items-center gap-2 bg-white rounded-full px-3 py-1 text-red-600">
             <Clock size={16} />
             <span className="font-mono font-bold">{formatTime(timeLeft)}</span>
           </div>
         </div>
-      </div>
+      </Link>
       {/* Header */}
   <header className="bg-white shadow-sm border-b sticky top-0 z-[9999]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

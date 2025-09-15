@@ -137,11 +137,15 @@ export function Footer() {
               <div>
                 <h4 className="font-semibold mb-4">Información Legal</h4>
                 <ul className="space-y-2">
-                  {["Términos y Condiciones", "Aviso de Privacidad", "Política de Cookies"].map((item) => (
-                    <li key={item}>
-                      <div className="text-gray-400 hover:text-red-400 transition-colors text-sm">{item}</div>
-                    </li>
-                  ))}
+                  <li>
+                    <a href="/terminos-y-condiciones" className="text-gray-400 hover:text-red-400 transition-colors text-sm">Términos y Condiciones</a>
+                  </li>
+                  <li>
+                    <a href="/aviso-de-privacidad" className="text-gray-400 hover:text-red-400 transition-colors text-sm">Aviso de Privacidad</a>
+                  </li>
+                  <li>
+                    <a href="/politica-de-cookies" className="text-gray-400 hover:text-red-400 transition-colors text-sm">Política de Cookies</a>
+                  </li>
                 </ul>
               </div>
             </div>

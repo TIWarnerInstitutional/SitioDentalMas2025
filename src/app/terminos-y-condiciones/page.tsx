@@ -165,16 +165,16 @@ export default function TerminosCondiciones() {
                 Para cualquier duda, aclaración o comentario sobre estos términos y condiciones, puede contactarnos:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                <p className="text-gray-700"><strong>Teléfono:</strong> 56 21567557</p>
+                <p className="text-gray-700"><strong>Teléfono:</strong> +52 56 2156 7557</p>
                 <p className="text-gray-700"><strong>Email:</strong> contacto@dentalmas.com</p>
-                <p className="text-gray-700"><strong>WhatsApp:</strong> 56 21567557</p>
-                <p className="text-gray-700"><strong>Horarios de atención:</strong> Lunes a Viernes 8:00 AM - 8:00 PM, Sábados 9:00 AM - 6:00 PM</p>
+                <p className="text-gray-700"><strong>WhatsApp:</strong> +52 56 2156 7557</p>
+                <p className="text-gray-700"><strong>Horarios de atención:</strong> Lunes a Viernes 08:00 - 20:00, Sábados 09:00 - 18:00</p>
               </div>
             </section>
 
             <section className="border-t pt-8">
               <p className="text-sm text-gray-500 text-center">
-                <strong>Última actualización:</strong> Agosto 2025<br/>
+                <strong>Última actualización:</strong> Septiembre 2025<br/>
                 Estos términos y condiciones están sujetos a la legislación mexicana vigente.
               </p>
             </section>

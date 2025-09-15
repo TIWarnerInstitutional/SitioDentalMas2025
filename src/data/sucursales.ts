@@ -15,11 +15,18 @@ const sucursales = [
     "servicios": ["Consulta General", "Limpieza Dental", "Ortodoncia"],
     "caracteristicas": ["Estacionamiento", "WiFi"],
     "comoLlegar": ["Transporte público", "Estacionamiento propio"],
-    "imagen": "https://example.com/images/dentalmas_ags.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.5",
     "reviews": "120 reseñas",
     "btn": "Agendar Cita en Aguascalientes",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    // Ejemplo de métricas específicas para esta sucursal (editable aquí)
+    pacientesAtendidos: 18750,
+    satisfaccion: 97,
+    tiempoPromedio: 22,
+    especialistas: 12,
+    tratamientosExitosos: 18203,
+    crecimientoAnual: '+31%'
   },
   {
   "nombre": "Dental Más Atlixco",
@@ -37,7 +44,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Endodoncia", "Blanqueamiento Dental"],
     "caracteristicas": ["Sala de espera cómoda", "Accesibilidad para discapacitados"],
     "comoLlegar": ["Transporte público", "A pie desde el centro"],
-    "imagen": "https://example.com/images/dentalmas_atlixco.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.7",
     "reviews": "98 reseñas",
     "btn": "Agendar Cita en Atlixco",
@@ -59,7 +66,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Ortodoncia", "Implantes Dentales"],
     "caracteristicas": ["Estacionamiento", "WiFi gratuito"],
     "comoLlegar": ["Transporte público", "Estacionamiento propio"],
-    "imagen": "https://example.com/images/dentalmas_campeche.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.6",
     "reviews": "150 reseñas",
     "btn": "Agendar Cita en Campeche",
@@ -81,7 +88,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Limpieza Dental", "Ortodoncia"],
     "caracteristicas": ["Estacionamiento", "WiFi gratuito"],
     "comoLlegar": ["Transporte público", "Estacionamiento propio"],
-    "imagen": "https://example.com/images/dentalmas_cancun.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.8",
     "reviews": "200 reseñas",
     "btn": "Agendar Cita en Cancún",
@@ -103,7 +110,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Endodoncia", "Blanqueamiento Dental"],
     "caracteristicas": ["Sala de espera cómoda", "Accesibilidad para discapacitados"],
     "comoLlegar": ["Transporte público", "A pie desde el centro"],
-    "imagen": "https://example.com/images/dentalmas_comitan.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.5",
     "reviews": "110 reseñas",
     "btn": "Agendar Cita en Comitán",
@@ -125,7 +132,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Ortodoncia", "Implantes Dentales"],
     "caracteristicas": ["Estacionamiento", "WiFi gratuito"],
     "comoLlegar": ["Transporte público", "Estacionamiento propio"],
-    "imagen": "https://example.com/images/dentalmas_cordoba.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.6",
     "reviews": "130 reseñas",
     "btn": "Agendar Cita en Córdoba",
@@ -147,7 +154,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Limpieza Dental", "Ortodoncia"],
     "caracteristicas": ["Estacionamiento", "WiFi gratuito"],
     "comoLlegar": ["Transporte público", "Estacionamiento propio"],
-    "imagen": "https://example.com/images/dentalmas_guadalajara.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.7",
     "reviews": "180 reseñas",
     "btn": "Agendar Cita en Guadalajara",
@@ -169,7 +176,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Endodoncia", "Blanqueamiento Dental"],
     "caracteristicas": ["Sala de espera cómoda", "Accesibilidad para discapacitados"],
     "comoLlegar": ["Transporte público", "A pie desde el centro"],
-    "imagen": "https://example.com/images/dentalmas_leon.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.5",
     "reviews": "140 reseñas",
     "btn": "Agendar Cita en León",
@@ -191,7 +198,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Ortodoncia", "Implantes Dentales"],
     "caracteristicas": ["Estacionamiento", "WiFi gratuito"],
     "comoLlegar": ["Transporte público", "Estacionamiento propio"],
-    "imagen": "https://example.com/images/dentalmas_merida.jpg",
+  "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.6",
     "reviews": "160 reseñas",
    "btn": "Agendar Cita en León",
@@ -397,9 +404,45 @@ const sucursales = [
     "mapBtn": "Ver en Mapa"
     
   }
-].map(s => ({
-  ...s,
-  imagen: s.imagen && s.imagen.startsWith('/') ? s.imagen : '/images/placeholder.jpg'
-}));
+];
 
-export default sucursales;
+function numberFromReviews(rev?: string) {
+  if (!rev) return 0
+  const n = parseInt(String(rev).replace(/\D/g, ''), 10)
+  return Number.isNaN(n) ? 0 : n
+}
+
+export type Sucursal = {
+  nombre: string
+  ciudad?: string
+  colonia?: string
+  direccion?: string
+  imagen?: string
+  reviews?: string
+  pacientesAtendidos?: number
+  satisfaccion?: number | string
+  tiempoPromedio?: number
+  especialistas?: number
+  tratamientosExitosos?: number
+  crecimientoAnual?: string
+  telefono?: string
+  horario?: string
+  servicios?: string[]
+  mapsUrl?: string
+  [key: string]: unknown
+}
+
+const processed = (sucursales as unknown as Record<string, unknown>[]).map((s: Record<string, unknown>) => ({
+  ...s,
+  imagen: (s.imagen && typeof s.imagen === 'string' && (s.imagen as string).startsWith('/')) ? (s.imagen as string) : '/images/branches/branch-placeholder.svg',
+  // Valores por defecto genéricos solicitados (se pueden sobreescribir por sucursal)
+  pacientesAtendidos: s['pacientesAtendidos'] !== undefined ? Number(s['pacientesAtendidos']) : numberFromReviews(typeof s['reviews'] === 'string' ? (s['reviews'] as string) : undefined) || 98,
+  satisfaccion: s['satisfaccion'] !== undefined ? (s['satisfaccion'] as number | string) : 94,
+  tiempoPromedio: s['tiempoPromedio'] !== undefined ? Number(s['tiempoPromedio']) : 25,
+  especialistas: s['especialistas'] !== undefined ? Number(s['especialistas']) : 3,
+  tratamientosExitosos: s['tratamientosExitosos'] !== undefined ? Number(s['tratamientosExitosos']) : 75,
+  crecimientoAnual: s['crecimientoAnual'] !== undefined ? String(s['crecimientoAnual']) : '+0%'
+}))
+
+export default processed as unknown as Sucursal[];
+
