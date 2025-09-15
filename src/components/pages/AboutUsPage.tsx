@@ -1,6 +1,6 @@
 // Componente AboutUsPage local
 import { AboutUs } from "../AboutUs";
-import { Footer } from "../Footer";
+import Image from "next/image";
 export function AboutUsPage() {
 			// Datos para secciones nuevas
 			const team = [
@@ -76,7 +76,7 @@ export function AboutUsPage() {
 														</div>
 													</div>
 													<div className="flex justify-center">
-														<img src="/consultorio.jpg" alt="Consultorio Dental+" width={400} height={300} className="rounded-xl shadow-lg" />
+														<Image src="/consultorio.jpg" alt="Consultorio Dental+" width={400} height={300} className="rounded-xl shadow-lg" />
 													</div>
 												</div>
 											</section>

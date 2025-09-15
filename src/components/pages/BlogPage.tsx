@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+// no state required for simplified BlogPage
 import { motion } from 'framer-motion';
 // import { ImageWithFallback } from '../figma/ImageWithFallback';
 // import { Search, Calendar, User, Clock, Filter, TrendingUp, BookOpen, Eye } from 'lucide-react';
@@ -10,8 +10,7 @@ import { motion } from 'framer-motion';
 // import { categories, featuredPost, blogPosts, popularPosts } from '../data/blogData';
 
 export function BlogPage() {
-	const [searchTerm, setSearchTerm] = useState("");
-	const [selectedCategory, setSelectedCategory] = useState("All");
+	// search and category filtering not used in this simplified page
 
 	// const filteredPosts = blogPosts.filter(post => {
 	//   const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 

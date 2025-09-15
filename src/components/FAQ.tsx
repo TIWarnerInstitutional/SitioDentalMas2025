@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     question: "¿Atienden emergencias dentales?",
-    answer: "Sí, contamos con atención de urgencias dentales los 7 días de la semana en todas nuestras sucursales.",
+  answer: "Sí, contamos con atención de urgencias dentales los 7 días de la semana en todas nuestras clínicas.",
     icon: <Phone className="text-white" size={22} />, color: "bg-indigo-500"
   }
 ];

@@ -1,6 +1,6 @@
 "use client";
 import { Award, Users, Heart, Shield } from "lucide-react";
-import { motion } from 'framer-motion';
+import Image from "next/image";
 
 export function AboutUs() {
   const features = [
@@ -31,53 +31,28 @@ export function AboutUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <div className="space-y-8">
               <div className="space-y-4">
-                <motion.div 
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
+                <div>
                   <h2 className="text-4xl font-bold text-gray-900">¿Quiénes Somos?</h2>
-                </motion.div>
-                <motion.div 
-                  initial={{ width: 0 }}
-                  whileInView={{ width: 64 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  viewport={{ once: true }}
-                >
+                </div>
+                <div>
                   <div className="h-1" style={{ backgroundColor: "#FE0000" }}></div>
-                </motion.div>
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  viewport={{ once: true }}
-                >
+                </div>
+                <div>
                   <p className="text-lg text-gray-600 leading-relaxed">
                     Somos una clínica dental moderna comprometida con brindar la mejor atención odontológica. Con más de 12 años de experiencia, nuestro equipo de profesionales altamente capacitados utiliza tecnología de vanguardia para garantizar tratamientos seguros y efectivos.
                   </p>
-                </motion.div>
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  viewport={{ once: true }}
-                >
+                </div>
+                <div>
                   <p className="text-lg text-gray-600 leading-relaxed">
                     Nuestra misión es crear sonrisas saludables y hermosas, proporcionando una experiencia cómoda y profesional en cada visita.
                   </p>
-                </motion.div>
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-8 mt-8">
-                {features.map((feature, idx) => {
+                {features.map((feature) => {
                   const Icon = feature.icon;
                   return (
                     <div key={feature.title} className="flex flex-col items-center text-center">
@@ -91,12 +66,12 @@ export function AboutUs() {
                 })}
               </div>
             </div>
-          </motion.div>
+          </div>
           {/* Imagenes y botón de pacientes satisfechos */}
           <div className="flex flex-col gap-6 items-center w-full">
             <div className="grid grid-cols-2 gap-4 w-full">
-              <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Consultorio dental" className="rounded-xl w-full h-40 object-cover" />
-              <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Dentista trabajando" className="rounded-xl w-full h-40 object-cover" />
+              <Image src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Consultorio dental" className="rounded-xl w-full h-40 object-cover" width={400} height={160} />
+              <Image src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Dentista trabajando" className="rounded-xl w-full h-40 object-cover" width={400} height={160} />
             </div>
             <div className="mt-4 w-full flex flex-col items-center">
               <button className="bg-red-500 text-white text-2xl font-bold px-8 py-6 rounded-xl shadow-lg w-full max-w-xs">1,800+<br /><span className="text-base font-normal">Pacientes satisfechos</span></button>

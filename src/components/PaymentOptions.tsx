@@ -11,7 +11,7 @@ const paymentMethods = [
   {
     icon: <Banknote size={32} className="text-red-500 mb-2" />,
     title: "Efectivo",
-    description: "Pago directo en cualquiera de nuestras sucursales",
+  description: "Pago directo en nuestras clínicas",
     options: ["Descuento del 5% por pago en efectivo"]
   },
   {
@@ -87,7 +87,7 @@ export function PaymentOptions() {
         {/* Planes de financiamiento */}
         <h3 className="text-xl font-bold text-gray-900 text-center mb-6">Planes de Financiamiento</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {plans.map((plan, idx) => (
+          {plans.map((plan) => (
             <div key={plan.title} className={`bg-white rounded-xl border shadow p-6 flex flex-col items-center ${plan.highlight ? "border-2 border-red-500 relative" : "border-gray-200"}`}>
               {plan.highlight && (
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-red-500 text-white text-xs px-3 py-1 rounded-full font-bold shadow">Más Popular</span>

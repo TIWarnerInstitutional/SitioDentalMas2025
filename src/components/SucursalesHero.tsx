@@ -1,57 +1,53 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import dynamic from "next/dynamic";
 
-const DynamicMap = dynamic(() => import("./MapaSucursales"), { ssr: false });
+import React, { useMemo, useState } from "react";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import sucursales from "../data/sucursales";
+
+const MapaSucursales = dynamic(() => import("./MapaSucursales"), { ssr: false });
 
 export default function SucursalesHero() {
-  const [search, setSearch] = useState("");
-  const [selected, setSelected] = useState(null);
+  const [query, setQuery] = useState("");
+
+  type Sucursal = { nombre?: string; ciudad?: string; direccion?: string; colonia?: string };
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return sucursales as Sucursal[];
+    return (sucursales as Sucursal[]).filter((s: Sucursal) => {
+      return (
+        (s.nombre && s.nombre.toLowerCase().includes(q)) ||
+        (s.ciudad && s.ciudad.toLowerCase().includes(q)) ||
+        (s.direccion && s.direccion.toLowerCase().includes(q)) ||
+        (s.colonia && s.colonia.toLowerCase().includes(q))
+      );
+    });
+  }, [query]);
 
   return (
-    <section className="w-full py-20 bg-white flex flex-col items-center">
-      <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-center gap-12">
-        {/* Mapa a la izquierda */}
-        <div className="w-full md:w-1/2 flex items-center justify-center">
-          <div className="w-full h-[350px] md:h-[400px] rounded-xl overflow-hidden shadow-md bg-gray-100 flex items-center justify-center relative">
-            <DynamicMap
-              search={search}
-              selected={selected}
-              setSelected={setSelected}
-              hideList
-              preview
-            />
-          </div>
+    <section className="max-w-5xl mx-auto pt-8 pb-8 px-4">
+      <div className="bg-red-600 rounded-2xl p-8 flex flex-col md:flex-row gap-8 items-center">
+        <div className="flex-1 w-full">
+          <h2 className="text-white text-2xl font-semibold mb-2">Encuentra una Clínica Dental cerca de ti</h2>
+          <p className="text-white mb-4">Elige entre +30 clínicas para Cuidar tu Salud Dental</p>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Escribe tu ciudad, código postal o colonia..."
+            className="w-full p-3 rounded mb-3 outline-none"
+          />
+          {filtered.length > 3 && (
+            <Link
+              href="/sucursales"
+              className="w-full bg-white text-red-600 font-semibold rounded p-3 hover:bg-red-50 transition block text-center"
+            >
+              Ver todas nuestras clínicas
+            </Link>
+          )}
         </div>
-        {/* Info y búsqueda a la derecha */}
-        <div className="w-full md:w-1/2 flex flex-col items-center text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#fe0000' }}>
-            Encuentra una Clinica Dental <br /> cerca de ti
-          </h2>
-          <p className="text-lg text-gray-700 mb-6">
-            Elige entre +30 clínicas para Cuidar tu Salud Dental
-          </p>
-          <div className="w-full flex flex-col items-center mb-4">
-            <div className="relative w-full max-w-md">
-              <input
-                type="text"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                placeholder="Escribe tu ciudad, código postal o colonia."
-                className="w-full px-6 py-3 border border-gray-300 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-[#002B5C] text-lg placeholder:text-gray-700"
-              />
-            </div>
-            <span className="text-sm text-gray-500 mt-2">
-              Escribe tu ciudad, código postal o colonia
-            </span>
-          </div>
-          <Link
-            href="/sucursales"
-            className={`mt-4 px-8 py-3 rounded-xl border border-[#fe0000] font-semibold transition ${selected ? 'bg-white text-[#fe0000] hover:bg-[#fe0000] hover:text-white' : 'bg-[#fe0000] text-white hover:bg-white hover:text-[#fe0000]'}`}
-          >
-            Ver todas nuestras clínicas
-          </Link>
+        <div className="flex-1 w-full min-h-[250px]">
+          <MapaSucursales sucursales={filtered} />
         </div>
       </div>
     </section>

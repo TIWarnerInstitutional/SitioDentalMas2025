@@ -1,9 +1,8 @@
 "use client";
 import { Button } from "./ui/button";
-import { ArrowRight, Calendar, Users, Activity, Heart, Zap } from "lucide-react";
-// import { ImageWithFallback } from './figma/ImageWithFallback';
-import { motion } from 'framer-motion';
-const MotionDiv = motion.div as React.FC<React.HTMLAttributes<HTMLDivElement> & any>;
+import Image from 'next/image';
+// Floating icons implemented with emoji; no external icons or motion used here
+// Animación deshabilitada por compatibilidad con framer-motion v10+
 
 export function Hero() {
   const floatingIcons = [
@@ -20,10 +19,11 @@ export function Hero() {
       {/* Imagen de fondo responsiva */}
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full min-h-[400px] md:min-h-[600px]">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1729870992116-5f1f59feb4ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTY1NTQwMzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
             alt="Fondo Dental"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
             style={{ objectPosition: 'center' }}
           />
           <div className="absolute inset-0 bg-white/85"></div>
@@ -31,26 +31,18 @@ export function Hero() {
       </div>
       {/* Floating Icons */}
       {floatingIcons.map((item, index) => (
-        <MotionDiv
+        <div
           key={index}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: item.delay }}
           className={`absolute ${item.position} text-4xl z-10`}
           style={{ color: "#FE0000" }}
         >
           {item.icon}
-        </MotionDiv>
-      ))}
+        </div>
+  ))}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
         <div className="text-center space-y-12">
           {/* Main heading */}
-          <MotionDiv 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6">
             <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
               <span style={{ color: "#FE0000" }}>Dental</span>
               <span className="text-4xl lg:text-6xl ml-2" style={{ color: "#FE0000" }}>+</span>
@@ -59,14 +51,9 @@ export function Hero() {
               Tu mejor sonrisa comienza aquí: atención profesional,<br />
               tecnología avanzada y resultados que te harán sonreír.
             </p>
-          </MotionDiv>
+          </div>
           {/* CTA Buttons */}
-          <MotionDiv 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
               className="text-white px-8 py-4 text-lg font-semibold rounded-full hover:opacity-90 transition-opacity"
@@ -81,7 +68,7 @@ export function Hero() {
             >
               Ver tratamientos
             </Button>
-          </MotionDiv>
+          </div>
         </div>
       </div>
     </section>

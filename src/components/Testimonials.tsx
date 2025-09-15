@@ -1,5 +1,6 @@
 
 import { Star } from "lucide-react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -56,7 +57,7 @@ export function Testimonials() {
           {testimonials.map(t => (
             <div key={t.id} className="bg-white rounded-xl shadow p-6 flex flex-col">
               <div className="flex items-center gap-3 mb-2">
-                <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover border" />
+                <Image src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover border" width={48} height={48} />
                 <div>
                   <span className="font-semibold text-sm text-gray-900">{t.name}</span>
                   <span className="block text-xs text-gray-500">{t.age} años</span>

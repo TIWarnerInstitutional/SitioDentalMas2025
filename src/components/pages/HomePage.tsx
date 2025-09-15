@@ -1,19 +1,22 @@
 "use client";
 import { AboutUs } from "../AboutUs";
-import { Locations } from "../Locations";
 import { Blog } from "../Blog";
 import { Testimonials } from "../Testimonials";
 import { PaymentOptions } from "../PaymentOptions";
 import { FAQ } from "../FAQ";
 import { FaTooth, FaSmile, FaUsers, FaCalendarAlt, FaHeartbeat } from "react-icons/fa";
-import { motion } from "framer-motion";
-import SucursalesHero from "../SucursalesHero";
-import TreatmentsMarquee from "../TreatmentsMarquee";
-import TreatmentsTabs from "../TreatmentsTabs";
+import Image from "next/image";
 import TreatmentsShowcase from "../TreatmentsShowcase";
-import { Footer } from "../Footer";
+import SucursalesHero from "../SucursalesHero";
 
 export default function HomePage() {
+	const animatedIcons: { id: number; Icon: React.ElementType; x: number; y: number }[] = [
+		 { id: 1, Icon: FaTooth, x: -170, y: -172 },
+		 { id: 3, Icon: FaUsers, x: -130, y: 70 },
+		 { id: 4, Icon: FaCalendarAlt, x: -50, y: 70 },
+		 { id: 5, Icon: FaHeartbeat, x: 60, y: 70 },
+		 { id: 2, Icon: FaSmile, x: 130, y: 70 },
+	];
 	return (
 		<div className="bg-white">
 			{/* Header principal */}
@@ -22,25 +25,16 @@ export default function HomePage() {
 			{/* Hero Section */}
 			<section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden flex items-center justify-center p-0 m-0 bg-transparent" style={{background: 'transparent'}}>
 				{/* Imagen de fondo única */}
-				<img src="/15.png" alt="" className="absolute inset-0 w-full h-full object-cover z-0" />
+				<Image src="/15.png" alt="" className="absolute inset-0 w-full h-full object-cover z-0" fill priority />
 				{/* Íconos animados alrededor con color personalizado */}
-				{[
-					{ id: 1, Icon: FaTooth, x: -170, y: -172 },
-					{ id: 3, Icon: FaUsers, x: -130, y: 70 },
-					{ id: 4, Icon: FaCalendarAlt, x: -50, y: 70 },
-					{ id: 5, Icon: FaHeartbeat, x: 60, y: 70 },
-					{ id: 2, Icon: FaSmile, x: 130, y: 70 },
-				].map(({ id, Icon, x, y }) => (
-					<motion.div
-						key={id}
-						initial={{ opacity: 0, x: 0, y: 0, scale: 0.5 }}
-						animate={{ opacity: 1, x, y, scale: 1 }}
-						transition={{ duration: 1, delay: id * 0.2, type: "spring" }}
-						style={{ position: "absolute", color: id === 1 ? "#FE0000" : "#fff", fontSize: "2.5rem", zIndex: 2 }}
-					>
-						<Icon />
-					</motion.div>
-				))}
+				   {animatedIcons.map(({ id, Icon, x, y }) => (
+					   <div
+						   key={id}
+						   style={{ position: "absolute", color: id === 1 ? "#FE0000" : "#fff", fontSize: "2.5rem", zIndex: 2, transform: `translate(${x}px, ${y}px)` }}
+					   >
+						   <Icon />
+					   </div>
+				   ))}
 				{/* Contenido central */}
 				<div className="relative flex flex-col items-center justify-center w-full h-full z-10 mt-0" style={{top: '-100px'}}>
 					<h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg text-center">
@@ -70,8 +64,10 @@ export default function HomePage() {
 			{/* ¿Quiénes Somos? */}
 			<AboutUs />
 
-			{/* Mapa de Sucursales */}
+			{/* Sucursales hero (solo primera parte) */}
 			<SucursalesHero />
+
+
 
 			{/* Blog */}
 			<Blog />

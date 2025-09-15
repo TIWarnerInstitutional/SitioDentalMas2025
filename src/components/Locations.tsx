@@ -6,21 +6,21 @@ export function Locations() {
   const locations = [
     {
       id: 1,
-      name: "Sucursal Centro",
+  name: "Clínica Centro",
       address: "Av. Juárez #123, Centro Histórico, CDMX",
       phone: "(55) 1234-5678",
       hours: "Lun-Vie: 9:00-19:00, Sáb: 9:00-14:00"
     },
     {
       id: 2,
-      name: "Sucursal Polanco",
+  name: "Clínica Polanco",
       address: "Av. Presidente Masaryk #456, Polanco, CDMX",
       phone: "(55) 8765-4321",
       hours: "Lun-Vie: 8:00-20:00, Sáb: 9:00-15:00"
     },
     {
       id: 3,
-      name: "Sucursal Santa Fe",
+  name: "Clínica Santa Fe",
       address: "Av. Santa Fe #789, Santa Fe, CDMX",
       phone: "(55) 5555-0123",
       hours: "Lun-Vie: 9:00-19:00, Sáb: 10:00-14:00"
@@ -28,7 +28,7 @@ export function Locations() {
   ];
 
   return (
-    <section id="sucursales" className="py-20 bg-white">
+  <section id="clinicas" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Map Side */}
@@ -57,7 +57,7 @@ export function Locations() {
           </div>
           {/* Content Side */}
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Nuestras Sucursales</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Nuestras Clínicas</h2>
             <ul className="space-y-8">
               {locations.map(loc => (
                 <li key={loc.id} className="flex flex-col gap-2">

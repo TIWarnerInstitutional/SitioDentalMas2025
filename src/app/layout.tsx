@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// fonts can be added later via next/font or CSS; removed unused imports to satisfy lint
 import "./globals.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import ChatbotWidget from "../components/ChatbotWidget";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// fonts intentionally left to be included via CSS or added later if needed
 
 export const metadata: Metadata = {
   title: "Dental+ | Clínica Dental en CDMX",

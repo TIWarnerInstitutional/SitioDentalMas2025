@@ -1,67 +1,62 @@
 "use client";
-import { useState } from "react";
-import { Calendar, User, Clock } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, User } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const categories = [
   "Todo", "Implantología", "Ortodoncia", "Cuidado Dental", "Psicología Dental", "Emergencias"
 ];
 
-const posts = [
-  {
-    id: 1,
-    title: "10 Alimentos que Fortalecen tus Dientes Naturalmente",
-    excerpt: "Una dieta equilibrada no solo beneficia tu salud general, sino que también puede fortalecer significativamente tus dientes y encías.",
-    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80",
-    date: "28 Agosto 2024",
-    author: "Dr. Carlos Mendoza",
-    category: "Nutrición Dental",
-    tag: "Trending"
-  },
-  {
-    id: 2,
-    title: "Ortodoncia Invisible vs. Brackets Tradicionales: ¿Cuál Elegir?",
-    excerpt: "Comparamos las ventajas y desventajas de cada tratamiento ortodóntico para ayudarte a tomar la mejor decisión.",
-    image: "https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80",
-    date: "25 Agosto 2024",
-    author: "Dra. Ana López",
-    category: "Ortodoncia",
-    tag: "Ortodoncia"
-  },
-  {
-    id: 3,
-    title: "Cómo Superar el Miedo al Dentista: Guía Completa",
-    excerpt: "Técnicas efectivas para manejar la ansiedad dental y hacer que tu visita al dentista sea una experiencia cómoda y relajada.",
-    image: "https://images.unsplash.com/photo-1588776814546-ec7e8e7b1a2b?auto=format&fit=crop&w=400&q=80",
-    date: "22 Agosto 2024",
-    author: "Dr. Roberto Silva",
-    category: "Psicología Dental",
-    tag: "Psicología Dental"
-  },
-  {
-    id: 4,
-    title: "Emergencias Dentales: Qué Hacer en Cada Situación",
-    excerpt: "Guía práctica para manejar emergencias dentales comunes hasta que puedas recibir atención profesional.",
-    image: "https://images.unsplash.com/photo-1565090567208-c8038cfcf6cd?auto=format&fit=crop&w=400&q=80",
-    date: "20 Agosto 2024",
-    author: "Dra. Patricia Vega",
-    category: "Emergencias",
-    tag: "Emergencias"
-  },
-  {
-    id: 5,
-    title: "Blanqueamiento Dental Profesional: Antes y Después",
-    excerpt: "Conoce los beneficios del blanqueamiento profesional y todo lo que debes saber antes de iniciar el tratamiento.",
-    image: "https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80",
-    date: "18 Agosto 2024",
-    author: "Dra. Ana López",
-    category: "Cuidado Dental",
-    tag: "Cuidado Dental"
-  }
-];
+import posts from "../data/blogPosts";
 
-export function Blog() {
+type BlogProps = {
+  showAll?: boolean;
+}
+
+export function Blog({ showAll = false }: BlogProps) {
   const [selected, setSelected] = useState("Todo");
+  const [page, setPage] = useState(1);
+  const pageSize = 6; // posts per page when showing all
   const filtered = selected === "Todo" ? posts : posts.filter(p => p.category === selected);
+
+  // helper: parse dates written like '28 Agosto 2024' (Spanish month names)
+  function parseSpanishDate(dateStr: string) {
+    if (!dateStr) return new Date(0);
+    const months: Record<string, number> = {
+      "enero": 0, "febrero": 1, "marzo": 2, "abril": 3, "mayo": 4, "junio": 5,
+      "julio": 6, "agosto": 7, "septiembre": 8, "octubre": 9, "noviembre": 10, "diciembre": 11
+    };
+    // try to extract day, month name, year
+    const m = dateStr.trim().toLowerCase().match(/(\d{1,2})\s+([a-záéíóú]+)\s+(\d{4})/i);
+    if (!m) {
+      // fallback to Date.parse
+      const d = Date.parse(dateStr);
+      return isNaN(d) ? new Date(0) : new Date(d);
+    }
+    const day = Number(m[1]);
+    const monthName = m[2];
+    const year = Number(m[3]);
+    const month = months[monthName] ?? 0;
+    return new Date(year, month, day);
+  }
+
+  // sort filtered by date descending (most recent first)
+  const filteredSorted = [...filtered].sort((a, b) => {
+    const da = parseSpanishDate(a.date);
+    const db = parseSpanishDate(b.date);
+    return db.getTime() - da.getTime();
+  });
+
+  const totalPages = Math.max(1, Math.ceil(filteredSorted.length / pageSize));
+  // clamp page
+  const currentPage = Math.min(Math.max(1, page), totalPages);
+  const visible = showAll ? filteredSorted.slice((currentPage - 1) * pageSize, currentPage * pageSize) : filteredSorted.slice(0,3);
+
+  // Reset to page 1 when category or showAll changes to ensure pagination applies per-category
+  useEffect(() => {
+    setPage(1);
+  }, [selected, showAll]);
 
   return (
     <section id="blog" className="py-20 bg-white">
@@ -84,30 +79,59 @@ export function Blog() {
 
         {/* Grid de artículos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {filtered.map(post => (
-            <div key={post.id} className="bg-white rounded-xl shadow p-4 flex flex-col">
-              <div className="relative">
-                <img src={post.image} alt={post.title} className="rounded-lg w-full h-40 object-cover mb-4" />
-                {/* Etiqueta superior izquierda */}
-                {post.tag && (
-                  <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold shadow">{post.tag}</span>
-                )}
+          {visible.map(post => (
+            <article key={post.id} className="bg-white rounded-xl shadow hover:shadow-lg transition p-0 overflow-hidden flex flex-col">
+              <Link href={`/blog/${post.slug}`} className="relative block">
+                <Image src={post.image} alt={post.title} width={600} height={320} className="w-full h-44 object-cover" />
+                <div className="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold shadow">{post.category}</div>
+              </Link>
+              <div className="p-4 flex-1 flex flex-col">
+                <h3 className="font-semibold text-lg mb-2"><Link href={`/blog/${post.slug}`} className="hover:underline text-gray-900">{post.title}</Link></h3>
+                <p className="text-gray-600 text-sm mb-4 flex-1">{post.excerpt}</p>
+                <div className="flex items-center justify-between text-xs text-gray-500 mt-2">
+                  <span className="flex items-center gap-1"><User size={14} /> {post.author}</span>
+                  <span className="flex items-center gap-1"><Calendar size={14} /> {post.date}</span>
+                </div>
+                <div className="mt-4">
+                  <Link href={`/blog/${post.slug}`} className="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-700">Leer más</Link>
+                </div>
               </div>
-              <h3 className="font-semibold text-lg mb-2">{post.title}</h3>
-              <p className="text-gray-600 text-sm mb-2 flex-1">{post.excerpt}</p>
-              <div className="flex items-center justify-between text-xs text-gray-500 mt-2">
-                <span className="flex items-center gap-1"><User size={14} /> {post.author}</span>
-                <span className="flex items-center gap-1"><Calendar size={14} /> {post.date}</span>
-              </div>
-              <div className="mt-2 text-right">
-                <a href="#" className="text-red-500 text-sm font-semibold hover:underline">Leer más</a>
-              </div>
-            </div>
+            </article>
           ))}
         </div>
-        <div className="flex justify-center">
-          <button className="px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold hover:bg-red-50">Ver todos los artículos</button>
-        </div>
+        {!showAll && (
+          <div className="flex justify-center">
+            <Link href="/blog" className="px-6 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold hover:bg-red-50">Ver todos los artículos</Link>
+          </div>
+        )}
+
+        {/* Pagination controls when showing all */}
+        {showAll && totalPages > 1 && (
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <button
+              onClick={() => setPage(p => Math.max(1, p - 1))}
+              className="px-3 py-1 rounded border bg-white"
+              disabled={currentPage === 1}
+            >Prev</button>
+
+            {Array.from({ length: totalPages }).map((_, i) => {
+              const pageNum = i + 1;
+              return (
+                <button
+                  key={pageNum}
+                  onClick={() => setPage(pageNum)}
+                  className={`px-3 py-1 rounded ${pageNum === currentPage ? 'bg-red-600 text-white' : 'bg-white'}`}
+                >{pageNum}</button>
+              );
+            })}
+
+            <button
+              onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+              className="px-3 py-1 rounded border bg-white"
+              disabled={currentPage === totalPages}
+            >Next</button>
+          </div>
+        )}
       </div>
     </section>
   );
