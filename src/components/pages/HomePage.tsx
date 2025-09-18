@@ -25,32 +25,33 @@ export default function HomePage() {
 			{/* Hero Section */}
 			<section className="relative w-full h-[85vh] min-h-[600px] overflow-hidden flex items-center justify-center p-0 m-0 bg-transparent" style={{background: 'transparent'}}>
 				{/* Imagen de fondo única */}
-				<Image src="/15.png" alt="" className="absolute inset-0 w-full h-full object-cover z-0" fill priority />
-				{/* Íconos animados alrededor con color personalizado */}
-				   {animatedIcons.map(({ id, Icon, x, y }) => (
-					   <div
-						   key={id}
-						   style={{ position: "absolute", color: id === 1 ? "#FE0000" : "#fff", fontSize: "2.5rem", zIndex: 2, transform: `translate(${x}px, ${y}px)` }}
-					   >
-						   <Icon />
-					   </div>
-				   ))}
-				{/* Contenido central */}
-				<div className="relative flex flex-col items-center justify-center w-full h-full z-10 mt-0" style={{top: '-100px'}}>
-					<h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg text-center">
-						Dental<span className="text-[#FE0000]">+</span>
-					</h1>
-					<p className="text-lg md:text-xl text-white mb-6 max-w-xl px-4 text-center drop-shadow-lg">
-						Tu mejor sonrisa comienza aquí: atención profesional, tecnología avanzada y resultados que te harán sonreír.
-					</p>
-					<div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-						<button className="bg-[#FE0000] hover:bg-red-700 text-white px-6 py-3 rounded-2xl shadow-lg text-lg w-full md:w-auto font-bold">
-							Agenda tu cita
-						</button>
-						<button className="bg-white hover:bg-gray-200 text-[#FE0000] px-6 py-3 rounded-2xl shadow-lg text-lg w-full md:w-auto font-bold border border-[#FE0000]">
-							Ver tratamientos
-						</button>
-					</div>
+				<Image src="/FondoDMas.png" alt="" className="absolute inset-0 w-full h-full object-cover z-0" fill priority />
+				{/* Hero content: responsive container (center on mobile, right on desktop) */}
+				<div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+					<div className="grid grid-cols-12 items-center h-full">
+						{/* content: left on desktop, centered on mobile */}
+						<div className="col-span-12 md:col-span-6 lg:col-span-5 md:col-start-2 lg:col-start-2 flex flex-col justify-center text-center md:text-left">
+							<div className="max-w-md md:max-w-md lg:max-w-lg pr-4 lg:pr-8 xl:pr-12">
+								<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-extrabold leading-tight text-white max-w-lg">
+									<div className="break-words">Tu sonrisa</div>
+									<div style={{ color: '#FFBF00' }} className="inline-block break-words">perfecta</div>
+									<div className="text-white break-words">nos inspira</div>
+								</h1>
+									<p className="mt-4 text-sm sm:text-base md:text-base lg:text-base xl:text-lg text-white/90 leading-relaxed font-medium max-w-lg">
+										Cuidamos tu salud dental con la más alta calidad, tecnología avanzada y un trato humano excepcional.
+									</p>
+									<div className="mt-6 flex flex-col sm:flex-row gap-4 md:justify-start">
+										<button className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-2xl shadow-lg text-lg font-semibold">
+											<svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3M3 11h18M5 21h14a2 2 0 0 0 2-2V7H3v12a2 2 0 0 0 2 2z"/></svg>
+											Agendar Cita
+										</button>
+										<button className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent text-white px-6 py-3 rounded-2xl shadow-sm text-lg font-medium border border-white/30 hover:bg-white/10">
+											Ver Sucursales
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
 				</div>
 			</section>
 

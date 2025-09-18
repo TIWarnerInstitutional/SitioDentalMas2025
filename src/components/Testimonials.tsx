@@ -8,7 +8,7 @@ const testimonials = [
     name: "María González",
     age: 32,
     treatment: "Ortodoncia Invisible",
-  image: "/images/ui/avatar1.svg",
+  image: "/images/Inicio/Testimonials1.jpg",
     rating: 5,
     testimonial: "Increíble experiencia con la ortodoncia invisible. En 18 meses logré la sonrisa que siempre quise. El equipo fue muy profesional y el tratamiento fue completamente indoloro.",
     before: "Dientes apiñados",
@@ -19,7 +19,7 @@ const testimonials = [
     name: "Carlos Ramírez",
     age: 45,
     treatment: "Implantes Dentales",
-  image: "/images/ui/avatar2.svg",
+  image: "/images/Inicio/Testimonials2.jpg",
     rating: 5,
     testimonial: "Después de perder varios dientes, los implantes me devolvieron la confianza. El proceso fue más rápido de lo esperado y ahora puedo comer y sonreír sin preocupaciones.",
     before: "Pérdida de 3 molares",
@@ -30,7 +30,7 @@ const testimonials = [
     name: "Ana Martínez",
     age: 28,
     treatment: "Blanqueamiento Profesional",
-  image: "/images/ui/avatar3.svg",
+  image: "/images/Inicio/Testimonials3.jpg",
     rating: 5,
     testimonial: "El blanqueamiento profesional superó mis expectativas. Mis dientes se ven naturales pero notablemente más blancos. ¡Ahora sonrío con total confianza!",
     before: "Dientes amarillentos por café",
@@ -83,10 +83,10 @@ export function Testimonials() {
         </div>
 
         {/* Métricas */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {metrics.map((m, idx) => (
-            <div key={idx} className="text-2xl font-bold text-red-500">
-              {m.value}
+            <div key={idx} className="flex flex-col items-center text-center">
+              <div className="text-2xl font-bold text-red-500 flex items-center justify-center">{m.value}</div>
               <div className="text-sm font-normal text-gray-700 mt-1">{m.label}</div>
             </div>
           ))}

@@ -29,7 +29,7 @@ export function AboutUs() {
   return (
     <section id="quienes-somos" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+  <div className="grid lg:grid-cols-2 gap-16 items-stretch">
           {/* Content */}
           <div>
             <div className="space-y-8">
@@ -68,13 +68,11 @@ export function AboutUs() {
             </div>
           </div>
           {/* Imagenes y botón de pacientes satisfechos */}
-          <div className="flex flex-col gap-6 items-center w-full">
-            <div className="grid grid-cols-2 gap-4 w-full">
-                <Image src="/images/ui/hero-placeholder.svg" alt="Consultorio dental" className="rounded-xl w-full h-40 object-cover" width={400} height={160} />
-                <Image src="/images/ui/hero-placeholder.svg" alt="Dentista trabajando" className="rounded-xl w-full h-40 object-cover" width={400} height={160} />
-            </div>
-            <div className="mt-4 w-full flex flex-col items-center">
-              <button className="bg-red-500 text-white text-2xl font-bold px-8 py-6 rounded-xl shadow-lg w-full max-w-xs">1,800+<br /><span className="text-base font-normal">Pacientes satisfechos</span></button>
+          <div className="flex flex-col gap-6 items-center w-full h-full">
+            <div className="w-full">
+                <div className="relative w-full rounded-xl overflow-hidden h-full min-h-[480px] md:min-h-[560px] lg:min-h-[640px]">
+                <Image src="/QuienesSomos1.jpeg" alt="Consultorio dental" fill className="object-cover" quality={90} />
+              </div>
             </div>
           </div>
         </div>

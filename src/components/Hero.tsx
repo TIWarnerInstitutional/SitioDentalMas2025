@@ -20,13 +20,13 @@ export function Hero() {
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full min-h-[400px] md:min-h-[600px]">
           <Image
-            src="/images/ui/hero-placeholder.svg"
+            src="/FondoDMas.png"
             alt="Fondo Dental"
             fill
             className="object-cover"
             style={{ objectPosition: 'center' }}
           />
-          <div className="absolute inset-0 bg-white/85"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
       </div>
       {/* Floating Icons */}
@@ -40,34 +40,25 @@ export function Hero() {
         </div>
   ))}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
-        <div className="text-center space-y-12">
-          {/* Main heading */}
-          <div className="space-y-6">
-            <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-              <span style={{ color: "#FE0000" }}>Dental</span>
-              <span className="text-4xl lg:text-6xl ml-2" style={{ color: "#FE0000" }}>+</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="text-left py-12">
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
+              Tu sonrisa
+              <span className="text-purple-600 ml-2">perfecta</span>
+              <span className="block text-5xl md:text-6xl mt-2">nos inspira</span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-medium">
-              Tu mejor sonrisa comienza aquí: atención profesional,<br />
-              tecnología avanzada y resultados que te harán sonreír.
+            <p className="mt-6 text-gray-600 max-w-xl">
+              Cuidamos tu salud dental con la más alta calidad, tecnología avanzada y un trato humano excepcional.
             </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Button size="lg" className="bg-purple-600 text-white px-6 py-3 rounded-full hover:opacity-90">Agendar Cita</Button>
+              <Button variant="outline" size="lg" className="px-6 py-3 rounded-full border-2">Ver Tratamientos</Button>
+            </div>
           </div>
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              size="lg" 
-              className="text-white px-8 py-4 text-lg font-semibold rounded-full hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: "#FE0000" }}
-            >
-              Agenda tu cita
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="px-8 py-4 text-lg font-semibold rounded-full border-2 hover:bg-gray-50 border-gray-300"
-            >
-              Ver tratamientos
-            </Button>
+
+          <div className="relative w-full h-80 md:h-96">
+            {/* keep background visible; decorative */}
           </div>
         </div>
       </div>

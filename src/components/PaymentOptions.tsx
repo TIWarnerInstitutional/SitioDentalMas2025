@@ -24,16 +24,16 @@ const paymentMethods = [
 
 const plans = [
   {
-    title: "Plan Básico",
-    duration: "3-6 meses",
-    interest: "Sin intereses",
+    title: "Aprobación Rápida",
+    duration: "15 minutos",
+    interest: "Obtén tu respuesta de crédito en tiempo récord",
     features: [
-      "Hasta $15,000 MXN",
-      "Pagos quincenales o mensuales",
-      "Aprobación inmediata",
-      "Sin enganche"
+      "Proceso 100% digital",
+      "Sin papeleo físico",
+      "Respuesta inmediata",
+      "Validación automática"
     ],
-    highlight: false
+
   },
   {
     title: "Plan Avanzado",
@@ -100,20 +100,23 @@ export function PaymentOptions() {
                   <li key={f} className="flex items-center gap-2 mb-1"><Check className="text-green-500" size={16} /> {f}</li>
                 ))}
               </ul>
+              {plan.extra && (
+                <div className="w-full text-center mb-4">
+                  <div className="text-sm font-semibold text-gray-900">{plan.extra.subtitle}</div>
+                  <div className="text-lg font-bold text-red-500">{plan.extra.range}</div>
+                  <ul className="text-xs text-gray-600 mt-2">
+                    {plan.extra.details.map(d => (
+                      <li key={d} className="mb-1">{d}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <button className={`mt-auto px-4 py-2 rounded-full font-semibold border ${plan.highlight ? "bg-red-500 text-white border-red-500" : "bg-white text-red-500 border-red-500"}`}>Solicitar Financiamiento</button>
             </div>
           ))}
         </div>
 
-        {/* Pagos seguros */}
-        <div className="bg-gray-50 rounded-xl p-6 text-center flex flex-col items-center">
-          <div className="flex items-center gap-2 text-green-600 font-semibold mb-2">
-            <Check size={20} /> Pagos 100% Seguros
-          </div>
-          <p className="text-xs text-gray-600 max-w-xl mx-auto">
-            Todos los pagos están protegidos con cifrado SSL de 256 bits. Tu información financiera está completamente segura y nunca es almacenada en nuestros servidores.
-          </p>
-        </div>
+        {/* Pagos seguros removed per request */}
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image'
 import { Button } from "./ui/button";
 import { Menu, X, Phone, MessageCircle, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -55,8 +56,8 @@ export function Header() {
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <Link href="/" className="text-2xl font-bold" style={{ color: "#FE0000" }}>
-                  Dental+
+                <Link href="/" aria-label="Dental+ home" className="inline-block">
+                  <Image src="/LogoD+.png" alt="Dental+" width={160} height={40} className="object-contain" priority />
                 </Link>
               </div>
             </div>
