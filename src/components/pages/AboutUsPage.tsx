@@ -8,7 +8,7 @@ import { Heart, Users, Zap, ShieldCheck, Award, Smile, Target, CheckCircle } fro
 export function AboutUsPage() {
 	const [showAgendarModal, setShowAgendarModal] = useState(false);
 			// Datos para secciones nuevas
-			const team = [
+			const _team = [
 				{
 					name: 'Dra. María Rodríguez',
 					title: 'Ortodoncia y Rehabilitación en Implantología',

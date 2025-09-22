@@ -2,12 +2,14 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { AboutUs } from "../AboutUs";
-import sucursales from '../../data/sucursales'
+// sucursales data imported elsewhere where needed
+// import sucursales from '../../data/sucursales'
 import SucursalPickerModal from '../SucursalPickerModal';
 import { Blog } from "../Blog";
 import { Testimonials } from "../Testimonials";
 import { PaymentOptions } from "../PaymentOptions";
 import { FAQ } from "../FAQ";
+// icon set kept for future use
 import { FaTooth, FaSmile, FaUsers, FaCalendarAlt, FaHeartbeat } from "react-icons/fa";
 import Image from "next/image";
 import TreatmentsShowcase from "../TreatmentsShowcase";
@@ -15,13 +17,10 @@ import SucursalesHero from "../SucursalesHero";
 
 export default function HomePage() {
 	const [showAgendarModal, setShowAgendarModal] = useState(false)
-	const animatedIcons: { id: number; Icon: React.ElementType; x: number; y: number }[] = [
-		 { id: 1, Icon: FaTooth, x: -170, y: -172 },
-		 { id: 3, Icon: FaUsers, x: -130, y: 70 },
-		 { id: 4, Icon: FaCalendarAlt, x: -50, y: 70 },
-		 { id: 5, Icon: FaHeartbeat, x: 60, y: 70 },
-		 { id: 2, Icon: FaSmile, x: 130, y: 70 },
-	];
+    // animated icons temporarily unused
+	const _animatedIcons = [] as unknown[];
+	// prevent unused import warnings for icons
+	void FaTooth; void FaSmile; void FaUsers; void FaCalendarAlt; void FaHeartbeat;
 	return (
 		<div className="bg-white">
 			{/* Header principal */}
@@ -88,9 +87,9 @@ export default function HomePage() {
 			<SucursalPickerModal
 			  open={showAgendarModal}
 			  onClose={() => setShowAgendarModal(false)}
-			  onSelect={(s) => {
-				// currently do nothing on select; keep href empty as requested
-			  }}
+							onSelect={(_s) => {
+								// currently do nothing on select; keep href empty as requested
+							}}
 			/>
 		</div>
 		);

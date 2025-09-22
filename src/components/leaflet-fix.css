@@ -1,0 +1,3 @@
+/* Re-export Leaflet styles so the app can serve them from the compiled bundle.
+   This imports the package's CSS at build-time so Next includes it in the final CSS. */
+@import "leaflet/dist/leaflet.css";

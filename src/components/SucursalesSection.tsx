@@ -168,7 +168,7 @@ export default function SucursalesSection({ hideCards = false }: Props) {
                       } else {
                         setFocusDistanceText(null);
                       }
-                    } catch (e) {
+                    } catch {
                       setFocusDistanceText(null);
                     }
                     // clear fallback timer if set
@@ -215,14 +215,14 @@ export default function SucursalesSection({ hideCards = false }: Props) {
                                 } catch {}
                               }
                             },
-                            (err) => {
+                            () => {
                               // ignore watch errors silently
                             },
                             { enableHighAccuracy: true, maximumAge: 0 }
                           );
                         } catch {}
                       },
-                      (err) => {
+                            (_err) => {
                         // if quick getCurrentPosition fails, fallback to watchPosition strategy
                         try {
                           watchId = navigator.geolocation.watchPosition(
@@ -235,16 +235,15 @@ export default function SucursalesSection({ hideCards = false }: Props) {
                                 acceptPosition(pos);
                               }
                             },
-                            (err2) => {
-                              if (watchId !== null) navigator.geolocation.clearWatch(watchId);
-                              setLocationError(err2.message || "No se pudo obtener la ubicación.");
-                              setLoadingLocation(false);
-                            },
+                            (e) => {
+                                    if (watchId !== null) navigator.geolocation.clearWatch(watchId);
+                                    setLocationError(e?.message || "No se pudo obtener la ubicación.");
+                                    setLoadingLocation(false);
+                                  },
                             { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 }
                           );
-                        } catch (e2) {
-                          setLocationError(err.message || "Error al solicitar geolocalización.");
-                          setLoadingLocation(false);
+                        } catch {
+                          setFocusDistanceText(null);
                         }
                       },
                       { enableHighAccuracy: false, timeout: 5000, maximumAge: 0 }
@@ -259,7 +258,7 @@ export default function SucursalesSection({ hideCards = false }: Props) {
                         setLoadingLocation(false);
                       }
                     }, 12000);
-                  } catch (e) {
+                  } catch {
                     setLocationError("Error al solicitar geolocalización.");
                     setLoadingLocation(false);
                   }
@@ -426,7 +425,6 @@ export default function SucursalesSection({ hideCards = false }: Props) {
 
               <div className="mt-3">
                 <div className="text-gray-400 text-sm mb-3 flex items-center gap-6">
-                  <div className="flex items-center gap-2 text-gray-400"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2C8 2 4 5 4 9c0 7 8 13 8 13s8-6 8-13c0-4-4-7-8-7z" strokeLinecap="round" strokeLinejoin="round"/></svg><span className="text-xs text-gray-400">Estacionamiento</span></div>
                   <div className="flex items-center gap-2 text-gray-400"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 12h14M12 5v14" strokeLinecap="round" strokeLinejoin="round"/></svg><span className="text-xs text-gray-400">WiFi</span></div>
                 </div>
                 <div className="flex items-center gap-4">

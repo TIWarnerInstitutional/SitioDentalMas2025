@@ -24,8 +24,7 @@ export default function SucursalesStats() {
   const totalSucursales = (sucursales as Sucursal[]).length
   const totalPacientes = (sucursales as Sucursal[]).reduce((acc, s) => acc + (s.pacientesAtendidos || numberFromReviews(String(s.reviews))), 0)
   const ratings = (sucursales as Sucursal[]).map((s) => parseFloat(String(s.satisfaccion || s.rating)) || 0)
-  const avgRating = ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : 0
-  const satisfPercentComputed = Math.round((avgRating / 5) * 100)
+  const _avgRating = ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : 0
   // Forced display values requested by user
   const satisfPercent = 99
   const uniqueServicios = new Set((sucursales as Sucursal[]).flatMap((s) => s.servicios || [])).size

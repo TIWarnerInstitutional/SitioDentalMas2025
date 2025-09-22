@@ -61,12 +61,12 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
           const allLocations = (sucursales as Sucursal[]).map(s => s.nombre).filter(Boolean) as string[]
           const promos = seed.map((p: any) => ({ ...p, locations: (p.locations && p.locations.length) ? p.locations : allLocations }))
           setPromocionesState(promos)
-          try { localStorage.setItem('promociones_seed', JSON.stringify(promos)) } catch (e) {}
-        } catch (e) {
-          console.error('Failed to load local promociones seed', e)
+            try { localStorage.setItem('promociones_seed', JSON.stringify(promos)) } catch {}
+        } catch {
+          console.error('Failed to load local promociones seed')
         }
-      } catch (e) {
-        console.error('Failed to load promociones from localStorage', e)
+      } catch {
+        console.error('Failed to load promociones from localStorage')
       }
     }
     loadLocal()
@@ -90,7 +90,9 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
         const parsed = JSON.parse(raw)
         if (Array.isArray(parsed)) setClaimedPromos(parsed.map((n:any) => Number(n)).filter(n => !Number.isNaN(n)))
       }
-    } catch (e) {}
+    } catch {
+      // ignore
+    }
   }, [])
 
   function markClaimed(id: number) {
@@ -98,10 +100,10 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
       setClaimedPromos(prev => {
         if (prev.includes(id)) return prev
         const next = [...prev, id]
-        try { localStorage.setItem('claimed_promos', JSON.stringify(next)) } catch (e) {}
+          try { localStorage.setItem('claimed_promos', JSON.stringify(next)) } catch {}
         return next
       })
-    } catch (e) {}
+  } catch {}
   }
 
   async function handleRedeem(id: number, code: string, title?: string) {
@@ -113,7 +115,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
             if (p.id === id) return { ...p, spots: Math.max(0, (p.spots || 0) - 1) }
             return p
           })
-          try { localStorage.setItem('promociones_seed', JSON.stringify(next)) } catch (e) {}
+            try { localStorage.setItem('promociones_seed', JSON.stringify(next)) } catch {}
           return next
         })
         markClaimed(id)
@@ -124,7 +126,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
     setModalCode(code)
     setModalTitle(title || '')
     setModalVisible(true)
-    try { if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' }) } catch (e) {}
+  try { if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' }) } catch {}
   }
 
   // (usamos directamente `sucursales` para sugerencias)
@@ -272,8 +274,10 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
         )}
 
   {promocionesShown.slice(0, 2).map((p) => {
-          const pct = Math.round((p.spots / Math.max(1, p.spotsTotal)) * 100)
-          return (
+    const pct = Math.round((p.spots / Math.max(1, p.spotsTotal)) * 100)
+    const _firstSucursal = getFirstSucursalForPromotion(p)
+    const code = promoCodes[p.id] || 'CUPON'
+    return (
             <div key={p.id} className="bg-white rounded-2xl shadow p-5">
               <div className="flex items-start justify-between mb-3">
                 <div>
@@ -310,19 +314,11 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
 
               <div className="flex items-center justify-between mt-4">
                 <div className="text-sm text-gray-500">Disponible en: {p.locations.length === (sucursales as Sucursal[]).length ? 'Todas las sucursales' : p.locations.join(', ')}</div>
-                {
-                  (() => {
-                    const firstSucursal = getFirstSucursalForPromotion(p)
-                    const code = promoCodes[p.id] || 'CUPON'
-                    return (
-                      claimedPromos.includes(p.id) ? (
-                        <button disabled className="bg-gray-300 text-gray-600 rounded px-3 py-2">Cupón reclamado</button>
-                      ) : (
-                        <button onClick={() => handleRedeem(p.id, code, p.title)} className="bg-red-600 text-white rounded px-3 py-2">Aprovechar Oferta</button>
-                      )
-                    )
-                  })()
-                }
+                {claimedPromos.includes(p.id) ? (
+                  <button disabled className="bg-gray-300 text-gray-600 rounded px-3 py-2">Cupón reclamado</button>
+                ) : (
+                  <button onClick={() => handleRedeem(p.id, code, p.title)} className="bg-red-600 text-white rounded px-3 py-2">Aprovechar Oferta</button>
+                )}
               </div>
             </div>
           )
@@ -339,7 +335,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
               <div className="text-2xl font-mono font-semibold mt-1">{modalCode}</div>
             </div>
             <div className="flex items-center gap-3">
-              <button onClick={() => { navigator.clipboard?.writeText(modalCode); try { const id = Object.keys(promoCodes).find(k => promoCodes[Number(k)] === modalCode); if (id) markClaimed(Number(id)); } catch(e){} }} className="flex-1 bg-green-600 text-white rounded px-4 py-2">Copiar código</button>
+              <button onClick={() => { navigator.clipboard?.writeText(modalCode); try { const id = Object.keys(promoCodes).find(k => promoCodes[Number(k)] === modalCode); if (id) markClaimed(Number(id)); } catch {} }} className="flex-1 bg-green-600 text-white rounded px-4 py-2">Copiar código</button>
               <button onClick={() => setModalVisible(false)} className="flex-1 bg-gray-200 rounded px-4 py-2">Cerrar</button>
             </div>
           </div>

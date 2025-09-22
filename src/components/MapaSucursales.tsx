@@ -38,7 +38,7 @@ export default function MapaSucursales({ allSucursales = [], visibleSucursales =
     // if no explicit containerHeight prop, set the container's pixel height
     if (!containerHeight) {
       try {
-        const parent = el.parentElement as HTMLElement | null;
+            const parent = el.parentElement as HTMLElement | null;
         const h = parent ? parent.clientHeight : el.clientHeight;
         if (h && h > 0) el.style.height = `${h}px`;
       } catch {}
@@ -53,7 +53,7 @@ export default function MapaSucursales({ allSucursales = [], visibleSucursales =
       }).addTo(map);
       mapRef.current = map;
       // ensure the map resizes correctly when inside responsive containers
-      setTimeout(() => { try { map && map.invalidateSize(); } catch {} }, 200);
+  setTimeout(() => { try { if (map) map.invalidateSize(); } catch {} }, 200);
     }
 
     // clear or create markers layer
@@ -102,7 +102,7 @@ export default function MapaSucursales({ allSucursales = [], visibleSucursales =
     // add or update user location marker (if present)
     if (userLocation && map) {
       try {
-        if (userMarkerRef.current) {
+            if (userMarkerRef.current) {
           try { userMarkerRef.current.remove(); } catch {}
         }
         const userIcon = L.divIcon({ className: 'user-location-icon', html: `<div style="width:14px;height:14px;background:#1f2937;border-radius:50%;border:3px solid #ef4444"></div>` });
@@ -138,7 +138,7 @@ export default function MapaSucursales({ allSucursales = [], visibleSucursales =
           try { setSelected({ lat: pt.lat, lng: pt.lng }); } catch {}
           map.flyTo([pt.lat, pt.lng], 16, { duration: 0.6 });
           try {
-            if (focusDistance) {
+              if (focusDistance) {
               const popup = (nearestMarker as any).getPopup ? (nearestMarker as any).getPopup() : null;
               const base = popup ? popup.getContent() : '';
               (nearestMarker as any).bindPopup(base + `<br/><small>Distancia: ${focusDistance}</small>`);
@@ -170,7 +170,7 @@ export default function MapaSucursales({ allSucursales = [], visibleSucursales =
                   } else {
                     throw new Error('no route');
                   }
-                } catch (e) {
+                } catch {
                   const latlngs: L.LatLngExpression[] = [[userLocation.lat, userLocation.lng], [pt.lat, pt.lng]];
                   routeRef.current = L.polyline(latlngs, { color: '#ef4444', weight: 4, opacity: 0.9, dashArray: '' }).addTo(map);
                   try { map.fitBounds(L.latLngBounds(latlngs as L.LatLngExpression[]), { padding: [60, 60] }); } catch {}
@@ -210,7 +210,7 @@ export default function MapaSucursales({ allSucursales = [], visibleSucursales =
           const h = parent ? parent.clientHeight : el2.clientHeight;
           if (h && h > 0) el2.style.height = `${h}px`;
         }
-        try { map && map.invalidateSize(); } catch {}
+  try { if (map) map.invalidateSize(); } catch {}
       } catch {}
     };
     window.addEventListener('resize', resizeHandler);
@@ -237,7 +237,7 @@ export default function MapaSucursales({ allSucursales = [], visibleSucursales =
         // ignore
       }
     };
-  }, [allSucursales, visibleSucursales, focusCoords, userLocation, onMapClick]);
+  }, [allSucursales, visibleSucursales, focusCoords, userLocation, onMapClick, containerHeight, focusDistance]);
 
   // when containerHeight changes, invalidate size so tiles & view update
   useEffect(() => {

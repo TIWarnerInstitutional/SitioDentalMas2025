@@ -1,7 +1,7 @@
 "use client";
 
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HelpCircle, Clock, Heart, Users, Shield, Star, CreditCard, Phone, Mail, MessageCircle } from "lucide-react";
 
 const faqs = [
@@ -44,6 +44,11 @@ const faqs = [
     question: "¿Atienden emergencias dentales?",
   answer: "Sí, atendemos urgencias dentales el mismo día.Te recomendamos comunicarte con nosotros lo antes posible para brindarte atención inmediata. Puedes agendar tu cita en línea de manera rápida o, si lo prefieres, contactar a uno de nuestros asesores para que te ayude a coordinar tu atención.",
     icon: <Phone className="text-white" size={22} />, color: "bg-indigo-500"
+  },
+  {
+    question: "¿Cómo puedo programar una cita?",
+    answer: "Puedes agendar tu cita de dos maneras: en línea o por teléfono. Para hacerlo en línea, visita nuestra página web, selecciona la clínica más cercana a ti y elige la fecha y hora que prefieras. Si prefieres hablar con alguien, puedes contactar a un agente por teléfono y te ayudará a programar tu cita.",
+    icon: <MessageCircle className="text-white" size={22} />, color: "bg-blue-500"
   }
 ];
 
@@ -66,7 +71,7 @@ export function FAQ() {
         try {
           const res = fn();
           if (res !== undefined) return;
-        } catch (e) {
+        } catch {
           // ignore and continue
         }
       }
@@ -84,11 +89,26 @@ export function FAQ() {
           return;
         }
       }
-    } catch (err) {
+    } catch {
       // final fallback: do nothing
-      // console.warn('Unable to open chat widget', err);
     }
   };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    // Avoid adding script multiple times
+    if (document.getElementById('hs-forms-embed-script')) return;
+    const s = document.createElement('script');
+    s.id = 'hs-forms-embed-script';
+    s.src = 'https://js.hsforms.net/forms/embed/50291038.js';
+    s.defer = true;
+    document.body.appendChild(s);
+    return () => {
+      // keep the script if other parts of the app use it, but remove if desired
+      const existing = document.getElementById('hs-forms-embed-script');
+      if (existing && existing.parentNode) existing.parentNode.removeChild(existing);
+    };
+  }, []);
 
   return (
     <section id="faq" className="py-20 bg-gray-50">
@@ -108,7 +128,7 @@ export function FAQ() {
               <p className="text-sm text-gray-500 mb-4">Hemos recopilado las preguntas que más nos hacen nuestros pacientes</p>
               <ul className="space-y-3">
                 {faqs.map((faq, idx) => (
-                  <li key={faq.question}>
+                  <li key={`${faq.question}-${idx}`}>
                     <button
                       className="w-full flex items-center gap-3 p-3 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 focus:outline-none"
                       onClick={() => setOpen(open === idx ? -1 : idx)}
@@ -147,39 +167,11 @@ export function FAQ() {
           <div className="flex flex-col h-full justify-between">
             <div className="bg-white rounded-xl shadow p-8 self-stretch flex flex-col justify-between h-full">
               <div>
-                <h3 className="font-semibold text-lg mb-2">¿Tienes alguna pregunta específica?</h3>
-                <p className="text-sm text-gray-500 mb-4">Envíanos tu consulta y te responderemos en menos de 24 horas</p>
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold mb-1">Nombre completo *</label>
-                      <input type="text" placeholder="Tu nombre completo" className="border rounded px-4 py-2 w-full" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold mb-1">Teléfono</label>
-                      <input type="text" placeholder="(55) 1234-5678" className="border rounded px-4 py-2 w-full" value={form.phone} onChange={e => setForm(f => ({ ...f, phone: e.target.value }))} />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold mb-1">Correo electrónico *</label>
-                    <input type="email" placeholder="tui@email.com" className="border rounded px-4 py-2 w-full" value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))} />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold mb-1">Tema de consulta</label>
-                    <select className="border rounded px-4 py-2 w-full" value={form.topic} onChange={e => setForm(f => ({ ...f, topic: e.target.value }))}>
-                      <option value="">Selecciona el tema de tu consulta</option>
-                      {faqs.map((faq, idx) => (
-                        <option key={idx} value={faq.question}>{faq.question}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-semibold mb-1">Tu pregunta *</label>
-                    <textarea placeholder="Describe tu consulta o pregunta específica..." className="border rounded px-4 py-2 w-full min-h-[80px]" value={form.question} onChange={e => setForm(f => ({ ...f, question: e.target.value }))} />
-                  </div>
-                  <button type="submit" className="bg-red-500 text-white px-6 py-3 rounded font-semibold w-full flex items-center justify-center gap-2"><HelpCircle size={18} /> Enviar Consulta</button>
-                  <div className="text-xs text-gray-500 text-center">Te responderemos en menos de 24 horas</div>
-                </form>
+                
+                <div>
+                  {/* HubSpot form embed - script injected client-side to avoid SSR issues */}
+<div className="hs-form-frame" data-region="na1" data-form-id="8d9ac1d8-3e9a-40e1-8740-8ba94a35922c" data-portal-id="50291038"></div>
+                </div>
                 <div className="mt-6 text-sm text-gray-700">
                   <div className="font-semibold mb-2">También puedes contactarnos:</div>
                   <div className="flex items-center gap-2 mb-1"><Phone size={16} className="text-red-500" /> (55) 3218-3670</div>

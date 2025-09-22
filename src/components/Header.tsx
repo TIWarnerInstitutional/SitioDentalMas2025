@@ -125,39 +125,51 @@ export function Header() {
         </div>
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-              {navigation.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`w-full text-left px-3 py-2 text-base font-medium ${isActive ? "font-semibold" : "text-gray-700"}`}
-                    style={{ color: isActive ? "#FE0000" : undefined }}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              })}
-              <div className="px-3 py-2 space-y-2">
-                <Button 
+          <div className="md:hidden fixed inset-0 z-[10000] bg-white overflow-auto">
+            <div className="max-w-lg mx-auto p-6">
+              <div className="flex items-center justify-between mb-6">
+                <Link href="/" aria-label="Dental+ home" className="inline-block">
+                  <Image src="/LogoD+.png" alt="Dental+" width={140} height={36} className="object-contain" />
+                </Link>
+                <button onClick={() => setIsMenuOpen(false)} className="p-2 rounded-md text-gray-700">
+                  <X size={24} />
+                </button>
+              </div>
+
+              <nav className="flex flex-col divide-y divide-gray-100 bg-white rounded-md shadow-sm">
+                {navigation.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`block w-full text-left px-4 py-4 text-lg font-medium ${isActive ? "text-red-600" : "text-gray-700 hover:bg-gray-50"}`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              <div className="mt-6 space-y-3">
+                <Button
                   size="sm"
-                  className="w-full bg-green-500 text-white hover:bg-green-600 px-4 py-2 rounded-md flex items-center justify-center"
+                  className="w-full bg-green-500 text-white hover:bg-green-600 px-4 py-3 rounded-md flex items-center justify-center"
                   onClick={() => window.open("https://wa.me/5512345678", "_blank")}
                 >
                   {waImageOk ? (
-                    <img src="/icon-whatsapp.svg" alt="WhatsApp" className="w-4 h-4 mr-2" onError={() => setWaImageOk(false)} />
+                    <img src="/icon-whatsapp.svg" alt="WhatsApp" className="w-5 h-5 mr-3" onError={() => setWaImageOk(false)} />
                   ) : (
-                    <MessageCircle size={16} className="mr-2 text-white" />
+                    <MessageCircle size={18} className="mr-3 text-white" />
                   )}
                   <span className="font-medium">WhatsApp</span>
                 </Button>
-                <Button 
+
+                <Button
                   size="sm"
-                  className="w-full text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold"
-                  onClick={() => setShowAgendarModal(true)}
+                  className="w-full text-white bg-red-600 hover:bg-red-700 px-4 py-3 rounded-md font-semibold"
+                  onClick={() => { setShowAgendarModal(true); setIsMenuOpen(false); }}
                 >
                   Reservar Cita
                 </Button>

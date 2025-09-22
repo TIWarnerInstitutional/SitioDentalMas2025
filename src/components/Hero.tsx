@@ -15,7 +15,7 @@ export function Hero() {
   ];
 
   return (
-    <section id="inicio" className="relative min-h-[400px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
+  <section id="inicio" className="relative min-h-[240px] md:min-h-[380px] flex items-start justify-center overflow-hidden">
       {/* Imagen de fondo responsiva */}
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full min-h-[400px] md:min-h-[600px]">
@@ -39,19 +39,19 @@ export function Hero() {
           {item.icon}
         </div>
   ))}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="text-left py-12">
+      <div className="absolute left-1/2 transform -translate-x-1/2 top-6 md:top-10 max-w-7xl w-full px-4 sm:px-6 lg:px-8 z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="text-left pt-0 md:pt-0">
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-gray-900">
               Tu sonrisa
               <span className="text-purple-600 ml-2">perfecta</span>
               <span className="block text-5xl md:text-6xl mt-2">nos inspira</span>
             </h1>
-            <p className="mt-6 text-gray-600 max-w-xl">
+            <p className="mt-2 text-gray-600 max-w-xl">
               Cuidamos tu salud dental con la más alta calidad, tecnología avanzada y un trato humano excepcional.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-4 md:mt-6 flex flex-wrap gap-4">
               <Button size="lg" className="bg-purple-600 text-white px-6 py-3 rounded-full hover:opacity-90">Agendar Cita</Button>
               <Button variant="outline" size="lg" className="px-6 py-3 rounded-full border-2">Ver Tratamientos</Button>
             </div>

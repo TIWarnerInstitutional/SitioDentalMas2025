@@ -20,7 +20,7 @@ export default function PostPage({ params }: Params) {
   const raw = params.slug;
   const slug = normalizeSlug(raw);
 
-  // (debug logs removed)
+  
 
   // direct match (case-insensitive)
   const postBySlug = posts.find(p => (p.slug || '').toLowerCase() === slug);

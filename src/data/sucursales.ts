@@ -15,7 +15,7 @@ const sucursales = [
     "servicios": ["Consulta General", "Limpieza Dental", "Ortodoncia"],
     "caracteristicas": ["Estacionamiento", "WiFi"],
     "comoLlegar": ["Transporte público", "Estacionamiento propio"],
-  "imagen": "/images/branches/branch-placeholder.svg",
+  "imagen": "/images/Sucursales/Sucursales.png",
     "rating": "4.5",
     "reviews": "120 reseñas",
   "btn": "Agendar Cita en Aguascalientes",
@@ -451,7 +451,8 @@ export type Sucursal = {
 
 let processed = (sucursales as unknown as Record<string, unknown>[]).map((s: Record<string, unknown>) => ({
   ...s,
-  imagen: (s.imagen && typeof s.imagen === 'string' && (s.imagen as string).startsWith('/')) ? (s.imagen as string) : '/images/branches/branch-placeholder.svg',
+  // Force a single canonical image for all sucursales
+  imagen: '/images/Sucursales/Sucursales.png',
   tiempoPromedio: s['tiempoPromedio'] !== undefined ? Number(s['tiempoPromedio']) : undefined,
   especialistas: s['especialistas'] !== undefined ? Number(s['especialistas']) : undefined,
   crecimientoAnual: s['crecimientoAnual'] !== undefined ? String(s['crecimientoAnual']) : '+0%'
@@ -497,7 +498,7 @@ const sats: number[] = [];
 for (let i = 0; i < clinicsCount; i++) {
   sats.push(96 + (i % 5)); // values 96..100
 }
-let satSum = sats.reduce((a, b) => a + b, 0);
+const satSum = sats.reduce((a, b) => a + b, 0);
 const targetSum = TARGET_SAT * clinicsCount;
 let diff = targetSum - satSum;
 // distribute diff (+/-) across clinics
@@ -553,7 +554,7 @@ try {
     if (!s.AgendaOnline) s.AgendaOnline = `https://agenda.dentalmas.mx/${slug}`;
     if (!s.agenda) s.agenda = s.AgendaOnline;
   }
-} catch (e) {
+} catch {
   // ignore malformed entries
 }
 

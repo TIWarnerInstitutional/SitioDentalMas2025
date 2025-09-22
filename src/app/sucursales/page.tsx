@@ -2,19 +2,18 @@
 
 import { usePathname } from "next/navigation";
 import React, { useMemo, useState } from "react";
-import Link from 'next/link';
 import sucursales, { Sucursal } from "../../data/sucursales";
-import dynamic from "next/dynamic";
+// dynamic import removed — map is rendered inside SucursalesSection
 import Image from 'next/image';
 import SucursalesStats from '../../components/SucursalesStats';
 import PromocionesSection from '../../components/PromocionesSection';
 import SucursalesSection from '../../components/SucursalesSection';
 
-const MapaSucursales = dynamic(() => import("../../components/MapaSucursales"), { ssr: false });
+// dynamic import intentionally not used on this page; map component rendered inside SucursalesSection
 
 export default function SucursalesPage() {
-  const pathname = usePathname();
-  const [query, setQuery] = useState("");
+  const _pathname = usePathname();
+  const [query, _setQuery] = useState("");
   const [showAll, setShowAll] = useState(true);
 
   const filtered = useMemo(() => {
@@ -111,7 +110,7 @@ export default function SucursalesPage() {
         }
       }
       return false;
-    } catch (err) {
+    } catch {
       return false;
     }
   }
@@ -136,7 +135,7 @@ Elige entre más de 30 clínicas para cuidar tu salud dental. Encuentra la ubica
           if (typeof window !== 'undefined') {
             try {
               Promise.resolve().then(() => console.debug('Sucursal horario parse', sucursal.nombre, parsed, 'isOpen', openNow));
-            } catch (e) {}
+            } catch {}
           }
           const showDebug = typeof window !== 'undefined' && window.location && window.location.search && window.location.search.includes('debug=1');
           return (
@@ -198,7 +197,6 @@ Elige entre más de 30 clínicas para cuidar tu salud dental. Encuentra la ubica
 
                 <div className="mt-3">
                 <div className="text-gray-400 text-sm mb-3 flex items-center gap-6">
-                  <div className="flex items-center gap-2 text-gray-400"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2C8 2 4 5 4 9c0 7 8 13 8 13s8-6 8-13c0-4-4-7-8-7z" strokeLinecap="round" strokeLinejoin="round"/></svg><span className="text-xs text-gray-400">Estacionamiento</span></div>
                   <div className="flex items-center gap-2 text-gray-400"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 12h14M12 5v14" strokeLinecap="round" strokeLinejoin="round"/></svg><span className="text-xs text-gray-400">WiFi</span></div>
                 </div>
                 <div className="flex items-center gap-4">

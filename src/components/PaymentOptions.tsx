@@ -22,7 +22,20 @@ const paymentMethods = [
   }
 ];
 
-const plans = [
+type Plan = {
+  title: string;
+  duration: string;
+  interest: string;
+  features: string[];
+  highlight?: boolean;
+  extra?: {
+    subtitle: string;
+    range: string;
+    details: string[];
+  };
+};
+
+const plans: Plan[] = [
   {
     title: "Aprobación Rápida",
     duration: "15 minutos",

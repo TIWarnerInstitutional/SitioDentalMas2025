@@ -1,7 +1,6 @@
 "use client";
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Clock, Award, Shield } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import Link from 'next/link';
+import { Phone, Mail, MapPin, Facebook, Instagram, Clock, Award, Shield } from "lucide-react";
 
 const services = [
   { name: "Consulta General", popular: false },
@@ -24,8 +23,8 @@ const quickLinks = [
 
 import sucursales from '../data/sucursales';
 
-// take first 3 sucursales for footer display (can change order in data file)
-const footerLocations = (sucursales as any[]).slice(0, 3);
+// take first 2 sucursales for footer display (can change order in data file)
+const footerLocations = (sucursales as any[]).slice(0, 2);
 
 const certifications = [
   { icon: Award, text: "Certificado COFEPRIS" },
@@ -166,7 +165,7 @@ export function Footer() {
                               window.location.href = href.startsWith('/#') ? href : `/#${id}`;
                             }
                           }
-                        } catch (err) {
+                        } catch {
                           // ignore
                         }
                       }}
@@ -180,13 +179,13 @@ export function Footer() {
                 <h4 className="font-semibold mb-4">Información Legal</h4>
                 <ul className="space-y-2">
                   <li>
-                    <a href="/terminos-y-condiciones" className="text-gray-300 hover:text-red-400 transition-colors text-sm">Términos y Condiciones</a>
+                    <Link href="/terminos-y-condiciones" className="text-gray-300 hover:text-red-400 transition-colors text-sm">Términos y Condiciones</Link>
                   </li>
                   <li>
-                    <a href="/aviso-de-privacidad" className="text-gray-300 hover:text-red-400 transition-colors text-sm">Aviso de Privacidad</a>
+                    <Link href="/aviso-de-privacidad" className="text-gray-300 hover:text-red-400 transition-colors text-sm">Aviso de Privacidad</Link>
                   </li>
                   <li>
-                    <a href="/politica-de-cookies" className="text-gray-300 hover:text-red-400 transition-colors text-sm">Política de Cookies</a>
+                    <Link href="/politica-de-cookies" className="text-gray-300 hover:text-red-400 transition-colors text-sm">Política de Cookies</Link>
                   </li>
                 </ul>
               </div>
