@@ -26,7 +26,7 @@ const plans = [
   {
     title: "Aprobación Rápida",
     duration: "15 minutos",
-    interest: "Obtén tu respuesta de crédito en tiempo récord",
+    interest: "Tiempo récord",
     features: [
       "Proceso 100% digital",
       "Sin papeleo físico",
@@ -36,26 +36,26 @@ const plans = [
 
   },
   {
-    title: "Plan Avanzado",
-    duration: "6-12 meses",
+    title: "Finanaciamiento Flexible",
+    duration: "$8000-$200,000",
     interest: "Interés preferencial",
     features: [
-      "Hasta $50,000 MXN",
-      "Pagos mensuales cómodos",
-      "Tasa del 12% anual",
-      "Enganche del 20%"
+      "Paga hasta en 24 meses",
+      "Tasas competitivas",
+      "Sin comisiones ocultas",
+      "Aprobación rápida"
     ],
     highlight: true
   },
   {
-    title: "Plan Premium",
-    duration: "12-24 meses",
-    interest: "Tasa competitiva",
+    title: " Requisitos",
+    duration: "Datos Necesarios",
+    interest: "+18 años",
     features: [
-      "Hasta $100,000 MXN",
-      "Tratamientos integrales",
-      "Tasa del 15% anual",
-      "Enganche del 30%"
+      "Ser Mexicano",
+      "CURP",
+      "INE o Pasaporte Vigente",
+      "Correo Electrónico y Teléfono",
     ],
     highlight: false
   }
@@ -111,7 +111,14 @@ export function PaymentOptions() {
                   </ul>
                 </div>
               )}
-              <button className={`mt-auto px-4 py-2 rounded-full font-semibold border ${plan.highlight ? "bg-red-500 text-white border-red-500" : "bg-white text-red-500 border-red-500"}`}>Solicitar Financiamiento</button>
+              <a
+                href={`https://wa.me/525532183670?text=${encodeURIComponent(`Hola, quiero información sobre sus opciones de financiamiento`)}`}
+                target="_blank"
+                rel="noreferrer"
+                className={`mt-auto inline-flex items-center justify-center px-4 py-2 rounded-full font-semibold border ${plan.highlight ? "bg-red-500 text-white border-red-500" : "bg-white text-red-500 border-red-500"}`}
+              >
+                Solicitar más Información
+              </a>
             </div>
           ))}
         </div>

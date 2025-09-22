@@ -1,7 +1,12 @@
+"use client";
 // Componente AboutUsPage local
 import { AboutUs } from "../AboutUs";
+import { useState } from 'react';
+import SucursalPickerModal from '../SucursalPickerModal';
 import Image from "next/image";
+import { Heart, Users, Zap, ShieldCheck, Award, Smile, Target, CheckCircle } from "lucide-react";
 export function AboutUsPage() {
+	const [showAgendarModal, setShowAgendarModal] = useState(false);
 			// Datos para secciones nuevas
 			const team = [
 				{
@@ -27,39 +32,47 @@ export function AboutUsPage() {
 				},
 			];
 			const achievements = [
-				{ value: '2,500+', label: 'Pacientes atendidos' },
-				{ value: '15+', label: 'Años de experiencia' },
-				{ value: '98%', label: 'Satisfacción del cliente' },
-				{ value: '3', label: 'Sucursales en CDMX' },
+				{ value: '+100,000', label: 'Pacientes atendidos' },
+				{ value: '10', label: 'Años de experiencia' },
+				{ value: '99%', label: 'Satisfacción del cliente' },
+				{ value: '30', label: 'Sucursales en Mexico' },
 			];
 			const certifications = [
 				'Certificación COFEPRIS',
-				'ISO 9001:2015 Calidad',
 				'Miembro de la Asociación Dental Mexicana',
-				'Certificación en Bioseguridad',
-				'Acreditación internacional en Implantología',
-				'Certificación en Ortodoncia Invisible',
+				'10 Años de Experiencia en Odontología',
+				'Protocolos de Bioseguridad COVID-19',
+				'Acreditación en Capacitación Continua del Personal',
 			];
 
 			return (
 				<div className="min-h-screen bg-gray-50 text-gray-900">
-					<section className="relative py-20 lg:py-32 bg-gradient-to-br from-blue-50 to-white">
-						<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-							<h1 className="text-5xl lg:text-7xl font-bold text-gray-900 text-center mb-8">
-								Conoce a <span style={{ color: "#FE0000" }}>Dental+</span>
+					<section className="relative py-20 lg:py-32 bg-gradient-to-br from-pink-50 to-white">
+						<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+							<div className="inline-block bg-pink-100 text-pink-600 px-4 py-2 rounded-full mb-6 border border-pink-200">Clínica Dental de Confianza</div>
+							<h1 className="text-5xl lg:text-7xl font-bold text-gray-900 text-center mb-4">
+								Conoce a <span className="text-red-600 relative">Dental+<span className="block h-1 bg-red-400 w-40 mx-auto mt-3 rounded"></span></span>
 							</h1>
-							<p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed text-center">
-								Más de 15 años transformando sonrisas con pasión, dedicación y la tecnología más avanzada
+							<p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed text-center mb-6">
+								Más de 10 años transformando sonrisas con pasión, dedicación y la tecnología más avanzada
 							</p>
+
+							<div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+								<span className="inline-flex items-center gap-2 bg-white/70 px-4 py-2 rounded-full shadow-sm text-sm"><Heart className="text-red-500" size={16} /> 10+ Años</span>
+								<span className="inline-flex items-center gap-2 bg-white/70 px-4 py-2 rounded-full shadow-sm text-sm"><Users className="text-pink-500" size={16} /> Miles de Pacientes</span>
+								<span className="inline-flex items-center gap-2 bg-white/70 px-4 py-2 rounded-full shadow-sm text-sm"><Zap className="text-yellow-400" size={16} /> Tecnología Avanzada</span>
+							</div>
 						</div>
 					</section>
+										<AboutUs />
+
 											{/* Historia */}
 											<section className="py-20 bg-white">
 												<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 items-center">
 													<div>
 														<h2 className="text-4xl font-bold text-gray-900 mb-6">Nuestra Historia</h2>
 														<p className="text-lg text-gray-600 leading-relaxed mb-6">
-															Dental+ nació en 2009 con una visión clara: revolucionar la atención dental en México combinando tecnología de vanguardia con un trato humano excepcional. Desde nuestros inicios en una pequeña clínica en el centro de la Ciudad de México, hemos crecido hasta convertirnos en una de las cadenas dentales más confiables del país.
+															Dental+ nació en 2015 con una visión clara: revolucionar la atención dental en México combinando tecnología de vanguardia con un trato humano excepcional. Desde nuestros inicios en una pequeña clínica en el centro de la Ciudad de Chiapas, hemos crecido hasta convertirnos en una de las cadenas dentales más confiables del país.
 														</p>
 														<p className="text-lg text-gray-600 leading-relaxed mb-6">
 															Nuestro compromiso siempre ha sido el mismo: ofrecer tratamientos dentales de la más alta calidad, accesibles para todas las familias mexicanas, con un enfoque integral que va más allá de la salud bucal para mejorar la calidad de vida de nuestros pacientes.
@@ -67,73 +80,112 @@ export function AboutUsPage() {
 														<div className="grid grid-cols-2 gap-4 mt-6">
 															<div>
 																<h3 className="font-semibold text-red-600">Misión</h3>
-																<p>Brindar la mejor atención odontológica con tecnología de vanguardia, calidez y valores.</p>
+																<p>Restablecer la salud bucal de nuestros pacientes con servicios odontológicos de alta calidad y precios justos, garantizando un trato digno en instalaciones cómodas y limpias.</p>
 															</div>
 															<div>
 																<h3 className="font-semibold text-red-600">Visión</h3>
-																<p>Ser la clínica dental líder en innovación y excelencia en salud bucal.</p>
+																<p>Ser la empresa líder en el país, ofreciendo servicios y productos odontológicos de alta calidad, accesibles para todos.</p>
 															</div>
 														</div>
 													</div>
 													<div className="flex justify-center">
-														<Image src="/images/ui/hero-placeholder.svg" alt="Consultorio Dental+" width={400} height={300} className="rounded-xl shadow-lg" />
+														<Image src="/images/QuienesSomos/FondoHistoria.png" alt="Consultorio Dental+" width={600} height={600} className="rounded-xl shadow-lg" />
 													</div>
 												</div>
 											</section>
 
 											{/* Nuestros Valores */}
 											<section className="py-16 bg-gray-50">
-												<div className="max-w-5xl mx-auto px-4">
+												<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 													<h2 className="text-3xl md:text-4xl font-bold text-center mb-2">Nuestros Valores</h2>
 													<p className="text-lg text-center text-gray-600 mb-10">Los principios que guían cada una de nuestras acciones y definen quiénes somos</p>
-													<div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-														<div className="bg-white rounded-xl shadow p-8 flex flex-col items-center">
-															<span className="inline-block bg-red-50 rounded-full p-3 mb-4"><svg width="32" height="32" fill="none"><circle cx="16" cy="16" r="15" stroke="#FE0000" strokeWidth="2"/><path d="M16 23s-6-4.5-6-8a6 6 0 0 1 12 0c0 3.5-6 8-6 8Z" stroke="#FE0000" strokeWidth="2"/></svg></span>
-															<h3 className="font-bold text-lg mb-2 text-center">Compromiso con el paciente</h3>
-															<p className="text-gray-600 text-center text-sm">Cada paciente es único y merece un trato personalizado y cuidadoso.</p>
+													<div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+														<div className="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+															<span className="inline-block bg-red-50 rounded-full p-3 mb-4"><ShieldCheck className="text-red-500" size={28} /></span>
+															<h3 className="font-bold text-lg mb-2 text-center">Confianza</h3>
+															<p className="text-gray-600 text-center text-sm">Nos comprometemos a transmitir siempre en nuestros pacientes sentimientos de seguridad y confianza en cada consulta o tratamiento que se realicen con nosotros.</p>
 														</div>
-														<div className="bg-white rounded-xl shadow p-8 flex flex-col items-center">
-															<span className="inline-block bg-blue-50 rounded-full p-3 mb-4"><svg width="32" height="32" fill="none"><circle cx="16" cy="16" r="15" stroke="#3B82F6" strokeWidth="2"/><path d="M16 10v8" stroke="#3B82F6" strokeWidth="2"/><circle cx="16" cy="22" r="2" fill="#3B82F6"/></svg></span>
-															<h3 className="font-bold text-lg mb-2 text-center">Excelencia profesional</h3>
-															<p className="text-gray-600 text-center text-sm">Mantenemos los más altos estándares de calidad en todos nuestros servicios.</p>
+														<div className="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+															<span className="inline-block bg-blue-50 rounded-full p-3 mb-4"><Award className="text-blue-500" size={28} /></span>
+															<h3 className="font-bold text-lg mb-2 text-center">Profesionalismo</h3>
+															<p className="text-gray-600 text-center text-sm">Nuestro equipo de especialistas brinda un servicio de excelencia, respaldado por su amplia experiencia y formación continua.</p>
 														</div>
-														<div className="bg-white rounded-xl shadow p-8 flex flex-col items-center">
-															<span className="inline-block bg-green-50 rounded-full p-3 mb-4"><svg width="32" height="32" fill="none"><circle cx="16" cy="16" r="15" stroke="#10B981" strokeWidth="2"/><path d="M10 18c0-2 2-4 6-4s6 2 6 4" stroke="#10B981" strokeWidth="2"/><circle cx="12" cy="14" r="2" fill="#10B981"/><circle cx="20" cy="14" r="2" fill="#10B981"/></svg></span>
-															<h3 className="font-bold text-lg mb-2 text-center">Trabajo en equipo</h3>
-															<p className="text-gray-600 text-center text-sm">Colaboramos para brindar la mejor experiencia y resultados a nuestros pacientes.</p>
+														<div className="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+															<span className="inline-block bg-green-50 rounded-full p-3 mb-4"><Zap className="text-green-500" size={28} /></span>
+															<h3 className="font-bold text-lg mb-2 text-center">Innovación</h3>
+															<p className="text-gray-600 text-center text-sm">Implementamos tecnología de vanguardia y los métodos más avanzados para ofrecer tratamientos de alta precisión y confort.</p>
 														</div>
-														<div className="bg-white rounded-xl shadow p-8 flex flex-col items-center">
-															<span className="inline-block bg-purple-50 rounded-full p-3 mb-4"><svg width="32" height="32" fill="none"><circle cx="16" cy="16" r="15" stroke="#A21CAF" strokeWidth="2"/><circle cx="16" cy="16" r="6" stroke="#A21CAF" strokeWidth="2"/><circle cx="16" cy="16" r="2" fill="#A21CAF"/></svg></span>
-															<h3 className="font-bold text-lg mb-2 text-center">Innovación constante</h3>
-															<p className="text-gray-600 text-center text-sm">Utilizamos la tecnología más avanzada para ofrecer tratamientos de vanguardia.</p>
+														<div className="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+															<span className="inline-block bg-pink-50 rounded-full p-3 mb-4"><Smile className="text-pink-500" size={28} /></span>
+															<h3 className="font-bold text-lg mb-2 text-center">Empatia</h3>
+															<p className="text-gray-600 text-center text-sm">Priorizamos un trato humano y personalizado, escuchando y entendiendo las necesidades de cada paciente para ofrecerle la mejor solución.</p>
+														</div>
+														<div className="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+															<span className="inline-block bg-purple-50 rounded-full p-3 mb-4"><Target className="text-purple-600" size={28} /></span>
+															<h3 className="font-bold text-lg mb-2 text-center">Calidad</h3>
+															<p className="text-gray-600 text-center text-sm">Aseguramos resultados duraderos y la máxima satisfacción, utilizando materiales de primera y aplicando los más altos estándares en todos nuestros procedimientos.</p>
 														</div>
 													</div>
 												</div>
 											</section>
 
 					{/* Sección de valores y features */}
-					<AboutUs />
 
 					{/* Equipo de especialistas */}
 					<section className="py-12">
 						<h2 className="text-2xl font-bold text-center mb-8">Nuestro Equipo de Especialistas</h2>
-						<div className="flex flex-wrap justify-center gap-8">
-							{team.map((member, i) => (
-								<div key={i} className="bg-white rounded-lg shadow p-6 w-72">
-									<div className="h-32 w-full bg-gray-200 rounded mb-4 flex items-center justify-center">
-										<span className="text-gray-400">Foto profesional</span>
+						<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+							<div className="grid gap-8 md:grid-cols-3">
+								{[
+									{
+										id: 'odontologia',
+										title: 'Odontología Integral',
+										subtitle: 'Equipo de atención general',
+										avatar: '/images/QuienesSomos/EquipoIntegral.jpg',
+										bullets: ['Diagnóstico y tratamientos integrales', 'Limpiezas y revisiones periódicas', 'Restauraciones dentales'],
+									},
+									{
+										id: 'ortodoncia',
+										title: 'Ortodoncia',
+										subtitle: 'Especialistas en alineación dental',
+										avatar: '/images/QuienesSomos/EquipoOrto.jpg',
+										bullets: ['Ortodoncia tradicional y estética', 'Tratamientos personalizados', 'Acompañamiento constante para lograr los mejores resultados'],
+									},
+									{
+										id: 'implantologia',
+										title: 'Implantología y Rehabilitación Oral',
+										subtitle: 'Equipo experto en implantes',
+										avatar: '/images/QuienesSomos/EquipoImplantes.jpg',
+										bullets: ['Colocación de implantes dentales', 'Cirugía oral especializada', 'Rehabilitación funcional y estética'],
+									},
+								].map((s) => (
+									<div key={s.id} className="bg-white rounded-lg shadow p-6 transform transition hover:scale-[1.02] hover:shadow-lg flex flex-col h-full">
+														<div className="flex justify-center">
+															<span className="inline-block bg-red-50 text-red-600 px-3 py-1 rounded-full text-xs font-semibold">Especialistas</span>
+														</div>
+										<div className="flex-1 flex flex-col items-center gap-3 mb-4 text-center">
+															<Image src={s.avatar} alt={`${s.title} avatar`} width={120} height={120} className="rounded-full bg-gray-50 p-3" />
+															<div>
+																<h3 className="font-semibold text-xl">{s.title}</h3>
+																<p className="text-sm text-gray-500">{s.subtitle}</p>
+															</div>
+														</div>
+										<p className="text-sm text-gray-600 mb-3 text-center">{s.title === 'Odontología Integral' ? 'Profesionales certificados y altamente capacitados en atención dental general y preventiva:' : s.title === 'Ortodoncia' ? 'Especialistas en la alineación y corrección de la posición de los dientes y maxilares:' : 'Equipo experto en reemplazo y restauración dental:'}</p>
+										<ul className="text-sm pl-0 grid gap-2 mb-4">
+															{s.bullets.map((b, i) => (
+																<li key={i} className="flex items-start gap-2">
+																	<CheckCircle className="text-red-500 mt-1" size={16} />
+																	<span className="text-gray-700">{b}</span>
+																</li>
+															))}
+														</ul>
+										<div className="mt-auto flex items-center justify-center gap-6">
+													<button onClick={() => setShowAgendarModal(true)} className="bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition text-sm font-medium">Agendar Consulta</button>
+													<a href="/sucursales" className="text-sm text-gray-600 hover:underline">Ver sucursales</a>
+												</div>
 									</div>
-									<h3 className="font-semibold text-lg mb-1">{member.name}</h3>
-									<p className="text-sm text-red-600 mb-1">{member.title}</p>
-									<p className="text-xs mb-1">{member.experience}</p>
-									<p className="text-xs mb-2">{member.university}</p>
-									<ul className="text-xs list-disc pl-4">
-										{member.specialties.map((spec, j) => (
-											<li key={j}>{spec}</li>
-										))}
-									</ul>
-								</div>
-							))}
+								))}
+							</div>
 						</div>
 					</section>
 
@@ -167,8 +219,10 @@ export function AboutUsPage() {
 							<section className="py-12 text-center">
 								<h2 className="text-2xl font-bold mb-4">¿Listo para conocer la diferencia Dental+?</h2>
 								<p className="mb-6">Agenda tu consulta gratuita y descubre por qué miles de pacientes confían en nosotros</p>
-								<button className="bg-red-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-red-700 transition">Agendar Consulta Gratuita</button>
+								<button onClick={() => setShowAgendarModal(true)} className="bg-red-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-red-700 transition">Agendar Consulta Gratuita</button>
 							</section>
+
+							<SucursalPickerModal open={showAgendarModal} onClose={() => setShowAgendarModal(false)} onSelect={() => {}} />
 
 							{/* Footer eliminado, ahora solo se usa el global */}
 						</div>

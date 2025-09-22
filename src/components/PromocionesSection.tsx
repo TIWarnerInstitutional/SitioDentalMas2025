@@ -30,40 +30,102 @@ type Promocion = {
 export default function PromocionesSection({ initialSelectedSucursalName }: Props) {
   // Datos estáticos de ejemplo (puedes mover promociones a un data file)
   const stats = [
-    { label: 'Promociones Activas', value: 5 },
-    { label: 'Descuento Máximo', value: '40%' },
-    { label: 'Pacientes Beneficiados', value: 154 },
-    { label: 'Ofertas Destacadas', value: 2 }
+    { label: 'Promociones Activas', value: 1 },
+    { label: 'Descuento Máximo', value: 'Gratis' },
+    { label: 'Pacientes Beneficiados', value: '+500k' },
+    { label: 'Ofertas Destacadas', value: 1 }
   ]
 
-  const promociones = useMemo<Promocion[]>(() => [
-    {
-      id: 1,
-      tag: 'Destacada',
-      title: '40% OFF',
-      subtitle: 'Mes de la Sonrisa Perfecta',
-      description: 'Blanqueamiento dental profesional con tecnología LED + limpieza profunda incluida',
-      locations: ['Centro', 'Naco'],
-      services: ['Blanqueamiento', 'Limpieza Dental'],
-      validUntil: '30 de enero de 2024',
-      spots: 23,
-      spotsTotal: 100,
-      conditions: ['Solo para nuevos pacientes', 'Válido de lunes a viernes']
-    },
-    {
-      id: 2,
-      tag: 'Destacada',
-      title: '25% OFF',
-      subtitle: 'Implantes Premium',
-      description: 'Implantes dentales de titanio con corona de porcelana incluida',
-      locations: ['Naco'],
-      services: ['Implantes', 'Cirugía Oral'],
-      validUntil: '28 de febrero de 2024',
-      spots: 18,
-      spotsTotal: 30,
-      conditions: ['Evaluación previa requerida', 'Incluye seguimiento post-operatorio']
+  const [promocionesState, setPromocionesState] = useState<Promocion[]>([])
+
+  useEffect(() => {
+    // Load promotions from localStorage if available, otherwise seed from data/promociones.json
+    async function loadLocal() {
+      try {
+        if (typeof window === 'undefined') return
+        const raw = localStorage.getItem('promociones_seed')
+        if (raw) {
+          const parsed = JSON.parse(raw)
+          if (Array.isArray(parsed)) {
+            const allLocations = (sucursales as Sucursal[]).map(s => s.nombre).filter(Boolean) as string[]
+            const promos = parsed.map((p: any) => ({ ...p, locations: (p.locations && p.locations.length) ? p.locations : allLocations }))
+            setPromocionesState(promos)
+            return
+          }
+        }
+
+        // seed from data file (resolve via dynamic import so this runs on client)
+        try {
+          const mod = await import('../data/promociones.json')
+          const seed = Array.isArray(mod.default) ? mod.default : mod
+          const allLocations = (sucursales as Sucursal[]).map(s => s.nombre).filter(Boolean) as string[]
+          const promos = seed.map((p: any) => ({ ...p, locations: (p.locations && p.locations.length) ? p.locations : allLocations }))
+          setPromocionesState(promos)
+          try { localStorage.setItem('promociones_seed', JSON.stringify(promos)) } catch (e) {}
+        } catch (e) {
+          console.error('Failed to load local promociones seed', e)
+        }
+      } catch (e) {
+        console.error('Failed to load promociones from localStorage', e)
+      }
     }
-  ], [])
+    loadLocal()
+  }, [])
+
+  // Cupones (un código por promoción, el mismo para todos los cupones de esa oferta)
+  const promoCodes: Record<number, string> = {
+    1: 'DMASFREE'
+  }
+
+  const [modalVisible, setModalVisible] = useState(false)
+  const [modalCode, setModalCode] = useState<string>('')
+  const [modalTitle, setModalTitle] = useState<string>('')
+  const [claimedPromos, setClaimedPromos] = useState<number[]>([])
+
+  useEffect(() => {
+    try {
+      if (typeof window === 'undefined') return
+      const raw = localStorage.getItem('claimed_promos')
+      if (raw) {
+        const parsed = JSON.parse(raw)
+        if (Array.isArray(parsed)) setClaimedPromos(parsed.map((n:any) => Number(n)).filter(n => !Number.isNaN(n)))
+      }
+    } catch (e) {}
+  }, [])
+
+  function markClaimed(id: number) {
+    try {
+      setClaimedPromos(prev => {
+        if (prev.includes(id)) return prev
+        const next = [...prev, id]
+        try { localStorage.setItem('claimed_promos', JSON.stringify(next)) } catch (e) {}
+        return next
+      })
+    } catch (e) {}
+  }
+
+  async function handleRedeem(id: number, code: string, title?: string) {
+    // Local-only redeem: decrement spots in local state and persist in localStorage; prevent double-claim per browser
+    if (!claimedPromos.includes(id)) {
+      try {
+        setPromocionesState(prev => {
+          const next = prev.map(p => {
+            if (p.id === id) return { ...p, spots: Math.max(0, (p.spots || 0) - 1) }
+            return p
+          })
+          try { localStorage.setItem('promociones_seed', JSON.stringify(next)) } catch (e) {}
+          return next
+        })
+        markClaimed(id)
+      } catch (e) {
+        console.error('local redeem failed', e)
+      }
+    }
+    setModalCode(code)
+    setModalTitle(title || '')
+    setModalVisible(true)
+    try { if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' }) } catch (e) {}
+  }
 
   // (usamos directamente `sucursales` para sugerencias)
 
@@ -82,10 +144,10 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
 
   const promocionesShown = useMemo(() => {
     if (selectedSucursal) {
-      return promociones.filter((p) => promotionAppliesToSucursal(p, selectedSucursal))
+      return promocionesState.filter((p) => promotionAppliesToSucursal(p, selectedSucursal))
     }
 
-    let results = promociones.slice()
+    let results = promocionesState.slice()
     if (filter === 'Destacadas') results = results.filter(p => p.tag === 'Destacada')
     else if (filter === 'Todas las Sucursales') results = results
     else results = results.filter(p => p.locations.includes(filter))
@@ -99,7 +161,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
     }
 
     return results
-  }, [filter, promociones, selectedSucursal, search])
+  }, [filter, promocionesState, selectedSucursal, search])
 
   function getFirstSucursalForPromotion(p: Promocion) {
     const s = (sucursales as Sucursal[]).find((s) => promotionAppliesToSucursal(p, s))
@@ -209,7 +271,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
           <div className="text-center text-gray-500 col-span-full">No hay promociones para la selección actual.</div>
         )}
 
-        {promocionesShown.map((p) => {
+  {promocionesShown.slice(0, 2).map((p) => {
           const pct = Math.round((p.spots / Math.max(1, p.spotsTotal)) * 100)
           return (
             <div key={p.id} className="bg-white rounded-2xl shadow p-5">
@@ -225,7 +287,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
               <div className="text-sm text-gray-600 mb-4">{p.description}</div>
 
               <div className="text-sm text-gray-700 mb-3">
-                <div className="mb-1"><strong className="text-red-600">Disponible en:</strong> {p.locations.join(', ')}</div>
+                <div className="mb-1"><strong className="text-red-600">Disponible en:</strong> {p.locations.length === (sucursales as Sucursal[]).length ? 'Todas las sucursales' : p.locations.join(', ')}</div>
                 <div className="mb-1"><strong className="text-red-600">Servicios:</strong> {p.services.join(', ')}</div>
               </div>
 
@@ -247,13 +309,17 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
               </div>
 
               <div className="flex items-center justify-between mt-4">
-                <div className="text-sm text-gray-500">Disponible en: {p.locations.join(', ')}</div>
+                <div className="text-sm text-gray-500">Disponible en: {p.locations.length === (sucursales as Sucursal[]).length ? 'Todas las sucursales' : p.locations.join(', ')}</div>
                 {
                   (() => {
                     const firstSucursal = getFirstSucursalForPromotion(p)
-                    const url = firstSucursal ? `/sucursales?selectedSucursal=${encodeURIComponent(firstSucursal)}#promociones` : '/sucursales#promociones'
+                    const code = promoCodes[p.id] || 'CUPON'
                     return (
-                      <Link href={url} className="bg-red-600 text-white rounded px-3 py-2">Aprovechar Oferta</Link>
+                      claimedPromos.includes(p.id) ? (
+                        <button disabled className="bg-gray-300 text-gray-600 rounded px-3 py-2">Cupón reclamado</button>
+                      ) : (
+                        <button onClick={() => handleRedeem(p.id, code, p.title)} className="bg-red-600 text-white rounded px-3 py-2">Aprovechar Oferta</button>
+                      )
                     )
                   })()
                 }
@@ -262,6 +328,23 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
           )
         })}
       </div>
+      {/* Modal de cupón */}
+      {modalVisible && (
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center">
+          <div className="relative z-[100000] bg-white rounded-lg shadow-lg max-w-md w-full p-6 mx-4">
+            <h3 className="text-xl font-bold mb-2">¡Felicidades!</h3>
+            <p className="mb-4">Has obtenido un cupón para <strong>{modalTitle}</strong>. Presenta este código en nuestras sucursales o indícale a un asesor que tienes un cupón.</p>
+            <div className="bg-gray-100 rounded p-3 text-center mb-4">
+              <div className="text-sm text-gray-500">Código</div>
+              <div className="text-2xl font-mono font-semibold mt-1">{modalCode}</div>
+            </div>
+            <div className="flex items-center gap-3">
+              <button onClick={() => { navigator.clipboard?.writeText(modalCode); try { const id = Object.keys(promoCodes).find(k => promoCodes[Number(k)] === modalCode); if (id) markClaimed(Number(id)); } catch(e){} }} className="flex-1 bg-green-600 text-white rounded px-4 py-2">Copiar código</button>
+              <button onClick={() => setModalVisible(false)} className="flex-1 bg-gray-200 rounded px-4 py-2">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

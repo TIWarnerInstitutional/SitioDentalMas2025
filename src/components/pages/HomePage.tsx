@@ -1,5 +1,9 @@
 "use client";
+import Link from 'next/link'
+import { useState } from 'react'
 import { AboutUs } from "../AboutUs";
+import sucursales from '../../data/sucursales'
+import SucursalPickerModal from '../SucursalPickerModal';
 import { Blog } from "../Blog";
 import { Testimonials } from "../Testimonials";
 import { PaymentOptions } from "../PaymentOptions";
@@ -10,6 +14,7 @@ import TreatmentsShowcase from "../TreatmentsShowcase";
 import SucursalesHero from "../SucursalesHero";
 
 export default function HomePage() {
+	const [showAgendarModal, setShowAgendarModal] = useState(false)
 	const animatedIcons: { id: number; Icon: React.ElementType; x: number; y: number }[] = [
 		 { id: 1, Icon: FaTooth, x: -170, y: -172 },
 		 { id: 3, Icon: FaUsers, x: -130, y: 70 },
@@ -41,13 +46,13 @@ export default function HomePage() {
 										Cuidamos tu salud dental con la más alta calidad, tecnología avanzada y un trato humano excepcional.
 									</p>
 									<div className="mt-6 flex flex-col sm:flex-row gap-4 md:justify-start">
-										<button className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-2xl shadow-lg text-lg font-semibold">
+										<button onClick={() => setShowAgendarModal(true)} className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-2xl shadow-lg text-lg font-semibold">
 											<svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3M3 11h18M5 21h14a2 2 0 0 0 2-2V7H3v12a2 2 0 0 0 2 2z"/></svg>
 											Agendar Cita
 										</button>
-										<button className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent text-white px-6 py-3 rounded-2xl shadow-sm text-lg font-medium border border-white/30 hover:bg-white/10">
+										<Link href="/sucursales" className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-transparent text-white px-6 py-3 rounded-2xl shadow-sm text-lg font-medium border border-white/30 hover:bg-white/10">
 											Ver Sucursales
-										</button>
+										</Link>
 									</div>
 								</div>
 							</div>
@@ -74,10 +79,20 @@ export default function HomePage() {
 			<Blog />
 			{/* Testimonios */}
 			<Testimonials />
+			
 			{/* Formas de Pago y Financiamiento */}
 			<PaymentOptions />
 			{/* Preguntas Frecuentes */}
 			<FAQ />
+
+			<SucursalPickerModal
+			  open={showAgendarModal}
+			  onClose={() => setShowAgendarModal(false)}
+			  onSelect={(s) => {
+				// currently do nothing on select; keep href empty as requested
+			  }}
+			/>
 		</div>
-	);
-}
+		);
+
+	}

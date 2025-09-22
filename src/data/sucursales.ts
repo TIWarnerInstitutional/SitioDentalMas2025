@@ -18,15 +18,15 @@ const sucursales = [
   "imagen": "/images/branches/branch-placeholder.svg",
     "rating": "4.5",
     "reviews": "120 reseñas",
-    "btn": "Agendar Cita en Aguascalientes",
-    "mapBtn": "Ver en Mapa",
+  "btn": "Agendar Cita en Aguascalientes",
+  "mapBtn": "Ver en Mapa",
     // Ejemplo de métricas específicas para esta sucursal (editable aquí)
     pacientesAtendidos: 18750,
     satisfaccion: 97,
     tiempoPromedio: 22,
     especialistas: 12,
     tratamientosExitosos: 18203,
-    crecimientoAnual: '+31%'
+    AgendaOnline: "https://qr1.be/NZGA",
   },
   {
   "nombre": "Dental Más Atlixco",
@@ -48,7 +48,8 @@ const sucursales = [
     "rating": "4.7",
     "reviews": "98 reseñas",
     "btn": "Agendar Cita en Atlixco",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/WXUN"
   },
   {
   "nombre": "Dental Más Campeche",
@@ -70,7 +71,8 @@ const sucursales = [
     "rating": "4.6",
     "reviews": "150 reseñas",
     "btn": "Agendar Cita en Campeche",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/B8AJ"
   },
   {
   "nombre": "Dental Más Cancún",
@@ -92,7 +94,8 @@ const sucursales = [
     "rating": "4.8",
     "reviews": "200 reseñas",
     "btn": "Agendar Cita en Cancún",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/Y7R9"
   },
   {
   "nombre": "Dental Más Comitán",
@@ -114,7 +117,8 @@ const sucursales = [
     "rating": "4.5",
     "reviews": "110 reseñas",
     "btn": "Agendar Cita en Comitán",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/G0SL"
   },
   {
   "nombre": "Dental Más Córdoba",
@@ -136,7 +140,8 @@ const sucursales = [
     "rating": "4.6",
     "reviews": "130 reseñas",
     "btn": "Agendar Cita en Córdoba",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/8AO0"
   },
   {
   "nombre": "Dental Más Guadalajara",
@@ -158,7 +163,8 @@ const sucursales = [
     "rating": "4.7",
     "reviews": "180 reseñas",
     "btn": "Agendar Cita en Guadalajara",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/SI7W"
   },
   {
   "nombre": "Dental Más León",
@@ -180,7 +186,8 @@ const sucursales = [
     "rating": "4.5",
     "reviews": "140 reseñas",
     "btn": "Agendar Cita en León",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/3EPC"
   },
   {
   "nombre": "Dental Más Mérida",
@@ -202,7 +209,8 @@ const sucursales = [
     "rating": "4.6",
     "reviews": "160 reseñas",
    "btn": "Agendar Cita en León",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/7S0E"
   },
     {
     "nombre": "Dental Más Mexicali",
@@ -224,7 +232,8 @@ const sucursales = [
     "rating": "4.5",
     "reviews": "120 reseñas",
     "btn": "Agendar Cita en Mexicali",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/TTP3"
   },
   {
   "nombre": "Dental Más Playa",
@@ -246,7 +255,8 @@ const sucursales = [
     "rating": "4.7",
     "reviews": "190 reseñas",
     "btn": "Agendar Cita en Playa",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/4LP2"
   },
   {
   "nombre": "Dental Más San Cristóbal",
@@ -268,7 +278,8 @@ const sucursales = [
     "rating": "4.6",
     "reviews": "130 reseñas",
     "btn": "Agendar Cita en San Cristóbal",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/IY9D"
   },
   {
   "nombre": "Dental Más SLRC",
@@ -290,7 +301,8 @@ const sucursales = [
     "rating": "4.5",
     "reviews": "110 reseñas",
     "btn": "Agendar Cita en SLRC",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/Q191"
   },
   {
   "nombre": "Dental Más Tonalá",
@@ -312,7 +324,8 @@ const sucursales = [
     "rating": "4.7",
     "reviews": "150 reseñas",
     "btn": "Agendar Cita en Tonalá",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/8ZSE"
   },
   {
   "nombre": "Dental Más Tuxpam",
@@ -334,7 +347,8 @@ const sucursales = [
     "rating": "4.6",
     "reviews": "120 reseñas",
     "btn": "Agendar Cita en Tuxpam",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/3GAR"
   },
   {
   "nombre": "Dental Más Tuxtla 7ma",
@@ -356,7 +370,8 @@ const sucursales = [
     "rating": "4.6",
     "reviews": "140 reseñas",
     "btn": "Agendar Cita en Tuxtla 7ma",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/76HX"
   },
   {
   "nombre": "Dental Más Xalapa",
@@ -378,7 +393,8 @@ const sucursales = [
     "rating": "4.7",
     "reviews": "160 reseñas",
     "btn": "Agendar Cita en Xalapa",
-    "mapBtn": "Ver en Mapa"
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://qr1.be/J54G"
   },
   {
   "nombre": "Dental Más Real del Bosque",
@@ -429,20 +445,117 @@ export type Sucursal = {
   horario?: string
   servicios?: string[]
   mapsUrl?: string
+  agenda?: string
   [key: string]: unknown
 }
 
-const processed = (sucursales as unknown as Record<string, unknown>[]).map((s: Record<string, unknown>) => ({
+let processed = (sucursales as unknown as Record<string, unknown>[]).map((s: Record<string, unknown>) => ({
   ...s,
   imagen: (s.imagen && typeof s.imagen === 'string' && (s.imagen as string).startsWith('/')) ? (s.imagen as string) : '/images/branches/branch-placeholder.svg',
-  // Valores por defecto genéricos solicitados (se pueden sobreescribir por sucursal)
-  pacientesAtendidos: s['pacientesAtendidos'] !== undefined ? Number(s['pacientesAtendidos']) : numberFromReviews(typeof s['reviews'] === 'string' ? (s['reviews'] as string) : undefined) || 98,
-  satisfaccion: s['satisfaccion'] !== undefined ? (s['satisfaccion'] as number | string) : 94,
-  tiempoPromedio: s['tiempoPromedio'] !== undefined ? Number(s['tiempoPromedio']) : 25,
-  especialistas: s['especialistas'] !== undefined ? Number(s['especialistas']) : 3,
-  tratamientosExitosos: s['tratamientosExitosos'] !== undefined ? Number(s['tratamientosExitosos']) : 75,
+  tiempoPromedio: s['tiempoPromedio'] !== undefined ? Number(s['tiempoPromedio']) : undefined,
+  especialistas: s['especialistas'] !== undefined ? Number(s['especialistas']) : undefined,
   crecimientoAnual: s['crecimientoAnual'] !== undefined ? String(s['crecimientoAnual']) : '+0%'
-}))
+})) as unknown as Sucursal[];
+
+// Totals requested by user
+const TOTAL_PATIENTS = 100100;
+const TARGET_SAT = 99; // percent average target
+const clinicsCount = processed.length || 1;
+
+// Build deterministic weights so clinics differ (use reviews and rating when available)
+function parseRating(r?: unknown) {
+  if (!r) return 4.5;
+  const n = parseFloat(String(r));
+  return Number.isNaN(n) ? 4.5 : n;
+}
+
+function reviewsNumber(r?: unknown) {
+  if (!r) return 0;
+  return numberFromReviews(String(r));
+}
+
+const weights = processed.map((p, i) => {
+  const rating = parseRating(p['rating']);
+  const rev = reviewsNumber(p['reviews']);
+  // base weight influenced by reviews (scaled) and rating
+  return 1 + Math.min(5, rev / 200) + (rating - 4.0) * 0.5 + (i % 3) * 0.1;
+});
+const totalWeight = weights.reduce((a, b) => a + b, 0) || clinicsCount;
+
+// Allocate patients proportionally to weights (floor then distribute remainder)
+const rawPatients = weights.map(w => Math.floor((w / totalWeight) * TOTAL_PATIENTS));
+let assigned = rawPatients.reduce((a, b) => a + b, 0);
+let idx = 0;
+while (assigned < TOTAL_PATIENTS) {
+  rawPatients[idx % clinicsCount] += 1;
+  assigned += 1;
+  idx += 1;
+}
+
+// Build satisfaction array with variety but exact average TARGET_SAT
+const sats: number[] = [];
+for (let i = 0; i < clinicsCount; i++) {
+  sats.push(96 + (i % 5)); // values 96..100
+}
+let satSum = sats.reduce((a, b) => a + b, 0);
+const targetSum = TARGET_SAT * clinicsCount;
+let diff = targetSum - satSum;
+// distribute diff (+/-) across clinics
+let j = 0;
+while (diff !== 0) {
+  const idx2 = j % clinicsCount;
+  if (diff > 0) {
+    if (sats[idx2] < 100) { sats[idx2] += 1; diff -= 1; }
+  } else {
+    if (sats[idx2] > 90) { sats[idx2] -= 1; diff += 1; }
+  }
+  j += 1;
+}
+
+// Assign tiempoPromedio and especialistas with small variation
+const tiempos = processed.map((p, i) => p.tiempoPromedio !== undefined ? p.tiempoPromedio : 18 + (i % 8));
+const especial = processed.map((p, i) => p.especialistas !== undefined ? p.especialistas : 3 + (i % 5));
+
+processed = processed.map((p, i) => {
+  const patients = rawPatients[i];
+  const satisfaccion = sats[i];
+  const tratamientosExitosos = Math.round(patients * (satisfaccion / 100));
+  // generate a reasonable default agenda link per sucursal if not provided
+  const slug = String(p.nombre || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || `sucursal-${i}`;
+  const defaultAgenda = `https://agenda.dentalmas.mx/${slug}`;
+  // Accept either `agenda` or `AgendaOnline` fields in the raw data; prefer explicit values
+  const rawAgenda = p['agenda'] ?? p['AgendaOnline'] ?? undefined;
+  const agendaValue = rawAgenda ? String(rawAgenda) : defaultAgenda;
+  return {
+    ...p,
+    // canonical field used by the app components
+    agenda: agendaValue,
+    // also reflect the raw field if you want to see it in processed output
+    AgendaOnline: p['AgendaOnline'] ? String(p['AgendaOnline']) : agendaValue,
+    pacientesAtendidos: patients,
+    satisfaccion,
+    tiempoPromedio: tiempos[i],
+    especialistas: especial[i],
+    tratamientosExitosos,
+    servicios: ["Consulta General", "Limpieza Dental", "Ortodoncia"],
+    caracteristicas: ["WiFi"],
+  };
+});
+
+// Ensure every raw sucursal object contains an `AgendaOnline` and `agenda` field.
+// If the field is missing, generate a sensible default using the sucursal name so
+// developers can edit either `AgendaOnline` or `agenda` directly in the source file.
+try {
+  for (let k = 0; k < (sucursales as any).length; k++) {
+    const s = (sucursales as any)[k];
+    if (!s || typeof s !== 'object') continue;
+    const slug = String(s.nombre || `sucursal-${k}`).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    if (!s.AgendaOnline) s.AgendaOnline = `https://agenda.dentalmas.mx/${slug}`;
+    if (!s.agenda) s.agenda = s.AgendaOnline;
+  }
+} catch (e) {
+  // ignore malformed entries
+}
 
 export default processed as unknown as Sucursal[];
 

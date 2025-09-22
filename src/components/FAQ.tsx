@@ -16,18 +16,18 @@ const faqs = [
     icon: <Heart className="text-white" size={22} />, color: "bg-red-500"
   },
   {
-    question: "¿Qué incluye una consulta de primera vez?",
-    answer: "La primera consulta incluye: examen clínico completo, radiografías digitales, evaluación de encías, diagnóstico detallado y plan de tratamiento personalizado. Todo esto sin costo adicional.",
+    question: "¿Qué incluye la consulta de valoración inicial?",
+    answer: "Realizamos una revisión completa con el especialista, quien evaluará tu caso y te presentará un plan de tratamiento totalmente personalizado, resolviendo todas tus dudas.",
     icon: <Users className="text-white" size={22} />, color: "bg-green-500"
   },
   {
-    question: "¿Aceptan seguros médicos?",
-    answer: "Sí, trabajamos con los principales seguros médicos y de gastos médicos mayores. Te ayudamos con la gestión de reembolsos y autorizaciones necesarias.",
+    question: "¿Qué tratamientos ofrecen?",
+    answer: "Ofrecemos una amplia variedad de tratamientos diseñados para cuidar y transformar tu sonrisa: ortodoncia (brackets convencionales y de autoligado), alineadores transparentes, blanqueamientos, limpiezas profesionales, endodoncia, prótesis, implantes dentales ¡y mucho más! ",
     icon: <Shield className="text-white" size={22} />, color: "bg-purple-500"
   },
   {
     question: "¿Cuánto tiempo dura un tratamiento de ortodoncia?",
-    answer: "El tiempo varía según cada caso, pero generalmente oscila entre 12 a 24 meses. Con nuestra ortodoncia invisible, muchos casos se resuelven en 12-18 meses con excelentes resultados.",
+    answer: "El tiempo varía según las necesidades de cada paciente . En la mayoría de los casos, los resultados comienzan a notarse entre los 18 y 24 meses.",
     icon: <Clock className="text-white" size={22} />, color: "bg-orange-500"
   },
   {
@@ -42,7 +42,7 @@ const faqs = [
   },
   {
     question: "¿Atienden emergencias dentales?",
-  answer: "Sí, contamos con atención de urgencias dentales los 7 días de la semana en todas nuestras clínicas.",
+  answer: "Sí, atendemos urgencias dentales el mismo día.Te recomendamos comunicarte con nosotros lo antes posible para brindarte atención inmediata. Puedes agendar tu cita en línea de manera rápida o, si lo prefieres, contactar a uno de nuestros asesores para que te ayude a coordinar tu atención.",
     icon: <Phone className="text-white" size={22} />, color: "bg-indigo-500"
   }
 ];
@@ -50,6 +50,45 @@ const faqs = [
 export function FAQ() {
   const [open, setOpen] = useState(-1);
   const [form, setForm] = useState({ name: "", email: "", phone: "", topic: "", question: "" });
+  const phoneNumber = "+525512345678"; // (55) 1234-5678 formatted for tel: links
+
+  const openChat = () => {
+    if (typeof window === 'undefined') return;
+    try {
+      const w = window as any;
+      const attemptFns = [
+        () => w.HubSpotConversations?.widget?.open?.(),
+        () => w.hsConversations?.widget?.open?.(),
+        () => w.hubspot?.conversations?.widget?.open?.(),
+        () => w.HubSpotConversations?.open?.(),
+      ];
+      for (const fn of attemptFns) {
+        try {
+          const res = fn();
+          if (res !== undefined) return;
+        } catch (e) {
+          // ignore and continue
+        }
+      }
+
+      // Fallback: try to find a visible chat toggle/button injected by the script and click it
+      const selectors = [
+        '[id^="hubspot-messages-"], .hubspot-messages-iframe-container, .hubspot-conversations-iframe, .hbspt-chat-widget, .chat-widget, button[data-testid*="hs-messages"], button[aria-label*="chat" i]'
+      ];
+      for (const sel of selectors) {
+        const el = document.querySelector(sel) as HTMLElement | null;
+        if (el) {
+          // If it's a container, try finding a button inside
+          const btn = el.querySelector('button') as HTMLElement | null;
+          (btn || el).click();
+          return;
+        }
+      }
+    } catch (err) {
+      // final fallback: do nothing
+      // console.warn('Unable to open chat widget', err);
+    }
+  };
 
   return (
     <section id="faq" className="py-20 bg-gray-50">
@@ -65,7 +104,7 @@ export function FAQ() {
           {/* Preguntas frecuentes */}
           <div className="flex flex-col h-full justify-between">
             <div>
-              <h3 className="font-semibold text-lg mb-2">Preguntas Más Frecuentes</h3>
+              <h3 className="font-semibold text-gray-600 mb-2">Preguntas Más Frecuentes</h3>
               <p className="text-sm text-gray-500 mb-4">Hemos recopilado las preguntas que más nos hacen nuestros pacientes</p>
               <ul className="space-y-3">
                 {faqs.map((faq, idx) => (
@@ -90,8 +129,15 @@ export function FAQ() {
                 <div className="font-semibold text-red-600 mb-1 flex items-center gap-2"><HelpCircle size={20} /> ¿Necesitas información adicional?</div>
                 <p className="text-sm text-gray-700">Nuestro equipo está disponible para resolver cualquier duda específica sobre tu caso.</p>
                 <div className="flex gap-2 mt-2">
-                  <button className="bg-red-500 text-white px-4 py-2 rounded font-semibold text-sm">Llamar Ahora</button>
-                  <button className="bg-white border border-red-500 text-red-500 px-4 py-2 rounded font-semibold text-sm">Chat en Vivo</button>
+                  <a
+                    href={`tel:${phoneNumber}`}
+                    onClick={() => { if (typeof window !== 'undefined') { window.location.href = `tel:${phoneNumber}` } }}
+                    aria-label={`Llamar al ${phoneNumber}`}
+                    className="bg-red-500 text-white px-4 py-2 rounded font-semibold text-sm inline-flex items-center justify-center"
+                  >
+                    Llamar Ahora
+                  </a>
+                  <button onClick={openChat} className="bg-white border border-red-500 text-red-500 px-4 py-2 rounded font-semibold text-sm">Chat en Vivo</button>
                 </div>
               </div>
             </div>
@@ -136,8 +182,8 @@ export function FAQ() {
                 </form>
                 <div className="mt-6 text-sm text-gray-700">
                   <div className="font-semibold mb-2">También puedes contactarnos:</div>
-                  <div className="flex items-center gap-2 mb-1"><Phone size={16} className="text-red-500" /> (55) 1234-5678</div>
-                  <div className="flex items-center gap-2 mb-1"><Mail size={16} className="text-red-500" /> info@dentalplus.mx</div>
+                  <div className="flex items-center gap-2 mb-1"><Phone size={16} className="text-red-500" /> (55) 3218-3670</div>
+                  <div className="flex items-center gap-2 mb-1"><Mail size={16} className="text-red-500" /> Contacto@clinicasdentalmas.com</div>
                   <div className="flex items-center gap-2"><MessageCircle size={16} className="text-red-500" /> Chat en línea disponible</div>
                 </div>
               </div>

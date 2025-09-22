@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "tag": "Destacada",
+    "title": "Consulta de valoración gratis",
+    "subtitle": "Primera visita sin costo",
+    "description": "Evaluación odontológica completa y plan de tratamiento personalizado sin cargo.",
+    "locations": [],
+    "services": ["Consulta General"],
+    "validUntil": "31 de diciembre de 2025",
+    "spots": 200,
+    "spotsTotal": 500,
+    "conditions": ["Un cupón por paciente", "Sujeto a disponibilidad de agenda"]
+  }
+]

@@ -3,19 +3,22 @@ import Image from 'next/image'
 import { Button } from "./ui/button";
 import { Menu, X, Phone, MessageCircle, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
+import SucursalPickerModal from './SucursalPickerModal';
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 minutes in seconds
+  const [waImageOk, setWaImageOk] = useState(true);
+  const [showAgendarModal, setShowAgendarModal] = useState(false);
 
   const navigation = [
     { name: "Inicio", href: "/" },
     { name: "Quiénes Somos", href: "/quienes-somos" },
     { name: "Sucursales", href: "/sucursales" },
     { name: "Blog", href: "/blog" },
-    { name: "Franquicias", href: "/franquicias" }
+    // { name: "Franquicias", href: "/franquicias" }
   ];
   const pathname = usePathname();
 
@@ -42,7 +45,7 @@ export function Header() {
       {/* Banner Promo */}
       <Link href="/sucursales#promociones" aria-label="Ver promociones" className="block w-full bg-red-600 text-white py-3 animate-pulse">
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-4 text-sm px-4">
-          <span className="font-medium">🎉 ¡Promoción Especial! 50% de descuento en limpieza dental</span>
+          <span className="font-medium">🎉 ¡Promoción especial! Obtén un cupón por tiempo ilimitado</span>
           <div className="flex items-center gap-2 bg-white rounded-full px-3 py-1 text-red-600">
             <Clock size={16} />
             <span className="font-mono font-bold">{formatTime(timeLeft)}</span>
@@ -84,23 +87,26 @@ export function Header() {
             <div className="hidden md:flex items-center space-x-4">
               <div className="flex items-center text-sm text-gray-600">
                 <Phone size={16} className="mr-1" style={{ color: "#FE0000" }} />
-                <span>(55) 1234-5678</span>
+                <span>(55) 3218-3670</span>
               </div>
               {/* WhatsApp Button */}
               <Button 
-                variant="outline" 
                 size="sm"
-                className="border-green-500 text-green-600 hover:bg-green-50"
-                onClick={() => window.open("https://wa.me/5512345678", "_blank")}
+                className="bg-green-500 text-white hover:bg-green-600 px-4 py-2 rounded-md flex items-center"
+                onClick={() => window.open("https://wa.me/5532183670", "_blank")}
               >
-                <MessageCircle size={16} className="mr-1" />
-                WhatsApp
+                {waImageOk ? (
+                  <img src="/icon-whatsapp.svg" alt="WhatsApp" className="w-4 h-4 mr-2" onError={() => setWaImageOk(false)} />
+                ) : (
+                  <MessageCircle size={16} className="mr-2 text-white" />
+                )}
+                <span className="font-medium">WhatsApp</span>
               </Button>
               {/* Reserva Cita Button */}
               <Button 
                 size="sm"
-                className="text-white hover:opacity-90"
-                style={{ backgroundColor: "#FE0000" }}
+                className="text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold"
+                onClick={() => setShowAgendarModal(true)}
               >
                 Reservar Cita
               </Button>
@@ -137,18 +143,21 @@ export function Header() {
               })}
               <div className="px-3 py-2 space-y-2">
                 <Button 
-                  variant="outline" 
                   size="sm"
-                  className="w-full border-green-500 text-green-600 hover:bg-green-50"
+                  className="w-full bg-green-500 text-white hover:bg-green-600 px-4 py-2 rounded-md flex items-center justify-center"
                   onClick={() => window.open("https://wa.me/5512345678", "_blank")}
                 >
-                  <MessageCircle size={16} className="mr-2" />
-                  WhatsApp
+                  {waImageOk ? (
+                    <img src="/icon-whatsapp.svg" alt="WhatsApp" className="w-4 h-4 mr-2" onError={() => setWaImageOk(false)} />
+                  ) : (
+                    <MessageCircle size={16} className="mr-2 text-white" />
+                  )}
+                  <span className="font-medium">WhatsApp</span>
                 </Button>
                 <Button 
                   size="sm"
-                  className="w-full text-white"
-                  style={{ backgroundColor: "#FE0000" }}
+                  className="w-full text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold"
+                  onClick={() => setShowAgendarModal(true)}
                 >
                   Reservar Cita
                 </Button>
@@ -157,6 +166,7 @@ export function Header() {
           </div>
         )}
       </header>
+      <SucursalPickerModal open={showAgendarModal} onClose={() => setShowAgendarModal(false)} />
     </>
   );
 }

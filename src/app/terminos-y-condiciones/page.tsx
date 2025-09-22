@@ -64,7 +64,6 @@ export default function TerminosCondiciones() {
                 <li>Efectivo</li>
                 <li>Tarjetas de crédito y débito (Visa, MasterCard, American Express)</li>
                 <li>Transferencias bancarias</li>
-                <li>Pagos con código QR</li>
                 <li>Planes de financiamiento (sujetos a aprobación crediticia)</li>
               </ul>
               <p className="text-gray-700 leading-relaxed mt-4">
@@ -165,17 +164,16 @@ export default function TerminosCondiciones() {
                 Para cualquier duda, aclaración o comentario sobre estos términos y condiciones, puede contactarnos:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                <p className="text-gray-700"><strong>Teléfono:</strong> +52 56 2156 7557</p>
-                <p className="text-gray-700"><strong>Email:</strong> contacto@dentalmas.com</p>
-                <p className="text-gray-700"><strong>WhatsApp:</strong> +52 56 2156 7557</p>
-                <p className="text-gray-700"><strong>Horarios de atención:</strong> Lunes a Viernes 08:00 - 20:00, Sábados 09:00 - 18:00</p>
+                <p className="text-gray-700"><strong>Teléfono:</strong> +5532183670</p>
+                <p className="text-gray-700"><strong>Email:</strong> Contacto@clinicasdentalmas.com</p>
+                <p className="text-gray-700"><strong>WhatsApp:</strong> +5532183670</p>
+                <p className="text-gray-700"><strong>Horarios de atención:</strong> Lunes a Viernes 08:00 - 18:00, Sábados 09:00 - 14:00</p>
               </div>
             </section>
 
             <section className="border-t pt-8">
               <p className="text-sm text-gray-500 text-center">
                 <strong>Última actualización:</strong> Septiembre 2025<br/>
-                Estos términos y condiciones están sujetos a la legislación mexicana vigente.
               </p>
             </section>
 

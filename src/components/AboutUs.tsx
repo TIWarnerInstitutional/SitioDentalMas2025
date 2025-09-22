@@ -42,7 +42,7 @@ export function AboutUs() {
                 </div>
                 <div>
                   <p className="text-lg text-gray-600 leading-relaxed">
-                    Somos una clínica dental moderna comprometida con brindar la mejor atención odontológica. Con más de 12 años de experiencia, nuestro equipo de profesionales altamente capacitados utiliza tecnología de vanguardia para garantizar tratamientos seguros y efectivos.
+                    Somos una clínica dental moderna comprometida con brindar la mejor atención odontológica. Con más de 10 años de experiencia, nuestro equipo de profesionales altamente capacitados utiliza tecnología de vanguardia para garantizar tratamientos seguros y efectivos.
                   </p>
                 </div>
                 <div>

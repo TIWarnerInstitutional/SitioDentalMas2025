@@ -25,7 +25,9 @@ export default function SucursalesStats() {
   const totalPacientes = (sucursales as Sucursal[]).reduce((acc, s) => acc + (s.pacientesAtendidos || numberFromReviews(String(s.reviews))), 0)
   const ratings = (sucursales as Sucursal[]).map((s) => parseFloat(String(s.satisfaccion || s.rating)) || 0)
   const avgRating = ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : 0
-  const satisfPercent = Math.round((avgRating / 5) * 100)
+  const satisfPercentComputed = Math.round((avgRating / 5) * 100)
+  // Forced display values requested by user
+  const satisfPercent = 99
   const uniqueServicios = new Set((sucursales as Sucursal[]).flatMap((s) => s.servicios || [])).size
 
   const [showAll, setShowAll] = useState(false)
@@ -61,12 +63,12 @@ export default function SucursalesStats() {
         </div>
 
         <div className="bg-white rounded-2xl p-6 shadow flex flex-col items-center justify-center">
-          <div className="text-3xl font-semibold text-red-600">{uniqueServicios}</div>
+          <div className="text-3xl font-semibold text-red-600">95</div>
           <div className="text-sm text-gray-500 mt-2">Especialistas</div>
         </div>
 
         <div className="bg-white rounded-2xl p-6 shadow flex flex-col items-center justify-center">
-          <div className="text-3xl font-semibold text-red-600">{totalSucursales}</div>
+          <div className="text-3xl font-semibold text-red-600">30</div>
           <div className="text-sm text-gray-500 mt-2">Sucursales</div>
         </div>
       </div>

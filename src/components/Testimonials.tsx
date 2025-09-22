@@ -7,10 +7,10 @@ const testimonials = [
     id: 1,
     name: "María González",
     age: 32,
-    treatment: "Ortodoncia Invisible",
+    treatment: "Ortodoncia ",
   image: "/images/Inicio/Testimonials1.jpg",
     rating: 5,
-    testimonial: "Increíble experiencia con la ortodoncia invisible. En 18 meses logré la sonrisa que siempre quise. El equipo fue muy profesional y el tratamiento fue completamente indoloro.",
+    testimonial: "Increíble experiencia con los brackets autoligados . En 18 meses logré la sonrisa que siempre quise. El equipo fue muy profesional y el tratamiento fue completamente indoloro.",
     before: "Dientes apiñados",
     after: "Sonrisa perfectamente alineada"
   },
@@ -39,10 +39,11 @@ const testimonials = [
 ];
 
 const metrics = [
-  { value: "98%", label: "Satisfacción del paciente" },
-  { value: "1,200+", label: "Tratamientos exitosos" },
-  { value: "12+", label: "Años de experiencia" },
-  { value: <span className="flex items-center gap-1">5 <Star className="text-yellow-400" size={18} /></span>, label: "Calificación promedio" }
+  { value: "99%", label: "Satisfacción del paciente" },
+  { value: "+100,000", label: "Tratamientos exitosos" },
+  { value: "10 ", label: "Años de experiencia" },
+  { value: "4.9 ", label: "Calificación promedio" },
+
 ];
 
 export function Testimonials() {

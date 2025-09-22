@@ -1,7 +1,9 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import posts from '../data/blogPosts';
+import SucursalPickerModal from './SucursalPickerModal';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSanitize from 'rehype-sanitize';
@@ -26,6 +28,7 @@ function readingTime(text = '') {
 }
 
 export default function PostView({ post }: { post: Post }) {
+  const [showAgendarModal, setShowAgendarModal] = useState(false);
   // compute similar and recommended
   const similar = posts.filter(p => p.id !== post.id && p.category === post.category).slice(0, 3);
   const recommended = posts.filter(p => p.id !== post.id).slice(0).sort((a,b) => {
@@ -44,10 +47,10 @@ export default function PostView({ post }: { post: Post }) {
                 <div>
                   <span className="inline-block bg-red-100 text-red-700 text-xs font-semibold px-3 py-1 rounded-full">{post.category}</span>
                   <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-4">{post.title}</h1>
-                  <div className="mt-2 text-sm text-gray-500 flex items-center gap-4">
-                    <span>{post.date}</span>
-                    <span>•</span>
-                    <span>{post.author}</span>
+                  <div className="mt-2 text-sm text-gray-600 flex items-center gap-4">
+                    <span className="text-gray-600">{post.date}</span>
+                    <span className="text-gray-400">•</span>
+                    <span className="text-gray-600">{post.author}</span>
                   </div>
                 </div>
               </div>
@@ -59,19 +62,19 @@ export default function PostView({ post }: { post: Post }) {
               )}
 
               <div className="px-6 py-8">
-                <div className="prose prose-lg max-w-none">
-                  <div className="text-sm text-gray-500 mb-3">Lectura: {readingTime(post.content)}</div>
+                <div className="prose prose-lg max-w-none text-gray-800">
+                  <div className="text-sm text-gray-700 mb-3">Lectura: {readingTime(post.content)}</div>
                   <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSanitize, rehypeHighlight]}>{post.content || ''}</ReactMarkdown>
                 </div>
 
                 <div className="mt-8 bg-red-50 border border-red-100 p-6 rounded-lg flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <h4 className="text-lg font-semibold">¿Listo para tu mejor sonrisa?</h4>
-                    <p className="text-gray-600 text-sm">Agenda tu cita con nuestros especialistas y recibe una consulta inicial.</p>
+                    <h4 className="text-lg font-semibold text-gray-900">¿Listo para tu mejor sonrisa?</h4>
+                    <p className="text-gray-900 text-sm">Agenda tu cita con nuestros especialistas y recibe una consulta inicial.</p>
                   </div>
                   <div>
-                    <Link href="/sucursales" className="inline-block bg-red-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-red-700">Agendar Cita</Link>
-                  </div>
+                      <button onClick={() => setShowAgendarModal(true)} className="inline-block bg-red-600 text-white px-5 py-3 rounded-md font-semibold hover:bg-red-700">Agendar Cita</button>
+                    </div>
                 </div>
               </div>
             </article>
@@ -81,21 +84,21 @@ export default function PostView({ post }: { post: Post }) {
           <aside className="lg:col-span-1">
             <div className="space-y-6">
               <div className="bg-white rounded-lg shadow p-4">
-                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-500">{post.author?.split(' ')[0][0] || 'A'}</div>
                   <div>
-                    <div className="font-semibold">{post.author}</div>
+                    <div className="font-semibold text-gray-900">{post.author}</div>
                     <div className="text-xs text-gray-500">Autor del artículo</div>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 mt-3">Especialista en {post.category?.toLowerCase()}. Comprometido con la salud bucal y la educación del paciente.</p>
+                <p className="text-sm text-gray-900 mt-3">Especialista en {post.category?.toLowerCase()}. Comprometido con la salud bucal y la educación del paciente.</p>
               </div>
 
               {/* Artículos similares */}
               <div className="bg-white rounded-lg shadow p-4">
-                <h4 className="font-semibold mb-3">Artículos similares</h4>
+                <h4 className="font-semibold mb-3 text-gray-900">Artículos similares</h4>
                 <div className="space-y-3">
-                  {similar.length === 0 && <div className="text-sm text-gray-500">No hay artículos similares.</div>}
+                  {similar.length === 0 && <div className="text-sm text-gray-900">No hay artículos similares.</div>}
                   {similar.map(s => (
                     <Link key={s.id} href={`/blog/${s.slug}`} className="flex items-center gap-3">
                       <Image src={s.image} alt={s.title} width={80} height={56} className="w-20 h-14 object-cover rounded" />
@@ -107,7 +110,7 @@ export default function PostView({ post }: { post: Post }) {
 
               {/* Recomendados */}
               <div className="bg-white rounded-lg shadow p-4">
-                <h4 className="font-semibold mb-3">Recomendados</h4>
+                <h4 className="font-semibold mb-3 text-gray-900">Recomendados</h4>
                 <div className="space-y-3">
                   {recommended.map(r => (
                     <Link key={r.id} href={`/blog/${r.slug}`} className="flex items-center gap-3">
@@ -120,6 +123,7 @@ export default function PostView({ post }: { post: Post }) {
             </div>
           </aside>
         </div>
+        <SucursalPickerModal open={showAgendarModal} onClose={() => setShowAgendarModal(false)} onSelect={() => {}} />
       </div>
     </main>
   );

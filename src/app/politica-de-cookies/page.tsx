@@ -22,10 +22,10 @@ export default function PoliticaCookies() {
 
           <h2 className="text-2xl font-bold text-[#FE0000]">Contacto</h2>
           <p>
-            Si tiene dudas sobre nuestra política de cookies, escríbanos a <strong>contacto@dentalmas.com</strong>.
+            Si tiene dudas sobre nuestra política de cookies, escríbanos a <strong>Contacto@clinicasdentalmas.com</strong>.
           </p>
 
-          <p className="text-sm text-gray-500">Última actualización: Agosto 2025</p>
+          <p className="text-sm text-gray-500">Última actualización: Septiembre 2025</p>
         </div>
       </div>
     </main>

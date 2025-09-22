@@ -10,7 +10,7 @@ export default function AvisoPrivacidad() {
 
           <h2 className="text-2xl font-bold text-[#FE0000]">Responsable del tratamiento</h2>
           <p>
-            Dental Más (en adelante, &quot;nosotros&quot;), con domicilio en la dirección de nuestras clínicas y correo electrónico <strong>contacto@dentalmas.com</strong>, es responsable del tratamiento de sus datos personales.
+            Dental Más (en adelante, &quot;nosotros&quot;), con domicilio en la dirección de nuestras clínicas y correo electrónico <strong>Contacto@clinicasdentalmas.com</strong>, es responsable del tratamiento de sus datos personales.
           </p>
 
           <h2 className="text-2xl font-bold text-[#FE0000]">Datos que recopilamos</h2>
@@ -27,7 +27,7 @@ export default function AvisoPrivacidad() {
 
           <h2 className="text-2xl font-bold text-[#FE0000]">Derechos ARCO y contacto</h2>
           <p>
-            Usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos (derechos ARCO). Para ejercerlos, comuníquese al correo <strong>contacto@dentalmas.com</strong> o al teléfono <strong>56 21567557</strong>.
+            Usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos (derechos ARCO). Para ejercerlos, comuníquese al correo <strong>Contacto@clinicasdentalmas.com</strong> o al teléfono <strong>+5532183670</strong>.
           </p>
 
           <h2 className="text-2xl font-bold text-[#FE0000]">Transferencias</h2>
