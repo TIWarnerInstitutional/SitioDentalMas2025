@@ -83,7 +83,7 @@ export function Footer() {
                   <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center"><Phone size={18} /></div>
                   <div>
                     <p className="font-semibold">Línea de Telefono</p>
-                    <p className="text-red-400">(55) 3218-3670</p>
+                    <p className="text-red-400">+5215535872711</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">

@@ -174,7 +174,7 @@ export function FAQ() {
                 </div>
                 <div className="mt-6 text-sm text-gray-700">
                   <div className="font-semibold mb-2">También puedes contactarnos:</div>
-                  <div className="flex items-center gap-2 mb-1"><Phone size={16} className="text-red-500" /> (55) 3218-3670</div>
+                  <div className="flex items-center gap-2 mb-1"><Phone size={16} className="text-red-500" /> +5215535872711</div>
                   <div className="flex items-center gap-2 mb-1"><Mail size={16} className="text-red-500" /> Contacto@clinicasdentalmas.com</div>
                   <div className="flex items-center gap-2"><MessageCircle size={16} className="text-red-500" /> Chat en línea disponible</div>
                 </div>

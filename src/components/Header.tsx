@@ -87,7 +87,7 @@ export function Header() {
             <div className="hidden md:flex items-center space-x-4">
               <div className="flex items-center text-sm text-gray-600">
                 <Phone size={16} className="mr-1" style={{ color: "#FE0000" }} />
-                <span>(55) 3218-3670</span>
+                <span>+5215535872711</span>
               </div>
               {/* WhatsApp Button */}
               <Button 

@@ -10,6 +10,6 @@
     "validUntil": "31 de diciembre de 2025",
     "spots": 200,
     "spotsTotal": 500,
-    "conditions": ["Un cupón por paciente", "Sujeto a disponibilidad de agenda"]
+    "conditions": ["Un cupón por paciente", "Sujeto a disponibilidad de agenda", "Al adquirir un plan de tratamiento"]
   }
 ]
