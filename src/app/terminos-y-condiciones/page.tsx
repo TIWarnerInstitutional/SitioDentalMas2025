@@ -164,9 +164,9 @@ export default function TerminosCondiciones() {
                 Para cualquier duda, aclaración o comentario sobre estos términos y condiciones, puede contactarnos:
               </p>
               <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                <p className="text-gray-700"><strong>Teléfono:</strong> +5532183670</p>
+                <p className="text-gray-700"><strong>Teléfono:</strong> +5215535872711</p>
                 <p className="text-gray-700"><strong>Email:</strong> Contacto@clinicasdentalmas.com</p>
-                <p className="text-gray-700"><strong>WhatsApp:</strong> +5532183670</p>
+                <p className="text-gray-700"><strong>WhatsApp:</strong> +5215535872711</p>
                 <p className="text-gray-700"><strong>Horarios de atención:</strong> Lunes a Viernes 08:00 - 18:00, Sábados 09:00 - 14:00</p>
               </div>
             </section>
