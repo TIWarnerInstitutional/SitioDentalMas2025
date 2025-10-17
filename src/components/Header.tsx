@@ -93,7 +93,7 @@ export function Header() {
               <Button 
                 size="sm"
                 className="bg-green-500 text-white hover:bg-green-600 px-4 py-2 rounded-md flex items-center"
-                onClick={() => window.open("https://wa.me/5532183670", "_blank")}
+                onClick={() => window.open("https://wa.me/5215535872711", "_blank")}
               >
                 {waImageOk ? (
                   <img src="/icon-whatsapp.svg" alt="WhatsApp" className="w-4 h-4 mr-2" onError={() => setWaImageOk(false)} />
@@ -156,7 +156,7 @@ export function Header() {
                 <Button
                   size="sm"
                   className="w-full bg-green-500 text-white hover:bg-green-600 px-4 py-3 rounded-md flex items-center justify-center"
-                  onClick={() => window.open("https://wa.me/5512345678", "_blank")}
+                  onClick={() => window.open("https://wa.me/5215535872711", "_blank")}
                 >
                   {waImageOk ? (
                     <img src="/icon-whatsapp.svg" alt="WhatsApp" className="w-5 h-5 mr-3" onError={() => setWaImageOk(false)} />

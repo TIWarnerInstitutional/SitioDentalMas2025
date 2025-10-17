@@ -329,7 +329,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
         <div className="fixed inset-0 z-[99999] flex items-center justify-center">
           <div className="relative z-[100000] bg-white rounded-lg shadow-lg max-w-md w-full p-6 mx-4">
             <h3 className="text-xl font-bold mb-2">¡Felicidades!</h3>
-            <p className="mb-4">Has obtenido un cupón para <strong>{modalTitle}</strong>. Presenta este código en nuestras sucursales o indícale a un asesor que tienes un cupón.</p>
+            <p className="mb-4">Has obtenido un cupón para <strong>{modalTitle}</strong> al adquirir un tratamiento en clinica. Presenta este código en nuestras sucursales o indícale a un asesor que tienes un cupón.</p>
             <div className="bg-gray-100 rounded p-3 text-center mb-4">
               <div className="text-sm text-gray-500">Código</div>
               <div className="text-2xl font-mono font-semibold mt-1">{modalCode}</div>

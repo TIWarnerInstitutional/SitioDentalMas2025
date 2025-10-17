@@ -44,7 +44,7 @@ export function Footer() {
     </svg>
   );
   const socialLinks = [
-    { icon: WhatsApp, label: "WhatsApp", href: "https://wa.me/525532183670" },
+    { icon: WhatsApp, label: "WhatsApp", href: "https://wa.me/5215535872711" },
     { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/dentalmas.mx" },
     { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/dentalmas.mx" },
     { icon: TikTok, label: "TikTok", href: "https://www.tiktok.com/@dentalmas.mx" }
