@@ -249,7 +249,7 @@ Elige entre más de 30 clínicas para cuidar tu salud dental. Encuentra la ubica
         <h2 className="text-xl font-semibold mb-2">¿No encuentras una sucursal cerca?</h2>
         <p className="mb-4">Estamos expandiendo constantemente. Contáctanos para más información.</p>
         <a
-          href={"https://wa.me/525532183670?text=" + encodeURIComponent("Hola, deseo recibir información sobre nuevas sucursales y ser contactado.")}
+          href={"https://wa.me/5215535872711?text=" + encodeURIComponent("Hola, deseo recibir información sobre nuevas sucursales y ser contactado.")}
           target="_blank"
           rel="noopener noreferrer"
           className="bg-red-600 text-white font-semibold rounded p-3 w-full inline-block text-center hover:bg-red-700 transition"
