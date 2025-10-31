@@ -125,7 +125,7 @@ export function PaymentOptions() {
                 </div>
               )}
               <a
-                href={`https://wa.me/525532183670?text=${encodeURIComponent(`Hola, quiero información sobre sus opciones de financiamiento`)}`}
+                href={`https://wa.me/5215535872711?text=${encodeURIComponent(`Hola, quiero información sobre sus opciones de financiamiento`)}`}
                 target="_blank"
                 rel="noreferrer"
                 className={`mt-auto inline-flex items-center justify-center px-4 py-2 rounded-full font-semibold border ${plan.highlight ? "bg-red-500 text-white border-red-500" : "bg-white text-red-500 border-red-500"}`}

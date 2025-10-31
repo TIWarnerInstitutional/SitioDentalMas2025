@@ -27,7 +27,7 @@ export default function AvisoPrivacidad() {
 
           <h2 className="text-2xl font-bold text-[#FE0000]">Derechos ARCO y contacto</h2>
           <p>
-            Usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos (derechos ARCO). Para ejercerlos, comuníquese al correo <strong>Contacto@clinicasdentalmas.com</strong> o al teléfono <strong>+5532183670</strong>.
+            Usted tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos (derechos ARCO). Para ejercerlos, comuníquese al correo <strong>Contacto@clinicasdentalmas.com</strong> o al teléfono <strong>+5215535872711</strong>.
           </p>
 
           <h2 className="text-2xl font-bold text-[#FE0000]">Transferencias</h2>
