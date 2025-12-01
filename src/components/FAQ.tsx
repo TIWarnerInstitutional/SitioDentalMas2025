@@ -111,8 +111,23 @@ export function FAQ() {
   }, []);
 
   return (
-    <section id="faq" className="py-20 bg-gray-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="relative py-20 bg-gray-50 overflow-hidden">
+      {/* Copos de nieve decorativos de fondo */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+        {[...Array(25)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-2xl sm:text-3xl text-red-400"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+          >
+            ❄️
+          </div>
+        ))}
+      </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center mb-8">
           <div className="bg-red-500 rounded-full w-14 h-14 flex items-center justify-center mb-4">
             <HelpCircle className="text-white" size={32} />

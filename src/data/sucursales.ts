@@ -512,7 +512,33 @@ const sucursales = [
     "mapBtn": "Ver en Mapa",
     AgendaOnline: "https://ff.healthatom.io/g6DVaW"
 
+  },
+  {
+  "nombre": "Dental Más Durango",
+  "mapsUrl": "https://share.google/jnpsFAq2RKkLOx21N",
+  "vigencia": "31 de diciembre 2025",
+    "lat": 24.0277056,
+    "lng": -104.6551482,
+    "direccion": "Av. 20 de Noviembre 808-800, Nueva Vizcaya, 34270 Durango, Dgo.",
+    "ciudad": "Durango",
+    "cp": "34270",
+    "colonia": "Nueva Vizcaya",
+    "telefono": "+5216182116847",
+    "horario": "Lun-Vie: 10:00-19:00, Sáb: 10:00-14:00",
+    "promocion": "¡Primera consulta gratis en tu primera visita!",
+    "servicios": [],
+    "Promociones": [],
+    "caracteristicas": [],
+    "comoLlegar": [],
+    "imagen": "",
+    "rating": "4.5",
+    "reviews": "5 reseñas",
+    "btn": "Agendar Cita en Durango",
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://ff.healthatom.io/ojrKTd"
+
   }
+  
 ];
 
 function numberFromReviews(rev?: string) {

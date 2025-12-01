@@ -1,5 +1,7 @@
 
 import { CreditCard, Banknote, Calendar, Check } from "lucide-react";
+import { SeasonalBackground } from './SeasonalDecorations';
+import { CURRENT_SEASON } from '../config/season';
 
 const paymentMethods = [
   {
@@ -76,8 +78,10 @@ const plans: Plan[] = [
 
 export function PaymentOptions() {
   return (
-    <section id="pagos" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pagos" className="relative py-20 bg-white overflow-hidden">
+      {/* Decoraciones de fondo */}
+      <SeasonalBackground season={CURRENT_SEASON} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-2">Formas de Pago y Financiamiento</h2>
         <p className="text-gray-600 text-center mb-8">Ofrecemos múltiples opciones de pago y planes de financiamiento flexibles para que puedas acceder al tratamiento dental que necesitas.</p>
 

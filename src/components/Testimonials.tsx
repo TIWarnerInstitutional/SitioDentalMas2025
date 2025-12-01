@@ -1,6 +1,8 @@
 
 import { Star } from "lucide-react";
 import Image from "next/image";
+import { SeasonalBackground } from './SeasonalDecorations';
+import { CURRENT_SEASON } from '../config/season';
 
 const testimonials = [
   {
@@ -48,8 +50,10 @@ const metrics = [
 
 export function Testimonials() {
   return (
-    <section id="testimonios" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="testimonios" className="relative py-20 bg-gray-50 overflow-hidden">
+      {/* Decoraciones de fondo */}
+      <SeasonalBackground season={CURRENT_SEASON} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-2">Lo que dicen nuestros pacientes</h2>
         <p className="text-gray-600 text-center mb-8">Casos reales de transformación dental. Conoce las experiencias de quienes confiaron en nosotros para mejorar su sonrisa y calidad de vida.</p>
 

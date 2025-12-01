@@ -5,6 +5,8 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import ChatbotWidget from "../components/ChatbotWidget";
 import CookieAlert from "../components/CookieAlert";
+import { SeasonalDecorations, SeasonalBackground } from "../components/SeasonalDecorations";
+import { CURRENT_SEASON } from "../config/season";
 
 // fonts intentionally left to be included via CSS or added later if needed
 
@@ -25,7 +27,10 @@ export default function RootLayout({
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5DTV0QV57"></script>
             <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-G5DTV0QV57');`}} />
           </head>
-          <body className="bg-gray-50">
+          <body className="bg-gray-50 relative">
+            {/* Decoraciones de temporada en todas las páginas */}
+            <SeasonalDecorations season={CURRENT_SEASON} />
+            <SeasonalBackground season={CURRENT_SEASON} />
             <Header />
             {children}
             <ChatbotWidget />

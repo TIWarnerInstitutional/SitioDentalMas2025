@@ -1,6 +1,8 @@
 "use client";
 import { Award, Users, Heart, Shield } from "lucide-react";
 import Image from "next/image";
+import { SeasonalBackground } from './SeasonalDecorations';
+import { CURRENT_SEASON } from '../config/season';
 
 export function AboutUs() {
   const features = [
@@ -27,8 +29,10 @@ export function AboutUs() {
   ];
 
   return (
-    <section id="quienes-somos" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="quienes-somos" className="relative py-20 bg-white overflow-hidden">
+      {/* Decoraciones de fondo */}
+      <SeasonalBackground season={CURRENT_SEASON} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
   <div className="grid lg:grid-cols-2 gap-16 items-stretch">
           {/* Content */}
           <div>

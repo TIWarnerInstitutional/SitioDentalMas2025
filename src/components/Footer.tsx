@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { Phone, Mail, MapPin, Facebook, Instagram, Clock, Award, Shield } from "lucide-react";
+import { useState, useEffect } from 'react';
 
 const services = [
   { name: "Consulta General", popular: false },
@@ -23,9 +24,6 @@ const quickLinks = [
 
 import sucursales from '../data/sucursales';
 
-// take first 2 sucursales for footer display (can change order in data file)
-const footerLocations = (sucursales as any[]).slice(0, 2);
-
 const certifications = [
   { icon: Award, text: "Certificado COFEPRIS" },
   { icon: Shield, text: "Protocolos de Bioseguridad COVID-19" },
@@ -33,6 +31,20 @@ const certifications = [
 ];
 
 export function Footer() {
+  // Seleccionar índice aleatorio solo al cargar el componente
+  const [startIndex] = useState(() => {
+    // Generar un índice aleatorio que permita mostrar 2 sucursales
+    const maxIndex = Math.max(0, sucursales.length - 2);
+    return Math.floor(Math.random() * (maxIndex + 1));
+  });
+
+  // Obtener las 2 sucursales a partir del índice aleatorio
+  const footerLocations = (sucursales as any[]).slice(startIndex, startIndex + 2);
+  // Si solo hay una sucursal o llegamos al final, completar con las primeras
+  while (footerLocations.length < 2 && sucursales.length > footerLocations.length) {
+    footerLocations.push(sucursales[footerLocations.length]);
+  }
+
   const TikTok = ({ size = 20, className = "", ...props }: { size?: number; className?: string } & React.SVGProps<SVGSVGElement>) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className} {...props}>
       <path d="M12 2v8.18a3.82 3.82 0 1 0 3.82 3.82V7.5h2.36V3.75H12z" fill="currentColor" />
@@ -193,8 +205,11 @@ export function Footer() {
             {/* Locations */}
             <div>
               <div className="space-y-6">
-                {footerLocations.map((s: any) => (
-                  <div key={s.nombre} className="space-y-2 p-3 bg-gray-800 rounded-lg hover:bg-gray-750 transition-colors">
+                {footerLocations.map((s: any, idx: number) => (
+                  <div 
+                    key={`${s.nombre}-${idx}`} 
+                    className="space-y-2 p-3 bg-gray-800 rounded-lg hover:bg-gray-750 transition-colors"
+                  >
                     <h4 className="font-semibold text-red-400">{s.nombre}</h4>
                     <div className="flex items-start space-x-2">
                       <MapPin size={14} className="text-gray-400 mt-1 flex-shrink-0" />

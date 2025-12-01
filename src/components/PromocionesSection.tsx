@@ -28,21 +28,32 @@ type Promocion = {
 }
 
 export default function PromocionesSection({ initialSelectedSucursalName }: Props) {
-  // Datos estáticos de ejemplo (puedes mover promociones a un data file)
-  const stats = [
-    { label: 'Promociones Activas', value: 1 },
+  const [promocionesState, setPromocionesState] = useState<Promocion[]>([])
+  
+  // Datos dinámicos calculados desde las promociones cargadas
+  const stats = useMemo(() => [
+    { label: 'Promociones Activas', value: promocionesState.length },
     { label: 'Descuento Máximo', value: 'Gratis' },
     { label: 'Pacientes Beneficiados', value: '+500k' },
-    { label: 'Ofertas Destacadas', value: 1 }
-  ]
-
-  const [promocionesState, setPromocionesState] = useState<Promocion[]>([])
+    { label: 'Ofertas Destacadas', value: promocionesState.filter(p => p.tag === 'Destacada').length }
+  ], [promocionesState])
 
   useEffect(() => {
     // Load promotions from localStorage if available, otherwise seed from data/promociones.json
     async function loadLocal() {
       try {
         if (typeof window === 'undefined') return
+        
+        // Versión para invalidar caché cuando se agregan nuevas promociones
+        const PROMO_VERSION = 'v5'; // Incrementa esto cuando agregues promociones
+        const storedVersion = localStorage.getItem('promociones_version');
+        
+        // Si la versión cambió, limpiar el caché
+        if (storedVersion !== PROMO_VERSION) {
+          localStorage.removeItem('promociones_seed');
+          localStorage.setItem('promociones_version', PROMO_VERSION);
+        }
+        
         const raw = localStorage.getItem('promociones_seed')
         if (raw) {
           const parsed = JSON.parse(raw)
@@ -74,7 +85,10 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
 
   // Cupones (un código por promoción, el mismo para todos los cupones de esa oferta)
   const promoCodes: Record<number, string> = {
-    1: 'DMASFREE'
+    1: 'Valoracion200',
+    2: 'Estandar999',
+    3: 'BlanquemientoSur1899',
+    4: 'BlanquemientoNorte2899',
   }
 
   const [modalVisible, setModalVisible] = useState(false)
@@ -273,7 +287,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
           <div className="text-center text-gray-500 col-span-full">No hay promociones para la selección actual.</div>
         )}
 
-  {promocionesShown.slice(0, 2).map((p) => {
+  {promocionesShown.map((p) => {
     const pct = Math.round((p.spots / Math.max(1, p.spotsTotal)) * 100)
     const _firstSucursal = getFirstSucursalForPromotion(p)
     const code = promoCodes[p.id] || 'CUPON'
@@ -312,8 +326,7 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
                 </ul>
               </div>
 
-              <div className="flex items-center justify-between mt-4">
-                <div className="text-sm text-gray-500">Disponible en: {p.locations.length === (sucursales as Sucursal[]).length ? 'Todas las sucursales' : p.locations.join(', ')}</div>
+              <div className="flex items-center justify-end mt-4">
                 {claimedPromos.includes(p.id) ? (
                   <button disabled className="bg-gray-300 text-gray-600 rounded px-3 py-2">Cupón reclamado</button>
                 ) : (

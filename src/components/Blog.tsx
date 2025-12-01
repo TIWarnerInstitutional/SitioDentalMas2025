@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Calendar, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { SeasonalBackground } from './SeasonalDecorations';
+import { CURRENT_SEASON } from '../config/season';
 
 const categories = [
   "Todo", "Implantología", "Ortodoncia", "Cuidado Dental", "Psicología Dental", "Emergencias"
@@ -59,8 +61,10 @@ export function Blog({ showAll = false }: BlogProps) {
   }, [selected, showAll]);
 
   return (
-    <section id="blog" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="blog" className="relative py-20 bg-white overflow-hidden">
+      {/* Decoraciones de fondo */}
+      <SeasonalBackground season={CURRENT_SEASON} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 className="text-4xl font-bold text-gray-900 text-center mb-2">Blog de Salud Dental</h2>
         <p className="text-gray-600 text-center mb-8">Descubre consejos profesionales, las últimas tendencias en odontología y todo lo que necesitas saber para mantener una sonrisa saludable.</p>
 

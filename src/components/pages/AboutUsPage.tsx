@@ -5,6 +5,8 @@ import { useState } from 'react';
 import SucursalPickerModal from '../SucursalPickerModal';
 import Image from "next/image";
 import { Heart, Users, Zap, ShieldCheck, Award, Smile, Target, CheckCircle } from "lucide-react";
+import { SeasonalBackground } from '../SeasonalDecorations';
+import { CURRENT_SEASON } from '../../config/season';
 export function AboutUsPage() {
 	const [showAgendarModal, setShowAgendarModal] = useState(false);
 			// Datos para secciones nuevas
@@ -46,10 +48,12 @@ export function AboutUsPage() {
 			];
 
 			return (
-				<div className="min-h-screen bg-gray-50 text-gray-900">
-					<section className="relative py-20 lg:py-32 bg-gradient-to-br from-pink-50 to-white">
-						<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-							<div className="inline-block bg-pink-100 text-pink-600 px-4 py-2 rounded-full mb-6 border border-pink-200">Clínica Dental de Confianza</div>
+				<div className="min-h-screen bg-gray-50 text-gray-900 relative">
+				<SeasonalBackground season={CURRENT_SEASON} />
+				<section className="relative py-20 lg:py-32 bg-gradient-to-br from-pink-50 to-white overflow-hidden">
+					<SeasonalBackground season={CURRENT_SEASON} />
+					<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+						<div className="inline-block bg-pink-100 text-pink-600 px-4 py-2 rounded-full mb-6 border border-pink-200">Clínica Dental de Confianza</div>
 							<h1 className="text-5xl lg:text-7xl font-bold text-gray-900 text-center mb-4">
 								Conoce a <span className="text-red-600 relative">Dental+<span className="block h-1 bg-red-400 w-40 mx-auto mt-3 rounded"></span></span>
 							</h1>

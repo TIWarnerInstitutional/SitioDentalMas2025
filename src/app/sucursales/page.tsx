@@ -8,6 +8,8 @@ import Image from 'next/image';
 import SucursalesStats from '../../components/SucursalesStats';
 import PromocionesSection from '../../components/PromocionesSection';
 import SucursalesSection from '../../components/SucursalesSection';
+import { SeasonalBackground } from '../../components/SeasonalDecorations';
+import { CURRENT_SEASON } from '../../config/season';
 
 // dynamic import intentionally not used on this page; map component rendered inside SucursalesSection
 
@@ -115,19 +117,24 @@ export default function SucursalesPage() {
     }
   }
   return (
-  <main className="bg-[#fff6f6] min-h-screen pb-12" style={{ color: '#000' }}>
-      <section className="max-w-5xl mx-auto pt-16 pb-8 px-4">
-        <h1 className="text-5xl font-light text-center mb-2">
+  <main className="bg-[#fff6f6] min-h-screen pb-12 relative overflow-hidden" style={{ color: '#000' }}>
+      <SeasonalBackground season={CURRENT_SEASON} />
+      <section className="max-w-5xl mx-auto pt-16 pb-8 px-4 relative">
+        <SeasonalBackground season={CURRENT_SEASON} />
+        <h1 className="text-5xl font-light text-center mb-2 relative z-10">
           <span className="text-gray-600">Nuestras</span> <span className="font-bold text-red-600">Sucursales</span>
         </h1>
-        <p className="text-center text-lg text-gray-600 mb-8">
+        <p className="text-center text-lg text-gray-600 mb-8 relative z-10">
 Elige entre más de 30 clínicas para cuidar tu salud dental. Encuentra la ubicación más conveniente para ti.
 
         </p>
         {/* Use the shared SucursalesSection component (handles layout and map) */}
-        <SucursalesSection />
+        <div className="relative z-10">
+          <SucursalesSection />
+        </div>
       </section>
-      <section className="max-w-5xl mx-auto px-4">
+      <section className="max-w-5xl mx-auto px-4 relative">
+        <SeasonalBackground season={CURRENT_SEASON} />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
   {((showAll ? filtered : filtered.slice(0, 3)) as Sucursal[]).map((sucursal: Sucursal, idx: number) => {
           const parsed = parseHorario(sucursal.horario);
