@@ -87,8 +87,8 @@ export default function PromocionesSection({ initialSelectedSucursalName }: Prop
   const promoCodes: Record<number, string> = {
     1: 'Valoracion200',
     2: 'Estandar999',
-    3: 'BlanquemientoSur1899',
-    4: 'BlanquemientoNorte2899',
+    3: 'BlanqueamientoSur1899',
+    4: 'BlanqueamientoNorte2899',
   }
 
   const [modalVisible, setModalVisible] = useState(false)
