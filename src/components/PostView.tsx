@@ -123,7 +123,7 @@ export default function PostView({ post }: { post: Post }) {
             </div>
           </aside>
         </div>
-        <SucursalPickerModal open={showAgendarModal} onClose={() => setShowAgendarModal(false)} onSelect={() => {}} />
+        <SucursalPickerModal open={showAgendarModal} onClose={() => setShowAgendarModal(false)} />
       </div>
     </main>
   );

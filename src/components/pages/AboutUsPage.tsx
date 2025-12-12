@@ -226,9 +226,7 @@ export function AboutUsPage() {
 								<button onClick={() => setShowAgendarModal(true)} className="bg-red-600 text-white px-6 py-3 rounded font-semibold shadow hover:bg-red-700 transition">Agendar Consulta Gratuita</button>
 							</section>
 
-							<SucursalPickerModal open={showAgendarModal} onClose={() => setShowAgendarModal(false)} onSelect={() => {}} />
-
-							{/* Footer eliminado, ahora solo se usa el global */}
+                                                        <SucursalPickerModal open={showAgendarModal} onClose={() => setShowAgendarModal(false)} />							{/* Footer eliminado, ahora solo se usa el global */}
 						</div>
 					);
 }

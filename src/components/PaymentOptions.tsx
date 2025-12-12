@@ -51,7 +51,7 @@ const plans: Plan[] = [
 
   },
   {
-    title: "Finanaciamiento Flexible",
+    title: "Financiamiento Flexible",
     duration: "$8000-$200,000",
     interest: "Interés preferencial",
     features: [

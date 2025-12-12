@@ -54,7 +54,7 @@ const faqs = [
 
 export function FAQ() {
   const [open, setOpen] = useState(-1);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", topic: "", question: "" });
+  const [_form, _setForm] = useState({ name: "", email: "", phone: "", topic: "", question: "" });
   const phoneNumber = "+5215535872711"; // Updated phone number
 
   const openChat = () => {

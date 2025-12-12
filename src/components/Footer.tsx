@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/link';
 import { Phone, Mail, MapPin, Facebook, Instagram, Clock, Award, Shield } from "lucide-react";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const services = [
   { name: "Consulta General", popular: false },

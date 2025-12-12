@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { SeasonalBackground } from './SeasonalDecorations';
 import { CURRENT_SEASON } from '../config/season';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import SucursalPickerModal from './SucursalPickerModal';
 
 export function BannerMes() {
@@ -106,12 +107,13 @@ export function BannerMes() {
             >
               Ver Sucursales
             </Button>
-            <Button 
-              className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg"
-              onClick={() => setShowAgendarModal(true)}
-            >
-              Agendar Cita
-            </Button>
+            <Link href="/cita">
+              <Button 
+                className="bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg"
+              >
+                Agendar Cita
+              </Button>
+            </Link>
           </div>
         </div>
 

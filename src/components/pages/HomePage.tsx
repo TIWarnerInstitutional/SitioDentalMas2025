@@ -48,9 +48,6 @@ export default function HomePage() {
 			<SucursalPickerModal
 			  open={showAgendarModal}
 			  onClose={() => setShowAgendarModal(false)}
-							onSelect={(_s) => {
-								// currently do nothing on select; keep href empty as requested
-							}}
 			/>
 		</div>
 		);

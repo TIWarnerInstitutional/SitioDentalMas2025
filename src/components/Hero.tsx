@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import SucursalPickerModal from './SucursalPickerModal';
 
 export function Hero() {
@@ -38,13 +39,14 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
-              <Button 
-                size="lg" 
-                className="bg-white text-red-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-gray-100 transition-all text-base sm:text-lg font-semibold shadow-lg w-full sm:w-auto"
-                onClick={() => setShowAgendarModal(true)}
-              >
-                📅 Agendar Cita
-              </Button>
+              <Link href="/cita">
+                <Button 
+                  size="lg" 
+                  className="bg-white text-red-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-gray-100 transition-all text-base sm:text-lg font-semibold shadow-lg w-full sm:w-auto"
+                >
+                  📅 Agendar Cita
+                </Button>
+              </Link>
               <Button 
                 variant="outline" 
                 size="lg" 

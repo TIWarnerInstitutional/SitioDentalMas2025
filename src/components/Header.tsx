@@ -103,13 +103,14 @@ export function Header() {
                 <span className="font-medium">WhatsApp</span>
               </Button>
               {/* Reserva Cita Button */}
-              <Button 
-                size="sm"
-                className="text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold"
-                onClick={() => setShowAgendarModal(true)}
-              >
-                Reservar Cita
-              </Button>
+              <Link href="/cita">
+                <Button 
+                  size="sm"
+                  className="text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md font-semibold"
+                >
+                  Reservar Cita
+                </Button>
+              </Link>
             </div>
             {/* Mobile menu button */}
             <div className="md:hidden">
@@ -166,13 +167,15 @@ export function Header() {
                   <span className="font-medium">WhatsApp</span>
                 </Button>
 
-                <Button
-                  size="sm"
-                  className="w-full text-white bg-red-600 hover:bg-red-700 px-4 py-3 rounded-md font-semibold"
-                  onClick={() => { setShowAgendarModal(true); setIsMenuOpen(false); }}
-                >
-                  Reservar Cita
-                </Button>
+                <Link href="/cita" className="w-full">
+                  <Button
+                    size="sm"
+                    className="w-full text-white bg-red-600 hover:bg-red-700 px-4 py-3 rounded-md font-semibold"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Reservar Cita
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
