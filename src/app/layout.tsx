@@ -13,9 +13,6 @@ import { CURRENT_SEASON } from "../config/season";
 export const metadata: Metadata = {
   title: "Dental+ | Clínica Dental en CDMX",
   description: "Transformando sonrisas desde 2012. Clínica dental líder en México con tecnología de vanguardia y especialistas certificados.",
-  icons: {
-    icon: '/favicon.png',
-  },
 };
 
 export default function RootLayout({
