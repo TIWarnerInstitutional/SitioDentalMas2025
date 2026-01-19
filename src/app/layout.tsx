@@ -23,6 +23,10 @@ export default function RootLayout({
   return (
         <html lang="es">
           <head>
+            {/* Favicon */}
+            <link rel="icon" href="/favicon.png" type="image/png" />
+            <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+            <link rel="apple-touch-icon" href="/favicon.png" />
             {/* Google tag (gtag.js) - ID: G-G5DTV0QV57 */}
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5DTV0QV57"></script>
             <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-G5DTV0QV57');`}} />
