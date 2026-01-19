@@ -7,7 +7,7 @@
     "description": "Evaluación odontológica completa y plan de tratamiento personalizado.",
     "locations": [],
     "services": ["Consulta General"],
-    "validUntil": "31 de diciembre de 2025",
+    "validUntil": "31 de Enero de 2026",
     "spots": 300,
     "spotsTotal": 500,
     "conditions": ["Un cupón por paciente", "Sujeto a disponibilidad de agenda"]
@@ -20,7 +20,7 @@
     "description": "Consulta de Diagnostico + Radiografía panorámica + Radiografía Lateral + Fotos y Trazados + Cambio de Ligas + Limpieza ultrasónica",
     "locations": [],
     "services": ["Ortodoncia"],
-    "validUntil": "31 de diciembre de 2025",
+    "validUntil": "31 de Enero de 2026",
     "spots": 350,
     "spotsTotal": 500,
     "conditions": ["Un cupón por paciente", "Sujeto a disponibilidad de agenda"]
@@ -32,9 +32,9 @@
     "title": "Blanquemiento + Limpieza Dental Ultrasónica $1899",
     "subtitle": "",
     "description": "Limpia tus dientes a fondo y los aclara para una sonrisa más brillante.",
-    "locations": [],
+    "locations": ["Atlixco, Campeche, Comitán, Córdoba, Guadalajara, Mérida, San Cristóbal, Tonalá, Tuxpam, Tuxtla 7ma, Xalapa, Pachuca, Real del Bosque"],
     "services": ["Integral"],
-    "validUntil": "31 de diciembre de 2025",
+    "validUntil": "31 de Enero de 2026",
     "spots": 15,
     "spotsTotal": 500,
     "conditions": ["Un cupón por paciente", "Sujeto a disponibilidad de agenda"]
@@ -46,9 +46,9 @@
     "title": "Blanquemiento + Limpieza Dental Ultrasónica $2899",
     "subtitle": "",
     "description": "Limpia tus dientes a fondo y los aclara para una sonrisa más brillante.",
-    "locations": [],
+    "locations": ["Aguascalientes,Cancún,Durango,Leon,Leon Valle,Mexicali,Playa del Carmen,Puerto Vallarta, San Luis Potosí,San luis Rio Colorado y Condesa"],
     "services": ["Integral"],
-    "validUntil": "31 de diciembre de 2025",
+    "validUntil": "31 de Enero de 2026",
     "spots": 10,
     "spotsTotal": 500,
     "conditions": ["Un cupón por paciente", "Sujeto a disponibilidad de agenda"]

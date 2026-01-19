@@ -86,7 +86,7 @@ export function BannerMes() {
         {/* Encabezado */}
         <div className="text-center mb-6 sm:mb-7 md:mb-8">
           <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-1.5 rounded-full mb-3 text-xs font-bold shadow-lg">
-            <span>🎄 Especial de Navidad 2025</span>
+            <span>🎉 Ofertas Especiales 2026</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 sm:mb-4">
@@ -171,7 +171,7 @@ export function BannerMes() {
                     
                     {/* Badge flotante */}
                     <div className="absolute -top-2.5 lg:-top-3 left-4 lg:left-8 bg-gradient-to-r from-red-600 to-red-700 px-3 lg:px-5 py-1.5 lg:py-2 rounded-lg lg:rounded-xl shadow-xl z-10 border-2 border-white">
-                      <span className="text-white text-[9px] lg:text-xs font-black uppercase tracking-wider">🎄 Navidad 2025</span>
+                      <span className="text-white text-[9px] lg:text-xs font-black uppercase tracking-wider">🎉 Ofertas 2026</span>
                     </div>
                     
                     {/* Contenido - Solo Información */}
@@ -209,7 +209,7 @@ export function BannerMes() {
                           <svg className="w-3 lg:w-3.5 h-3 lg:h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="font-semibold">Válido hasta 31 Diciembre 2025</span>
+                          <span className="font-semibold">Válido hasta 31 Enero 2026</span>
                         </div>
                       </div>
                     </div>

@@ -19,55 +19,58 @@ export function SnowfallEffect() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Crear copos de nieve
-    interface Snowflake {
+    // Crear dientes y muelas
+    interface Tooth {
       x: number;
       y: number;
       radius: number;
       speed: number;
       drift: number;
       opacity: number;
+      emoji: string;
     }
 
-    const snowflakes: Snowflake[] = [];
-    const numberOfSnowflakes = 40;
+    const teeth: Tooth[] = [];
+    const numberOfTeeth = 30;
 
-    for (let i = 0; i < numberOfSnowflakes; i++) {
-      snowflakes.push({
+    const toothEmojis = ['🦷', '😁'];
+    for (let i = 0; i < numberOfTeeth; i++) {
+      teeth.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 3 + 2,
         speed: Math.random() * 1 + 0.5,
         drift: Math.random() * 0.5 - 0.25,
-        opacity: Math.random() * 0.4 + 0.4
+        opacity: Math.random() * 0.4 + 0.4,
+        emoji: toothEmojis[Math.floor(Math.random() * toothEmojis.length)]
       });
     }
 
-    // Animar los copos
+    // Animar los dientes
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      snowflakes.forEach((flake) => {
-        // Dibujar copo de nieve (❄)
-        ctx.font = `${flake.radius * 6}px Arial`;
-        ctx.fillStyle = `rgba(220, 38, 38, ${flake.opacity})`; // Rojo (#dc2626)
-        ctx.fillText('❄', flake.x, flake.y);
+      teeth.forEach((tooth) => {
+        // Dibujar diente o muela
+        ctx.font = `${tooth.radius * 6}px Arial`;
+        ctx.fillStyle = `rgba(220, 38, 38, ${tooth.opacity})`; // Rojo (#dc2626)
+        ctx.fillText(tooth.emoji, tooth.x, tooth.y);
 
         // Actualizar posición
-        flake.y += flake.speed;
-        flake.x += flake.drift;
+        tooth.y += tooth.speed;
+        tooth.x += tooth.drift;
 
-        // Reiniciar copo cuando sale de la pantalla
-        if (flake.y > canvas.height) {
-          flake.y = -10;
-          flake.x = Math.random() * canvas.width;
+        // Reiniciar diente cuando sale de la pantalla
+        if (tooth.y > canvas.height) {
+          tooth.y = -10;
+          tooth.x = Math.random() * canvas.width;
         }
 
-        // Mantener copos dentro del ancho de pantalla
-        if (flake.x > canvas.width) {
-          flake.x = 0;
-        } else if (flake.x < 0) {
-          flake.x = canvas.width;
+        // Mantener dientes dentro del ancho de pantalla
+        if (tooth.x > canvas.width) {
+          tooth.x = 0;
+        } else if (tooth.x < 0) {
+          tooth.x = canvas.width;
         }
       });
 

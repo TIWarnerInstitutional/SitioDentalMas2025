@@ -112,7 +112,39 @@ export function Footer() {
                   {socialLinks.map((social) => {
                     const Icon = social.icon;
                     return (
-                      <a key={social.label} href={social.href} target={social.href.startsWith('http') ? "_blank" : undefined} rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined} className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-500 transition-all duration-300">
+                      <a 
+                        key={social.label} 
+                        href={social.href} 
+                        target={social.href.startsWith('http') ? "_blank" : undefined} 
+                        rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined} 
+                        className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-500 transition-all duration-300"
+                        onClick={(e) => {
+                          if (social.label === 'WhatsApp') {
+                            // Track conversión en Google Analytics
+                            if (typeof window !== 'undefined' && (window as any).gtag) {
+                              (window as any).gtag('event', 'whatsapp_click', {
+                                event_category: 'Conversión',
+                                event_label: 'WhatsApp Footer',
+                                value: 1
+                              });
+
+                              // Conversion event para Google Ads
+                              (window as any).gtag('event', 'conversion', {
+                                send_to: 'AW-XXXXXXXXX/XXXXXX', // Reemplazar con tu ID de conversión
+                                event_category: 'WhatsApp',
+                                event_label: 'Click Footer'
+                              });
+                            }
+
+                            // Facebook Pixel
+                            if (typeof window !== 'undefined' && (window as any).fbq) {
+                              (window as any).fbq('track', 'Contact', {
+                                content_name: 'WhatsApp Footer'
+                              });
+                            }
+                          }
+                        }}
+                      >
                         {social.label === 'WhatsApp' ? (
                           <img src="/icon-whatsapp.svg" alt="WhatsApp" className="w-6 h-6" />
                         ) : (

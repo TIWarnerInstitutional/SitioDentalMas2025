@@ -2,7 +2,7 @@ const sucursales = [
   {
   "nombre": "Dental Más Aguascalientes",
   "mapsUrl": "https://share.google/NjTMPPqBQ0Zg9uqkg",
-  "vigencia": "31 de diciembre 2025",
+  "vigencia": "31 de enero 2026",
     "lat": 21.8667802,
     "lng": -102.2822763,
     "direccion": "Av. Aguascalientes Sur 123, Col. Morelos, Aguascalientes, CP 20000",
@@ -466,16 +466,16 @@ const sucursales = [
     AgendaOnline: "https://qr1.be/DMMW"
   },
 {
-  "nombre": "Dental Más Pachuca",
-  "mapsUrl": "https://maps.app.goo.gl/VyoFsMbJRnGrEGu77",
+  "nombre": "Dental Más Pachuca Select",
+  "mapsUrl": "https://maps.app.goo.gl/AZL8fKQ8R94ahFUVAhttps://maps.app.goo.gl/AZL8fKQ8R94ahFUVA",
   "vigencia": "31 de diciembre 2025",
-    "lat": 20.1217851,
-    "lng": -98.7370824,
-    "direccion": "Av Francisco I. Madero 100, Centro, 42060 Pachuca de Soto, Hgo.",
+    "lat": 20.0974236,
+    "lng": -98.7734,
+    "direccion": "Camino Real de La Plata 202, Zona Plateada, 42084 Pachuca de Soto, Hgo.",
     "ciudad": "Pachuca",
-    "cp": "42060",
-    "colonia": "Centro",
-    "telefono": "+527714397892",
+    "cp": "42084",
+    "colonia": "Zona Plateada",
+    "telefono": "+527714143593",
     "horario": "Lun-Vie: 10:00-19:00, Sáb: 10:00-15:00",
     "promocion": "¡Primera consulta gratis en tu primera visita!",
     "servicios": ["Consulta General", "Limpieza Dental", "Ortodoncia"],
@@ -486,7 +486,7 @@ const sucursales = [
     "reviews": "10 reseñas",
     "btn": "Agendar Cita en Pachuca",
     "mapBtn": "Ver en Mapa",
-    AgendaOnline: "https://qr1.be/DMMW"
+    AgendaOnline: "https://ff.healthatom.io/Njz9lR"
   },
   {
   "nombre": "Dental Más Real del Bosque",
@@ -536,6 +536,31 @@ const sucursales = [
     "btn": "Agendar Cita en Durango",
     "mapBtn": "Ver en Mapa",
     AgendaOnline: "https://ff.healthatom.io/ojrKTd"
+
+  },
+  {
+  "nombre": "Dental Más Leon Valle",
+  "mapsUrl": "https://share.google/KaAin3Czr2tqMaWTa",
+  "vigencia": "31 de diciembre 2025",
+    "lat": 21.1569038,
+    "lng": -101.6927468,
+    "direccion": "Blvd. Juan Alonso de Torres Pte. 1920, Residencial del Moral II, 37225 León de los Aldama, Gto.",
+    "ciudad": "León",
+    "cp": "37225",
+    "colonia": "Residencial del Moral II",
+    "telefono": "+524775106288",
+    "horario": "Lun-Vie: 10:00-19:00, Sáb: 10:00-14:00",
+    "promocion": "",
+    "servicios": [],
+    "Promociones": [],
+    "caracteristicas": [],
+    "comoLlegar": [],
+    "imagen": "",
+    "rating": "4.5",
+    "reviews": "5 reseñas",
+    "btn": "Agendar Cita en Leon Valle",
+    "mapBtn": "Ver en Mapa",
+    AgendaOnline: "https://ff.healthatom.io/oiagrz"
 
   }
   
