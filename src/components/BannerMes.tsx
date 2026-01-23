@@ -92,7 +92,7 @@ export function BannerMes() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 sm:mb-4">
             <span className="text-gray-900">Regala </span>
             <span className="text-red-600">sonrisas</span>
-            <span className="text-gray-900"> esta Navidad</span>
+            <span className="text-gray-900"> este 2026</span>
           </h2>
 
           <p className="text-sm sm:text-base md:text-lg text-gray-700 max-w-3xl mx-auto mb-4 sm:mb-5">
